@@ -506,23 +506,44 @@ class IndonesianLearningApp:
         st.session_state.user_progress['last_study_date'] = today
     
     def render_dashboard(self):
-        """Render the premium main dashboard"""
-        st.title("🇮🇩 Indonesian Learning Hub")
-        st.markdown("**Your comprehensive platform for mastering Indonesian language**")
+        """Render the simplified, engaging dashboard"""
+        # Clean header
+        st.markdown("""
+        <div style='text-align: center; padding: 2rem 0;'>
+            <h1 style='color: #2E8B57; font-size: 3rem; margin: 0;'>🇮🇩 Indonesian Hub</h1>
+            <p style='color: #666; font-size: 1.2rem; margin: 0.5rem 0;'>Learn Indonesian the fun way!</p>
+        </div>
+        """, unsafe_allow_html=True)
         
-        # Show statistics with standard Streamlit metrics
-        total_words = sum(len(level_words) for level_words in VOCABULARY_DATA.values())
+        # Simple progress overview
         learned_words = len(st.session_state.user_progress['words_learned'])
+        streak = st.session_state.user_progress.get('study_streak', 0)
         
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3 = st.columns(3)
         with col1:
-            st.metric("Total Vocabulary", f"{total_words:,}")
+            st.markdown(f"""
+            <div style='background: linear-gradient(135deg, #4CAF50, #45a049); padding: 1.5rem; border-radius: 15px; text-align: center; color: white;'>
+                <h2 style='margin: 0; font-size: 2.5rem;'>{learned_words}</h2>
+                <p style='margin: 0; font-size: 1.1rem;'>Words Learned</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
         with col2:
-            st.metric("Words Learned", f"{learned_words:,}")
+            st.markdown(f"""
+            <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 1.5rem; border-radius: 15px; text-align: center; color: white;'>
+                <h2 style='margin: 0; font-size: 2.5rem;'>{streak}</h2>
+                <p style='margin: 0; font-size: 1.1rem;'>Day Streak</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
         with col3:
-            st.metric("Quizzes Taken", len(st.session_state.user_progress.get('quiz_scores', [])))
-        with col4:
-            st.metric("Study Streak", st.session_state.user_progress.get('study_streak', 0))
+            level = st.session_state.user_progress.get('current_level', 'Absolute Beginner')
+            st.markdown(f"""
+            <div style='background: linear-gradient(135deg, #4ECDC4, #44a08d); padding: 1.5rem; border-radius: 15px; text-align: center; color: white;'>
+                <h2 style='margin: 0; font-size: 2.5rem;'>{level.split()[0]}</h2>
+                <p style='margin: 0; font-size: 1.1rem;'>Current Level</p>
+            </div>
+            """, unsafe_allow_html=True)
         
         # Show total vocabulary count and security status
         total_words = sum(len(level_words) for level_words in VOCABULARY_DATA.values())
@@ -669,33 +690,51 @@ class IndonesianLearningApp:
         
         # Action buttons
         st.markdown("---")
-        st.subheader("🚀 Quick Actions")
+        # Simple, engaging navigation
+        st.markdown("---")
         
-        col1, col2, col3, col4, col5 = st.columns(5)
+        # Main learning buttons - large and colorful
+        col1, col2 = st.columns(2)
         
         with col1:
-            if st.button("📚 Study Flashcards", width='stretch'):
+            if st.button("📚 Study Flashcards", use_container_width=True, type="primary"):
                 st.session_state.page = 'flashcards'
                 st.rerun()
-                
+        
         with col2:
-            if st.button("📝 Learn Sentences", width='stretch'):
-                st.session_state.page = 'sentences'
+            if st.button("⚔️ Battle Friends", use_container_width=True, type="secondary"):
+                st.session_state.page = 'battle'
                 st.rerun()
-                
-        with col3:
-            if st.button("🧠 Take Quiz", width='stretch'):
+        
+        # Secondary learning options
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            if st.button("🧠 Quiz", use_container_width=True):
                 st.session_state.page = 'quiz'
                 st.rerun()
-                
-        with col4:
-            if st.button("📊 Word Database", width='stretch'):
-                st.session_state.page = 'word_database'
+        
+        with col2:
+            if st.button("📝 Sentences", use_container_width=True):
+                st.session_state.page = 'sentences'
                 st.rerun()
-                
-        with col5:
-            if st.button("⚙️ Settings", width='stretch'):
-                st.session_state.page = 'settings'
+        
+        with col3:
+            if st.button("📖 Grammar", use_container_width=True):
+                st.session_state.page = 'study'
+                st.rerun()
+        
+        # Quick access buttons
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            if st.button("👤 Profile", use_container_width=True):
+                st.session_state.page = 'profile'
+                st.rerun()
+        
+        with col2:
+            if st.button("📊 Progress", use_container_width=True):
+                st.session_state.page = 'word_database'
                 st.rerun()
         
         # Review weak words button
@@ -708,12 +747,17 @@ class IndonesianLearningApp:
                     st.rerun()
     
     def render_flashcards(self):
-        """Render flashcard study interface"""
-        st.title("📚 Flashcard Study")
+        """Render simplified flashcard study interface"""
+        st.markdown("""
+        <div style='text-align: center; padding: 1rem 0;'>
+            <h1 style='color: #2E8B57; font-size: 2.5rem; margin: 0;'>📚 Study Flashcards</h1>
+            <p style='color: #666; font-size: 1.1rem; margin: 0.5rem 0;'>Learn Indonesian words with spaced repetition</p>
+        </div>
+        """, unsafe_allow_html=True)
         
-        # Level selector
+        # Simple level selector
         selected_level = st.selectbox(
-            "Choose Level:",
+            "Choose your level:",
             options=list(VOCABULARY_DATA.keys()),
             index=list(VOCABULARY_DATA.keys()).index(st.session_state.user_progress['current_level'])
         )
@@ -735,79 +779,54 @@ class IndonesianLearningApp:
         current_word = st.session_state.current_card
         card_data = st.session_state.flashcard_data[current_word]
         
-        # Card display
+        # Simple card display
         st.markdown("---")
-        col1, col2, col3 = st.columns([1, 3, 1])
         
-        with col2:
-            # Card container
-            with st.container():
-                st.markdown(
-                    f"""
-                    <div style='
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        padding: 2rem;
-                        border-radius: 15px;
-                        text-align: center;
-                        margin: 1rem 0;
-                        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                    '>
-                        <h1 style='color: white; margin: 0; font-size: 3rem;'>{current_word}</h1>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                )
+        # Clean, simple card
+        st.markdown(f"""
+        <div style='background: linear-gradient(135deg, #4CAF50, #45a049); padding: 3rem; border-radius: 20px; text-align: center; color: white; margin: 2rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.15);'>
+            <h1 style='font-size: 4rem; margin: 0; font-weight: bold;'>{current_word}</h1>
+        </div>
+        """, unsafe_allow_html=True)
                 
-                if st.session_state.show_answer:
-                    example_text = card_data.get('example', 'No example available')
-                    st.markdown(
-                        f"""
-                        <div style='
-                            background: white;
-                            padding: 1.5rem;
-                            border-radius: 10px;
-                            text-align: center;
-                            margin: 1rem 0;
-                            border: 2px solid #667eea;
-                        '>
-                            <h2 style='color: #333; margin: 0;'>{card_data['english']}</h2>
-                            <p style='color: #666; font-style: italic; margin: 0.5rem 0;'>/{card_data['pronunciation']}/</p>
-                            <p style='color: #888; margin: 0.5rem 0;'>Category: {card_data['category'].title()}</p>
-                            <div style='background: #f8f9fa; padding: 1rem; border-radius: 5px; margin: 1rem 0;'>
-                                <p style='color: #495057; margin: 0; font-weight: bold;'>Example:</p>
-                                <p style='color: #6c757d; margin: 0.5rem 0 0 0; font-style: italic;'>"{example_text}"</p>
-                            </div>
-                        </div>
-                        """, 
-                        unsafe_allow_html=True
-                    )
+        # Answer display
+        if st.session_state.show_answer:
+            example_text = card_data.get('example', 'No example available')
+            st.markdown(f"""
+            <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 2rem; border-radius: 20px; text-align: center; color: white; margin: 1rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.15);'>
+                <h2 style='font-size: 2.5rem; margin: 0; font-weight: bold;'>{card_data['english']}</h2>
+                <p style='font-size: 1.3rem; margin: 0.5rem 0; opacity: 0.9;'>{card_data['pronunciation']}</p>
+                <p style='font-size: 1.1rem; margin: 0.5rem 0; opacity: 0.8;'>Category: {card_data['category'].title()}</p>
+                <div style='background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin: 1rem 0;'>
+                    <p style='margin: 0; font-weight: bold;'>Example:</p>
+                    <p style='margin: 0.5rem 0 0 0; font-style: italic;'>"{example_text}"</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
         
-        # Control buttons
+        # Simple control buttons
         st.markdown("---")
-        col1, col2, col3, col4, col5 = st.columns(5)
+        
+        col1, col2, col3 = st.columns([1, 2, 1])
         
         with col1:
-            if st.button("← Back"):
+            if st.button("← Back", use_container_width=True):
                 st.session_state.page = 'dashboard'
                 st.rerun()
         
-        with col3:
+        with col2:
             if not st.session_state.show_answer:
-                if st.button("Show Answer", width='stretch'):
+                if st.button("👁️ Show Answer", use_container_width=True, type="primary"):
                     st.session_state.show_answer = True
                     st.rerun()
-                # Add Next button even before showing answer
-                if st.button("➡️ Next Word", width='stretch', type="secondary"):
-                    st.session_state.current_card = None
-                    st.session_state.show_answer = False
-                    st.rerun()
             else:
-                st.write("Rate difficulty:")
-                # Add Next button after showing answer too
-                if st.button("⏭️ Skip to Next", width='stretch', type="secondary"):
-                    st.session_state.current_card = None
-                    st.session_state.show_answer = False
-                    st.rerun()
+                st.markdown("**Rate difficulty:**")
+        
+        with col3:
+            if st.button("➡️ Next", use_container_width=True, type="secondary"):
+                st.session_state.current_card = None
+                st.session_state.show_answer = False
+                st.rerun()
         
         if st.session_state.show_answer:
             col1, col2, col3 = st.columns(3)
@@ -846,6 +865,222 @@ class IndonesianLearningApp:
         with col2:
             st.info(f"🔄 Review #{card_data['review_count'] + 1} for this card")
     
+    def render_battle_mode(self):
+        """Render social battle mode for competitive learning"""
+        st.title("⚔️ Battle Mode")
+        st.markdown("**Challenge friends and see who learns more Indonesian words!**")
+        
+        # Battle statistics
+        learned_words = len(st.session_state.user_progress['words_learned'])
+        battle_wins = st.session_state.user_progress.get('battle_wins', 0)
+        battle_losses = st.session_state.user_progress.get('battle_losses', 0)
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Words Learned", f"{learned_words:,}")
+        with col2:
+            st.metric("Battles Won", battle_wins)
+        with col3:
+            st.metric("Win Rate", f"{battle_wins/(battle_wins+battle_losses)*100:.1f}%" if (battle_wins+battle_losses) > 0 else "0%")
+        
+        st.markdown("---")
+        
+        # Battle options
+        battle_mode = st.radio(
+            "Choose Battle Mode:",
+            ["🏠 Local Battle", "🌐 Online Battle", "🤖 Practice vs AI", "📊 Leaderboard"],
+            horizontal=True
+        )
+        
+        if battle_mode == "🏠 Local Battle":
+            self.render_local_battle()
+        elif battle_mode == "🌐 Online Battle":
+            self.render_online_battle()
+        elif battle_mode == "🤖 Practice vs AI":
+            self.render_ai_battle()
+        elif battle_mode == "📊 Leaderboard":
+            self.render_leaderboard()
+    
+    def render_local_battle(self):
+        """Render local multiplayer battle"""
+        st.subheader("🏠 Local Battle")
+        st.info("Two players can battle on the same device!")
+        
+        if 'battle_players' not in st.session_state:
+            st.session_state.battle_players = {'player1': '', 'player2': ''}
+            st.session_state.battle_scores = {'player1': 0, 'player2': 0}
+            st.session_state.battle_current_player = 'player1'
+            st.session_state.battle_round = 1
+            st.session_state.battle_words = []
+        
+        # Player setup
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.text_input("Player 1 Name:", value=st.session_state.battle_players['player1'], key="p1_name")
+            st.session_state.battle_players['player1'] = st.session_state.p1_name
+        
+        with col2:
+            st.text_input("Player 2 Name:", value=st.session_state.battle_players['player2'], key="p2_name")
+            st.session_state.battle_players['player2'] = st.session_state.p2_name
+        
+        if st.session_state.battle_players['player1'] and st.session_state.battle_players['player2']:
+            if st.button("🚀 Start Battle!", type="primary"):
+                # Initialize battle with random words
+                all_words = []
+                for level_words in VOCABULARY_DATA.values():
+                    all_words.extend(level_words.keys())
+                
+                st.session_state.battle_words = random.sample(all_words, min(10, len(all_words)))
+                st.session_state.battle_current_word = 0
+                st.session_state.battle_round = 1
+                st.rerun()
+            
+            # Battle interface
+            if st.session_state.battle_words:
+                self.render_battle_interface()
+    
+    def render_battle_interface(self):
+        """Render the actual battle interface"""
+        current_word = st.session_state.battle_words[st.session_state.battle_current_word]
+        current_player = st.session_state.battle_current_player
+        player_name = st.session_state.battle_players[current_player]
+        
+        st.markdown(f"### Round {st.session_state.battle_round} - {player_name}'s Turn")
+        
+        # Word display
+        st.markdown(f"""
+        <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 2rem; border-radius: 15px; text-align: center; color: white; margin: 1rem 0;'>
+            <h1 style='font-size: 3rem; margin: 0;'>{current_word}</h1>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Answer input
+        answer = st.text_input("What does this word mean in English?", key=f"battle_answer_{st.session_state.battle_current_word}")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            if st.button("✅ Submit Answer", type="primary"):
+                # Check answer
+                correct_answer = VOCABULARY_DATA.get('Absolute Beginner', {}).get(current_word, {}).get('english', 'Unknown')
+                if answer.lower().strip() == correct_answer.lower().strip():
+                    st.session_state.battle_scores[current_player] += 1
+                    st.success(f"✅ Correct! +1 point for {player_name}")
+                else:
+                    st.error(f"❌ Wrong! The answer was: {correct_answer}")
+                
+                # Move to next word or end battle
+                st.session_state.battle_current_word += 1
+                if st.session_state.battle_current_word >= len(st.session_state.battle_words):
+                    # End battle
+                    self.end_battle()
+                else:
+                    # Switch players
+                    st.session_state.battle_current_player = 'player2' if current_player == 'player1' else 'player1'
+                    st.session_state.battle_round += 1
+                    st.rerun()
+        
+        with col2:
+            if st.button("⏭️ Skip Word"):
+                st.session_state.battle_current_word += 1
+                if st.session_state.battle_current_word >= len(st.session_state.battle_words):
+                    self.end_battle()
+                else:
+                    st.session_state.battle_current_player = 'player2' if current_player == 'player1' else 'player1'
+                    st.session_state.battle_round += 1
+                    st.rerun()
+        
+        # Show current scores
+        st.markdown("---")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.metric(f"{st.session_state.battle_players['player1']}", st.session_state.battle_scores['player1'])
+        with col2:
+            st.metric(f"{st.session_state.battle_players['player2']}", st.session_state.battle_scores['player2'])
+    
+    def end_battle(self):
+        """End the battle and show results"""
+        p1_score = st.session_state.battle_scores['player1']
+        p2_score = st.session_state.battle_scores['player2']
+        p1_name = st.session_state.battle_players['player1']
+        p2_name = st.session_state.battle_players['player2']
+        
+        st.markdown("## 🏆 Battle Results!")
+        
+        if p1_score > p2_score:
+            winner = p1_name
+            st.session_state.user_progress['battle_wins'] = st.session_state.user_progress.get('battle_wins', 0) + 1
+        elif p2_score > p1_score:
+            winner = p2_name
+            st.session_state.user_progress['battle_losses'] = st.session_state.user_progress.get('battle_losses', 0) + 1
+        else:
+            winner = "It's a tie!"
+        
+        st.markdown(f"### 🎉 {winner} wins!")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.metric(f"{p1_name}", p1_score)
+        with col2:
+            st.metric(f"{p2_name}", p2_score)
+        
+        if st.button("🔄 Play Again"):
+            st.session_state.battle_words = []
+            st.session_state.battle_current_word = 0
+            st.session_state.battle_round = 1
+            st.session_state.battle_scores = {'player1': 0, 'player2': 0}
+            st.session_state.battle_current_player = 'player1'
+            st.rerun()
+    
+    def render_online_battle(self):
+        """Render online battle mode"""
+        st.subheader("🌐 Online Battle")
+        st.info("Coming soon! Challenge friends from anywhere in the world.")
+        
+        # Placeholder for online features
+        st.markdown("""
+        ### Features Coming Soon:
+        - 🔗 Share battle links with friends
+        - 🌍 Global leaderboards
+        - 🏆 Tournaments and competitions
+        - 💬 Chat during battles
+        - 📱 Mobile-optimized battles
+        """)
+    
+    def render_ai_battle(self):
+        """Render AI practice battle"""
+        st.subheader("🤖 Practice vs AI")
+        st.info("Practice your skills against our AI opponent!")
+        
+        if st.button("🎯 Start AI Battle", type="primary"):
+            st.session_state.page = 'ai_battle'
+            st.rerun()
+    
+    def render_leaderboard(self):
+        """Render leaderboard"""
+        st.subheader("📊 Global Leaderboard")
+        
+        # Mock leaderboard data
+        leaderboard_data = [
+            {"rank": 1, "name": "IndonesianMaster", "words": 1250, "battles_won": 45},
+            {"rank": 2, "name": "BaliExplorer", "words": 1100, "battles_won": 38},
+            {"rank": 3, "name": "JakartaLearner", "words": 980, "battles_won": 32},
+            {"rank": 4, "name": "SurabayaStudent", "words": 850, "battles_won": 28},
+            {"rank": 5, "name": "BandungBuddy", "words": 720, "battles_won": 25},
+        ]
+        
+        for player in leaderboard_data:
+            col1, col2, col3, col4 = st.columns([1, 3, 2, 2])
+            with col1:
+                st.markdown(f"**#{player['rank']}**")
+            with col2:
+                st.markdown(f"**{player['name']}**")
+            with col3:
+                st.markdown(f"{player['words']} words")
+            with col4:
+                st.markdown(f"{player['battles_won']} wins")
+
     def render_quiz(self):
         """Render premium quiz interface"""
         st.title("🧠 Enhanced Vocabulary Quiz")
@@ -1746,6 +1981,8 @@ class IndonesianLearningApp:
             self.render_workbook()
         elif st.session_state.page == 'study':
             self.render_study_grammar()
+        elif st.session_state.page == 'battle':
+            self.render_battle_mode()
         elif st.session_state.page == 'quiz':
             self.render_quiz()
         elif st.session_state.page == 'review_weak':
