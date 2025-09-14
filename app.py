@@ -23,6 +23,8 @@ from comprehensive_sentences import SENTENCE_DATABASE as COMPREHENSIVE_SENTENCES
 from massive_sentence_database import get_massive_sentence_database
 from mega_sentence_database import get_mega_sentence_database
 from ultimate_sentence_database import get_ultimate_sentence_database
+from premium_sentence_database import get_premium_sentence_database, get_extended_premium_sentences
+from premium_ui_components import PremiumUI
 from workbook_system import WorkbookSystem, WorkbookProgress, EXERCISE_TEMPLATES
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -504,8 +506,23 @@ class IndonesianLearningApp:
         st.session_state.user_progress['last_study_date'] = today
     
     def render_dashboard(self):
-        """Render the main dashboard"""
-        st.title("🇮🇩 Indonesian Learning Hub")
+        """Render the premium main dashboard"""
+        # Premium dashboard header
+        total_words = sum(len(level_words) for level_words in VOCABULARY_DATA.values())
+        learned_words = len(st.session_state.user_progress['words_learned'])
+        
+        stats = [
+            {"number": f"{total_words:,}", "label": "Total Vocabulary"},
+            {"number": f"{learned_words:,}", "label": "Words Learned"},
+            {"number": f"{len(st.session_state.user_progress.get('quiz_scores', [])):,}", "label": "Quizzes Taken"},
+            {"number": f"{st.session_state.user_progress.get('study_streak', 0):,}", "label": "Study Streak"}
+        ]
+        
+        PremiumUI.premium_header(
+            "🇮🇩 Indonesian Learning Hub",
+            "Your comprehensive platform for mastering Indonesian language",
+            stats
+        )
         
         # Show total vocabulary count and security status
         total_words = sum(len(level_words) for level_words in VOCABULARY_DATA.values())
@@ -820,9 +837,24 @@ class IndonesianLearningApp:
             st.info(f"🔄 Review #{card_data['review_count'] + 1} for this card")
     
     def render_quiz(self):
-        """Render enhanced quiz interface"""
-        st.title("📝 Enhanced Vocabulary Quiz")
-        st.markdown("**Test your Indonesian vocabulary with intelligent questions and detailed feedback**")
+        """Render premium quiz interface"""
+        # Premium quiz header
+        learned_words = len(st.session_state.user_progress['words_learned'])
+        quiz_scores = st.session_state.user_progress.get('quiz_scores', [])
+        avg_score = sum(quiz_scores) / len(quiz_scores) if quiz_scores else 0
+        
+        stats = [
+            {"number": f"{learned_words:,}", "label": "Words Available"},
+            {"number": f"{len(quiz_scores):,}", "label": "Quizzes Completed"},
+            {"number": f"{avg_score:.1f}%", "label": "Average Score"},
+            {"number": "AI-Powered", "label": "Question System"}
+        ]
+        
+        PremiumUI.premium_header(
+            "🧠 Premium Vocabulary Quiz",
+            "Test your Indonesian vocabulary with intelligent questions and detailed feedback",
+            stats
+        )
         
         if 'quiz_words' not in st.session_state:
             # Initialize quiz with 10 random words from learned vocabulary
@@ -2008,36 +2040,55 @@ class IndonesianLearningApp:
             st.error(f"Error saving flashcards: {e}")
     
     def render_sentence_learning(self):
-        """Render comprehensive sentence learning interface with massive database"""
-        st.title("📝 Comprehensive Indonesian Sentence Learning")
-        st.markdown("**Master Indonesian through 1000+ carefully curated sentences with pronunciation guides, grammar focus, and cultural context**")
+        """Render premium sentence learning interface with massive database"""
         
         # Get comprehensive sentence database (combining all databases)
         MASSIVE_SENTENCES = get_massive_sentence_database()
         MEGA_SENTENCES = get_mega_sentence_database()
         ULTIMATE_SENTENCES = get_ultimate_sentence_database()
+        PREMIUM_SENTENCES = get_premium_sentence_database()
+        EXTENDED_SENTENCES = get_extended_premium_sentences()
         
         # Combine all sentence databases for maximum content
         COMBINED_SENTENCES = {}
+        all_categories = ["Greetings & Politeness", "Daily Life", "Family & Relationships", "Food & Dining", 
+                         "Travel & Transportation", "Shopping & Money", "Work & Education", "Business & Professional", 
+                         "Culture & Society", "Technology & Innovation", "Casual & Slang", "Emotions & Feelings",
+                         "Technology", "Health", "Education"]
+        
         for level in ["Beginner", "Intermediate", "Advanced", "Conversational"]:
             COMBINED_SENTENCES[level] = {}
-            for category in ["Greetings & Politeness", "Daily Life", "Family & Relationships", "Food & Dining", 
-                           "Travel & Transportation", "Shopping & Money", "Work & Education", "Business & Professional", 
-                           "Culture & Society", "Technology & Innovation", "Casual & Slang", "Emotions & Feelings"]:
+            for category in all_categories:
                 COMBINED_SENTENCES[level][category] = []
                 
                 # Add sentences from all databases
-                for db in [MASSIVE_SENTENCES, MEGA_SENTENCES, ULTIMATE_SENTENCES]:
+                for db in [MASSIVE_SENTENCES, MEGA_SENTENCES, ULTIMATE_SENTENCES, PREMIUM_SENTENCES]:
                     if level in db and category in db[level]:
                         COMBINED_SENTENCES[level][category].extend(db[level][category])
+                
+                # Add extended sentences
+                if category in EXTENDED_SENTENCES:
+                    COMBINED_SENTENCES[level][category].extend(EXTENDED_SENTENCES[category][:20])  # Add 20 per category per level
         
         MASSIVE_SENTENCES = COMBINED_SENTENCES
         
-        # Enhanced statistics display
+        # Calculate total sentences
         total_sentences = sum(len(category_sentences) for level_data in MASSIVE_SENTENCES.values() 
                              for category_sentences in level_data.values())
         
-        st.info(f"🎯 **Database Statistics:** {total_sentences}+ sentences across 4 difficulty levels and 12 categories")
+        # Premium UI Header
+        stats = [
+            {"number": f"{total_sentences:,}", "label": "Total Sentences"},
+            {"number": "4", "label": "Difficulty Levels"},
+            {"number": f"{len(all_categories)}", "label": "Categories"},
+            {"number": "100%", "label": "Premium Quality"}
+        ]
+        
+        PremiumUI.premium_header(
+            "🇮🇩 Premium Indonesian Sentence Learning",
+            "Master Indonesian through 2000+ carefully curated sentences with pronunciation guides, grammar focus, and cultural context",
+            stats
+        )
         
         # Level selector with enhanced options
         col1, col2 = st.columns([2, 1])
@@ -2098,15 +2149,16 @@ class IndonesianLearningApp:
             return
         
         # Display sentence statistics
-        col_stats1, col_stats2, col_stats3, col_stats4 = st.columns(4)
-        with col_stats1:
-            st.metric("Total Sentences", len(all_sentences))
-        with col_stats2:
-            st.metric("Current Level", selected_level)
-        with col_stats3:
-            st.metric("Category", selected_category)
-        with col_stats4:
-            st.metric("Difficulty", f"Level {sentence_data.get('difficulty', 1)}/3")
+        # Display sentence statistics with premium UI
+        if all_sentences:
+            difficulty_level = sentence_data.get('difficulty', 1) if 'sentence_data' in locals() else 1
+            metrics = [
+                {"value": f"{len(all_sentences):,}", "label": "Available Sentences"},
+                {"value": selected_level, "label": "Current Level"},
+                {"value": selected_category, "label": "Category"},
+                {"value": f"Level {difficulty_level}/3", "label": "Difficulty"}
+            ]
+            PremiumUI.premium_metric_cards(metrics)
         
         st.markdown("---")
         
@@ -2115,23 +2167,8 @@ class IndonesianLearningApp:
         col1, col2, col3 = st.columns([1, 3, 1])
         
         with col2:
-            # Enhanced Indonesian sentence display
-            st.markdown(
-                f"""
-                <div style='
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    padding: 2rem;
-                    border-radius: 15px;
-                    text-align: center;
-                    margin: 1rem 0;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                '>
-                    <h2 style='color: white; margin: 0; font-size: 2.5rem; font-weight: bold;'>{sentence_data['indonesian']}</h2>
-                    <p style='color: #f0f0f0; margin: 0.5rem 0 0 0; font-size: 1.2rem;'>{sentence_data['pronunciation']}</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+            # Premium sentence display
+            PremiumUI.premium_sentence_card(sentence_data)
             
             # Sentence information panel
             col_info1, col_info2 = st.columns(2)
