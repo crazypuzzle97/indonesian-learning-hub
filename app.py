@@ -394,6 +394,63 @@ VOCABULARY_DATA = {
         "belanja": {"english": "shopping", "pronunciation": "be-lan-ja", "category": "shopping", "example": "Belanja bulanan di supermarket."},
         "harga": {"english": "price", "pronunciation": "har-ga", "category": "shopping", "example": "Harga naik terus."},
         
+        # Government & Politics
+        "pemerintah": {"english": "government", "pronunciation": "pe-me-rin-tah", "category": "politics", "example": "Pemerintah baru terpilih."},
+        "presiden": {"english": "president", "pronunciation": "pre-si-den", "category": "politics", "example": "Presiden memberikan pidato."},
+        "menteri": {"english": "minister", "pronunciation": "men-te-ri", "category": "politics", "example": "Menteri kesehatan hadir."},
+        "pemilihan": {"english": "election", "pronunciation": "pe-mi-li-han", "category": "politics", "example": "Pemilihan umum tahun depan."},
+        "undang-undang": {"english": "law", "pronunciation": "un-dang un-dang", "category": "politics", "example": "Undang-undang baru disahkan."},
+        "negara": {"english": "country", "pronunciation": "ne-ga-ra", "category": "politics", "example": "Negara Indonesia besar."},
+        "rakyat": {"english": "people/citizens", "pronunciation": "rak-yat", "category": "politics", "example": "Rakyat mendukung kebijakan."},
+        
+        # Science & Research
+        "ilmu": {"english": "science", "pronunciation": "il-mu", "category": "science", "example": "Ilmu pengetahuan berkembang."},
+        "penelitian": {"english": "research", "pronunciation": "pe-ne-li-ti-an", "category": "science", "example": "Penelitian ini penting."},
+        "eksperimen": {"english": "experiment", "pronunciation": "eks-pe-ri-men", "category": "science", "example": "Eksperimen berhasil dilakukan."},
+        "laboratorium": {"english": "laboratory", "pronunciation": "la-bo-ra-to-ri-um", "category": "science", "example": "Laboratorium bersih sekali."},
+        "kimia": {"english": "chemistry", "pronunciation": "ki-mi-a", "category": "science", "example": "Pelajaran kimia menarik."},
+        "fisika": {"english": "physics", "pronunciation": "fi-si-ka", "category": "science", "example": "Fisika kuantum rumit."},
+        "biologi": {"english": "biology", "pronunciation": "bi-o-lo-gi", "category": "science", "example": "Biologi mempelajari kehidupan."},
+        "matematika": {"english": "mathematics", "pronunciation": "ma-te-ma-ti-ka", "category": "science", "example": "Matematika dasar penting."},
+        
+        # Arts & Culture
+        "seni": {"english": "art", "pronunciation": "se-ni", "category": "culture", "example": "Seni lukis Indonesia indah."},
+        "budaya": {"english": "culture", "pronunciation": "bu-da-ya", "category": "culture", "example": "Budaya Jawa unik."},
+        "tarian": {"english": "dance", "pronunciation": "ta-ri-an", "category": "culture", "example": "Tarian Bali sangat cantik."},
+        "lukisan": {"english": "painting", "pronunciation": "lu-ki-san", "category": "culture", "example": "Lukisan ini mahal."},
+        "patung": {"english": "sculpture", "pronunciation": "pa-tung", "category": "culture", "example": "Patung Budha kuno."},
+        "kerajinan": {"english": "handicraft", "pronunciation": "ke-ra-ji-nan", "category": "culture", "example": "Kerajinan tangan bagus."},
+        "tradisi": {"english": "tradition", "pronunciation": "tra-di-si", "category": "culture", "example": "Tradisi leluhur dijaga."},
+        "upacara": {"english": "ceremony", "pronunciation": "u-pa-ca-ra", "category": "culture", "example": "Upacara adat sakral."},
+        
+        # Professions & Jobs
+        "pekerjaan": {"english": "job", "pronunciation": "pe-ker-ja-an", "category": "jobs", "example": "Pekerjaan ini mudah."},
+        "profesi": {"english": "profession", "pronunciation": "pro-fe-si", "category": "jobs", "example": "Profesi dokter mulia."},
+        "insinyur": {"english": "engineer", "pronunciation": "in-si-nyur", "category": "jobs", "example": "Insinyur membangun jembatan."},
+        "akuntan": {"english": "accountant", "pronunciation": "a-kun-tan", "category": "jobs", "example": "Akuntan menghitung keuangan."},
+        "pengacara": {"english": "lawyer", "pronunciation": "peng-a-ca-ra", "category": "jobs", "example": "Pengacara membela klien."},
+        "pilot": {"english": "pilot", "pronunciation": "pi-lot", "category": "jobs", "example": "Pilot menerbangkan pesawat."},
+        "wartawan": {"english": "journalist", "pronunciation": "war-ta-wan", "category": "jobs", "example": "Wartawan menulis berita."},
+        "arsitek": {"english": "architect", "pronunciation": "ar-si-tek", "category": "jobs", "example": "Arsitek merancang rumah."},
+        
+        # Environment & Ecology
+        "lingkungan": {"english": "environment", "pronunciation": "ling-kung-an", "category": "environment", "example": "Lingkungan harus dijaga."},
+        "polusi": {"english": "pollution", "pronunciation": "po-lu-si", "category": "environment", "example": "Polusi udara berbahaya."},
+        "daur ulang": {"english": "recycling", "pronunciation": "da-ur u-lang", "category": "environment", "example": "Daur ulang plastik penting."},
+        "sampah": {"english": "garbage", "pronunciation": "sam-pah", "category": "environment", "example": "Sampah harus dibuang."},
+        "konservasi": {"english": "conservation", "pronunciation": "kon-ser-va-si", "category": "environment", "example": "Konservasi hutan diperlukan."},
+        "ekosistem": {"english": "ecosystem", "pronunciation": "e-ko-sis-tem", "category": "environment", "example": "Ekosistem laut rusak."},
+        "keanekaragaman": {"english": "biodiversity", "pronunciation": "ke-a-ne-ka-ra-ga-man", "category": "environment", "example": "Keanekaragaman hayati Indonesia."},
+        
+        # Food & Cooking
+        "memasak": {"english": "cooking", "pronunciation": "me-ma-sak", "category": "cooking", "example": "Ibu memasak nasi."},
+        "resep": {"english": "recipe", "pronunciation": "re-sep", "category": "cooking", "example": "Resep kue lezat."},
+        "bumbu": {"english": "spices", "pronunciation": "bum-bu", "category": "cooking", "example": "Bumbu Indonesia kaya."},
+        "masakan": {"english": "cuisine", "pronunciation": "ma-sa-kan", "category": "cooking", "example": "Masakan Padang pedas."},
+        "hidangan": {"english": "dish", "pronunciation": "hi-dang-an", "category": "cooking", "example": "Hidangan utama lezat."},
+        "rasa": {"english": "taste", "pronunciation": "ra-sa", "category": "cooking", "example": "Rasa makanan enak."},
+        "aroma": {"english": "aroma", "pronunciation": "a-ro-ma", "category": "cooking", "example": "Aroma kopi harum."},
+        
         # More Essential Words
         "ini": {"english": "this", "pronunciation": "i-ni", "category": "pronouns", "example": "Ini buku saya."},
         "itu": {"english": "that", "pronunciation": "i-tu", "category": "pronouns", "example": "Itu mobil baru."},
@@ -404,21 +461,429 @@ VOCABULARY_DATA = {
         "untuk": {"english": "for", "pronunciation": "un-tuk", "category": "prepositions", "example": "Ini untuk Anda."},
         "dan": {"english": "and", "pronunciation": "dan", "category": "conjunctions", "example": "Saya dan dia pergi."},
         "atau": {"english": "or", "pronunciation": "a-tau", "category": "conjunctions", "example": "Teh atau kopi?"},
-        "tetapi": {"english": "but", "pronunciation": "te-ta-pi", "category": "conjunctions", "example": "Saya lelah tetapi senang."},
+        "tetapi": {"english": "but", "pronunciation": "te-ta-pi", "category": "conjunctions", "example": "Mahal tetapi bagus."},
+        "karena": {"english": "because", "pronunciation": "ka-re-na", "category": "conjunctions", "example": "Terlambat karena macet."},
+        "jika": {"english": "if", "pronunciation": "ji-ka", "category": "conjunctions", "example": "Jika hujan, di rumah."},
+        "ketika": {"english": "when", "pronunciation": "ke-ti-ka", "category": "conjunctions", "example": "Ketika malam tiba."},
+        "sebelum": {"english": "before", "pronunciation": "se-be-lum", "category": "conjunctions", "example": "Sebelum makan, cuci tangan."},
+        "sesudah": {"english": "after", "pronunciation": "se-su-dah", "category": "conjunctions", "example": "Sesudah makan, istirahat."},
+        # Military & Security
+        "tentara": {"english": "army", "pronunciation": "ten-ta-ra", "category": "military", "example": "Tentara menjaga negara."},
+        "polisi": {"english": "police", "pronunciation": "po-li-si", "category": "military", "example": "Polisi menangkap pencuri."},
+        "keamanan": {"english": "security", "pronunciation": "ke-a-man-an", "category": "military", "example": "Keamanan sangat penting."},
+        "perang": {"english": "war", "pronunciation": "pe-rang", "category": "military", "example": "Perang dunia berakhir."},
+        "perdamaian": {"english": "peace", "pronunciation": "per-da-mai-an", "category": "military", "example": "Perdamaian dunia diinginkan."},
+        
+        # Religion & Spirituality
+        "agama": {"english": "religion", "pronunciation": "a-ga-ma", "category": "religion", "example": "Agama mengajarkan kebaikan."},
+        "doa": {"english": "prayer", "pronunciation": "do-a", "category": "religion", "example": "Doa ibu terkabul."},
+        "gereja": {"english": "church", "pronunciation": "ge-re-ja", "category": "religion", "example": "Gereja tua bersejarah."},
+        "masjid": {"english": "mosque", "pronunciation": "mas-jid", "category": "religion", "example": "Masjid besar indah."},
+        "kuil": {"english": "temple", "pronunciation": "ku-il", "category": "religion", "example": "Kuil Hindu kuno."},
+        "surga": {"english": "heaven", "pronunciation": "sur-ga", "category": "religion", "example": "Surga tempat bahagia."},
+        
+        # Geography & Nature
+        "benua": {"english": "continent", "pronunciation": "be-nu-a", "category": "geography", "example": "Benua Asia terbesar."},
+        "pulau": {"english": "island", "pronunciation": "pu-lau", "category": "geography", "example": "Pulau Bali terkenal."},
+        "selat": {"english": "strait", "pronunciation": "se-lat", "category": "geography", "example": "Selat Sunda sempit."},
+        "teluk": {"english": "bay", "pronunciation": "te-luk", "category": "geography", "example": "Teluk Jakarta besar."},
+        "danau": {"english": "lake", "pronunciation": "da-nau", "category": "geography", "example": "Danau Toba indah."},
+        "padang rumput": {"english": "grassland", "pronunciation": "pa-dang rum-put", "category": "geography", "example": "Padang rumput luas."},
+        "gua": {"english": "cave", "pronunciation": "gu-a", "category": "geography", "example": "Gua gelap dan dingin."},
+        "air terjun": {"english": "waterfall", "pronunciation": "a-ir ter-jun", "category": "geography", "example": "Air terjun tinggi sekali."},
+        
+        # Communication & Media
+        "komunikasi": {"english": "communication", "pronunciation": "ko-mu-ni-ka-si", "category": "media", "example": "Komunikasi sangat penting."},
+        "berita": {"english": "news", "pronunciation": "be-ri-ta", "category": "media", "example": "Berita hari ini menarik."},
+        "koran": {"english": "newspaper", "pronunciation": "ko-ran", "category": "media", "example": "Koran pagi dibaca."},
+        "majalah": {"english": "magazine", "pronunciation": "ma-ja-lah", "category": "media", "example": "Majalah fashion terbaru."},
+        "radio": {"english": "radio", "pronunciation": "ra-di-o", "category": "media", "example": "Radio menyiarkan musik."},
+        "televisi": {"english": "television", "pronunciation": "te-le-vi-si", "category": "media", "example": "Televisi rusak total."},
+        "iklan": {"english": "advertisement", "pronunciation": "ik-lan", "category": "media", "example": "Iklan produk baru."},
+        
+        # Finance & Economics
+        "ekonomi": {"english": "economy", "pronunciation": "e-ko-no-mi", "category": "finance", "example": "Ekonomi Indonesia tumbuh."},
+        "keuangan": {"english": "finance", "pronunciation": "ke-u-ang-an", "category": "finance", "example": "Keuangan keluarga stabil."},
+        "hutang": {"english": "debt", "pronunciation": "hu-tang", "category": "finance", "example": "Hutang harus dibayar."},
+        "kredit": {"english": "credit", "pronunciation": "kre-dit", "category": "finance", "example": "Kredit rumah disetujui."},
+        "tabungan": {"english": "savings", "pronunciation": "ta-bung-an", "category": "finance", "example": "Tabungan semakin banyak."},
+        "pajak": {"english": "tax", "pronunciation": "pa-jak", "category": "finance", "example": "Pajak harus dibayar."},
+        "anggaran": {"english": "budget", "pronunciation": "ang-ga-ran", "category": "finance", "example": "Anggaran bulan ini ketat."},
+        
+        # Emotions & Feelings Extended
+        "cinta": {"english": "love", "pronunciation": "cin-ta", "category": "emotions", "example": "Cinta ibu tulus."},
+        "benci": {"english": "hate", "pronunciation": "ben-ci", "category": "emotions", "example": "Jangan benci orang lain."},
+        "rindu": {"english": "miss", "pronunciation": "rin-du", "category": "emotions", "example": "Rindu kampung halaman."},
+        "bangga": {"english": "proud", "pronunciation": "bang-ga", "category": "emotions", "example": "Bangga pada anak."},
+        "malu": {"english": "ashamed", "pronunciation": "ma-lu", "category": "emotions", "example": "Malu berbuat salah."},
+        "iri": {"english": "jealous", "pronunciation": "i-ri", "category": "emotions", "example": "Iri pada teman."},
+        "kecewa": {"english": "disappointed", "pronunciation": "ke-ce-wa", "category": "emotions", "example": "Kecewa dengan hasil."},
+        "bahagia": {"english": "happy", "pronunciation": "ba-ha-gi-a", "category": "emotions", "example": "Bahagia bersama keluarga."},
+        
+        # Music & Entertainment
+        "lagu": {"english": "song", "pronunciation": "la-gu", "category": "music", "example": "Lagu ini populer."},
+        "penyanyi": {"english": "singer", "pronunciation": "pe-nya-nyi", "category": "music", "example": "Penyanyi terkenal tampil."},
+        "konser": {"english": "concert", "pronunciation": "kon-ser", "category": "music", "example": "Konser musik rock."},
+        "alat musik": {"english": "musical instrument", "pronunciation": "a-lat mu-sik", "category": "music", "example": "Alat musik tradisional."},
+        "bioskop": {"english": "cinema", "pronunciation": "bi-os-kop", "category": "entertainment", "example": "Bioskop penuh penonton."},
+        "teater": {"english": "theater", "pronunciation": "te-a-ter", "category": "entertainment", "example": "Teater drama bagus."},
+        "hiburan": {"english": "entertainment", "pronunciation": "hi-bu-ran", "category": "entertainment", "example": "Hiburan malam menarik."},
         
         # Time Words
         "sekarang": {"english": "now", "pronunciation": "se-ka-rang", "category": "time", "example": "Sekarang jam berapa?"},
         "kemarin": {"english": "yesterday", "pronunciation": "ke-ma-rin", "category": "time", "example": "Kemarin saya pergi ke pasar."},
         "besok": {"english": "tomorrow", "pronunciation": "be-sok", "category": "time", "example": "Besok saya akan datang."},
+        "lusa": {"english": "day after tomorrow", "pronunciation": "lu-sa", "category": "time", "example": "Lusa ada acara penting."},
+        "kemarin dulu": {"english": "day before yesterday", "pronunciation": "ke-ma-rin du-lu", "category": "time", "example": "Kemarin dulu hujan deras."},
+        "minggu": {"english": "week", "pronunciation": "ming-gu", "category": "time", "example": "Minggu depan libur."},
+        "bulan": {"english": "month", "pronunciation": "bu-lan", "category": "time", "example": "Bulan ini sibuk."},
+        "tahun": {"english": "year", "pronunciation": "ta-hun", "category": "time", "example": "Tahun baru datang."},
+        "abad": {"english": "century", "pronunciation": "a-bad", "category": "time", "example": "Abad ke-21 modern."},
+        "masa": {"english": "era/period", "pronunciation": "ma-sa", "category": "time", "example": "Masa lalu indah."},
+        
+        # Advanced Technology
+        "komputer": {"english": "computer", "pronunciation": "kom-pu-ter", "category": "technology", "example": "Komputer baru cepat."},
+        "laptop": {"english": "laptop", "pronunciation": "lap-top", "category": "technology", "example": "Laptop ringan praktis."},
+        "tablet": {"english": "tablet", "pronunciation": "tab-let", "category": "technology", "example": "Tablet untuk membaca."},
+        "smartphone": {"english": "smartphone", "pronunciation": "smart-phone", "category": "technology", "example": "Smartphone canggih sekali."},
+        "perangkat lunak": {"english": "software", "pronunciation": "pe-rang-kat lu-nak", "category": "technology", "example": "Perangkat lunak terbaru."},
+        "perangkat keras": {"english": "hardware", "pronunciation": "pe-rang-kat ke-ras", "category": "technology", "example": "Perangkat keras mahal."},
+        "jaringan": {"english": "network", "pronunciation": "ja-ring-an", "category": "technology", "example": "Jaringan internet cepat."},
+        "server": {"english": "server", "pronunciation": "ser-ver", "category": "technology", "example": "Server down sementara."},
+        "database": {"english": "database", "pronunciation": "da-ta-base", "category": "technology", "example": "Database pelanggan lengkap."},
+        "algoritma": {"english": "algorithm", "pronunciation": "al-go-rit-ma", "category": "technology", "example": "Algoritma pencarian efisien."},
+        
+        # Advanced Science
+        "molekul": {"english": "molecule", "pronunciation": "mo-le-kul", "category": "science", "example": "Molekul air sederhana."},
+        "atom": {"english": "atom", "pronunciation": "a-tom", "category": "science", "example": "Atom terkecil materi."},
+        "elektron": {"english": "electron", "pronunciation": "e-lek-tron", "category": "science", "example": "Elektron bermuatan negatif."},
+        "proton": {"english": "proton", "pronunciation": "pro-ton", "category": "science", "example": "Proton di inti atom."},
+        "neutron": {"english": "neutron", "pronunciation": "neu-tron", "category": "science", "example": "Neutron tidak bermuatan."},
+        "gravitasi": {"english": "gravity", "pronunciation": "gra-vi-ta-si", "category": "science", "example": "Gravitasi menarik benda."},
+        "energi": {"english": "energy", "pronunciation": "e-ner-gi", "category": "science", "example": "Energi tidak dapat hilang."},
+        "massa": {"english": "mass", "pronunciation": "mas-sa", "category": "science", "example": "Massa benda tetap."},
+        "volume": {"english": "volume", "pronunciation": "vo-lu-me", "category": "science", "example": "Volume air berubah."},
+        "densitas": {"english": "density", "pronunciation": "den-si-tas", "category": "science", "example": "Densitas emas tinggi."},
+        
+        # Advanced Medical
+        "diagnosis": {"english": "diagnosis", "pronunciation": "di-ag-no-sis", "category": "health", "example": "Diagnosis dokter akurat."},
+        "terapi": {"english": "therapy", "pronunciation": "te-ra-pi", "category": "health", "example": "Terapi fisik membantu."},
+        "operasi": {"english": "surgery", "pronunciation": "o-pe-ra-si", "category": "health", "example": "Operasi jantung berhasil."},
+        "vaksin": {"english": "vaccine", "pronunciation": "vak-sin", "category": "health", "example": "Vaksin mencegah penyakit."},
+        "antibiotik": {"english": "antibiotic", "pronunciation": "an-ti-bi-o-tik", "category": "health", "example": "Antibiotik melawan bakteri."},
+        "virus": {"english": "virus", "pronunciation": "vi-rus", "category": "health", "example": "Virus sangat kecil."},
+        "bakteri": {"english": "bacteria", "pronunciation": "bak-te-ri", "category": "health", "example": "Bakteri ada dimana-mana."},
+        "penyakit": {"english": "disease", "pronunciation": "pe-nya-kit", "category": "health", "example": "Penyakit harus diobati."},
+        "gejala": {"english": "symptoms", "pronunciation": "ge-ja-la", "category": "health", "example": "Gejala demam muncul."},
+        "pencegahan": {"english": "prevention", "pronunciation": "pen-ce-gah-an", "category": "health", "example": "Pencegahan lebih baik."},
+        
+        # Advanced Geography
+        "benua": {"english": "continent", "pronunciation": "be-nu-a", "category": "geography", "example": "Benua Asia terluas."},
+        "samudra": {"english": "ocean", "pronunciation": "sa-mud-ra", "category": "geography", "example": "Samudra Pasifik luas."},
+        "khatulistiwa": {"english": "equator", "pronunciation": "kha-tu-lis-ti-wa", "category": "geography", "example": "Indonesia di khatulistiwa."},
+        "kutub": {"english": "pole", "pronunciation": "ku-tub", "category": "geography", "example": "Kutub utara dingin."},
+        "garis lintang": {"english": "latitude", "pronunciation": "ga-ris lin-tang", "category": "geography", "example": "Garis lintang nol derajat."},
+        "garis bujur": {"english": "longitude", "pronunciation": "ga-ris bu-jur", "category": "geography", "example": "Garis bujur timur."},
+        "iklim": {"english": "climate", "pronunciation": "ik-lim", "category": "geography", "example": "Iklim tropis hangat."},
+        "musim": {"english": "season", "pronunciation": "mu-sim", "category": "geography", "example": "Musim hujan tiba."},
+        "topografi": {"english": "topography", "pronunciation": "to-po-gra-fi", "category": "geography", "example": "Topografi pegunungan."},
+        "geologi": {"english": "geology", "pronunciation": "ge-o-lo-gi", "category": "geography", "example": "Geologi Indonesia unik."},
+        
+        # Advanced Arts
+        "kaligrafi": {"english": "calligraphy", "pronunciation": "ka-li-gra-fi", "category": "culture", "example": "Kaligrafi Arab indah."},
+        "arsitektur": {"english": "architecture", "pronunciation": "ar-si-tek-tur", "category": "culture", "example": "Arsitektur Jawa klasik."},
+        "sastra": {"english": "literature", "pronunciation": "sas-tra", "category": "culture", "example": "Sastra Indonesia kaya."},
+        "puisi": {"english": "poetry", "pronunciation": "pu-i-si", "category": "culture", "example": "Puisi cinta romantis."},
+        "novel": {"english": "novel", "pronunciation": "no-vel", "category": "culture", "example": "Novel sejarah menarik."},
+        "cerita": {"english": "story", "pronunciation": "ce-ri-ta", "category": "culture", "example": "Cerita rakyat terkenal."},
+        "dongeng": {"english": "fairy tale", "pronunciation": "dong-eng", "category": "culture", "example": "Dongeng anak-anak lucu."},
+        "legenda": {"english": "legend", "pronunciation": "le-gen-da", "category": "culture", "example": "Legenda Sangkuriang."},
+        "mitos": {"english": "myth", "pronunciation": "mi-tos", "category": "culture", "example": "Mitos kuno misterius."},
+        "folklore": {"english": "folklore", "pronunciation": "folk-lo-re", "category": "culture", "example": "Folklore daerah beragam."},
+        
+        # Advanced Economics
+        "inflasi": {"english": "inflation", "pronunciation": "in-fla-si", "category": "finance", "example": "Inflasi naik drastis."},
+        "deflasi": {"english": "deflation", "pronunciation": "de-fla-si", "category": "finance", "example": "Deflasi jarang terjadi."},
+        "resesi": {"english": "recession", "pronunciation": "re-se-si", "category": "finance", "example": "Resesi ekonomi global."},
+        "depresi": {"english": "depression", "pronunciation": "de-pre-si", "category": "finance", "example": "Depresi ekonomi parah."},
+        "kapitalisasi": {"english": "capitalization", "pronunciation": "ka-pi-ta-li-sa-si", "category": "finance", "example": "Kapitalisasi pasar besar."},
+        "dividen": {"english": "dividend", "pronunciation": "di-vi-den", "category": "finance", "example": "Dividen saham tinggi."},
+        "saham": {"english": "stock", "pronunciation": "sa-ham", "category": "finance", "example": "Saham teknologi naik."},
+        "obligasi": {"english": "bond", "pronunciation": "o-bli-ga-si", "category": "finance", "example": "Obligasi pemerintah aman."},
+        "portofolio": {"english": "portfolio", "pronunciation": "por-to-fo-li-o", "category": "finance", "example": "Portofolio investasi beragam."},
+        "likuiditas": {"english": "liquidity", "pronunciation": "li-kui-di-tas", "category": "finance", "example": "Likuiditas tinggi penting."},
+        
+        # Extended Time & Calendar
         "hari ini": {"english": "today", "pronunciation": "ha-ri i-ni", "category": "time", "example": "Hari ini cuaca bagus."},
         "malam": {"english": "night", "pronunciation": "ma-lam", "category": "time", "example": "Malam ini saya tidur."},
         "pagi": {"english": "morning", "pronunciation": "pa-gi", "category": "time", "example": "Pagi ini saya bangun."},
         "siang": {"english": "afternoon", "pronunciation": "si-ang", "category": "time", "example": "Siang ini panas."},
+        "sore": {"english": "evening", "pronunciation": "so-re", "category": "time", "example": "Sore hari sejuk."},
+        "dini hari": {"english": "dawn", "pronunciation": "di-ni ha-ri", "category": "time", "example": "Dini hari sunyi."},
+        "tengah malam": {"english": "midnight", "pronunciation": "te-ngah ma-lam", "category": "time", "example": "Tengah malam gelap."},
+        "tengah hari": {"english": "noon", "pronunciation": "te-ngah ha-ri", "category": "time", "example": "Tengah hari terik."},
+        "subuh": {"english": "dawn prayer time", "pronunciation": "su-buh", "category": "time", "example": "Subuh waktu sholat."},
+        "maghrib": {"english": "sunset prayer time", "pronunciation": "magh-rib", "category": "time", "example": "Maghrib matahari tenggelam."},
+        "semester": {"english": "semester", "pronunciation": "se-mes-ter", "category": "time", "example": "Semester baru dimulai."},
+        "dekade": {"english": "decade", "pronunciation": "de-ka-de", "category": "time", "example": "Dekade terakhir berubah."},
+        "milenium": {"english": "millennium", "pronunciation": "mi-le-ni-um", "category": "time", "example": "Milenium baru harapan."},
         
-        # Common Adjectives
+        # Extended Food & Cuisine
+        "nasi goreng": {"english": "fried rice", "pronunciation": "na-si go-reng", "category": "food", "example": "Nasi goreng pedas enak."},
+        "mie ayam": {"english": "chicken noodles", "pronunciation": "mi-e a-yam", "category": "food", "example": "Mie ayam favorit saya."},
+        "gado-gado": {"english": "Indonesian salad", "pronunciation": "ga-do ga-do", "category": "food", "example": "Gado-gado sayuran segar."},
+        "rendang": {"english": "spicy beef stew", "pronunciation": "ren-dang", "category": "food", "example": "Rendang Padang terkenal."},
+        "sate": {"english": "satay", "pronunciation": "sa-te", "category": "food", "example": "Sate ayam bakar."},
+        "bakso": {"english": "meatball soup", "pronunciation": "bak-so", "category": "food", "example": "Bakso kuah hangat."},
+        "soto": {"english": "Indonesian soup", "pronunciation": "so-to", "category": "food", "example": "Soto ayam kuning."},
+        "gudeg": {"english": "jackfruit stew", "pronunciation": "gu-deg", "category": "food", "example": "Gudeg Yogyakarta manis."},
+        "tempeh": {"english": "fermented soybeans", "pronunciation": "tem-peh", "category": "food", "example": "Tempeh protein nabati."},
+        "tahu": {"english": "tofu", "pronunciation": "ta-hu", "category": "food", "example": "Tahu goreng renyah."},
+        "kerupuk": {"english": "crackers", "pronunciation": "ke-ru-puk", "category": "food", "example": "Kerupuk udang gurih."},
+        "sambal": {"english": "chili sauce", "pronunciation": "sam-bal", "category": "food", "example": "Sambal pedas sekali."},
+        "lalapan": {"english": "raw vegetables", "pronunciation": "la-la-pan", "category": "food", "example": "Lalapan segar sehat."},
+        "asinan": {"english": "pickled fruits", "pronunciation": "a-si-nan", "category": "food", "example": "Asinan buah asam."},
+        "rujak": {"english": "fruit salad", "pronunciation": "ru-jak", "category": "food", "example": "Rujak buah pedas."},
+        
+        # Extended Animals & Wildlife
+        "orangutan": {"english": "orangutan", "pronunciation": "o-rang-u-tan", "category": "animals", "example": "Orangutan Kalimantan langka."},
+        "komodo": {"english": "komodo dragon", "pronunciation": "ko-mo-do", "category": "animals", "example": "Komodo kadal besar."},
+        "badak": {"english": "rhinoceros", "pronunciation": "ba-dak", "category": "animals", "example": "Badak bercula satu."},
+        "tapir": {"english": "tapir", "pronunciation": "ta-pir", "category": "animals", "example": "Tapir hidung panjang."},
+        "anoa": {"english": "dwarf buffalo", "pronunciation": "a-no-a", "category": "animals", "example": "Anoa Sulawesi kecil."},
+        "banteng": {"english": "wild ox", "pronunciation": "ban-teng", "category": "animals", "example": "Banteng Jawa kuat."},
+        "rusa": {"english": "deer", "pronunciation": "ru-sa", "category": "animals", "example": "Rusa berlari cepat."},
+        "babi rusa": {"english": "babirusa", "pronunciation": "ba-bi ru-sa", "category": "animals", "example": "Babi rusa taring panjang."},
+        "binturong": {"english": "bearcat", "pronunciation": "bin-tu-rong", "category": "animals", "example": "Binturong pemanjat pohon."},
+        "trenggiling": {"english": "pangolin", "pronunciation": "treng-gi-ling", "category": "animals", "example": "Trenggiling sisik keras."},
+        "kuskus": {"english": "cuscus", "pronunciation": "kus-kus", "category": "animals", "example": "Kuskus marsupial kecil."},
+        "cendrawasih": {"english": "bird of paradise", "pronunciation": "cen-dra-wa-sih", "category": "animals", "example": "Cendrawasih burung indah."},
+        "jalak bali": {"english": "bali starling", "pronunciation": "ja-lak ba-li", "category": "animals", "example": "Jalak Bali putih langka."},
+        "elang jawa": {"english": "javan eagle", "pronunciation": "e-lang ja-wa", "category": "animals", "example": "Elang Jawa terbang tinggi."},
+        
+        # Extended Plants & Flowers
+        "melati": {"english": "jasmine", "pronunciation": "me-la-ti", "category": "nature", "example": "Melati bunga putih harum."},
+        "mawar": {"english": "rose", "pronunciation": "ma-war", "category": "nature", "example": "Mawar merah cantik."},
+        "anggrek": {"english": "orchid", "pronunciation": "ang-grek", "category": "nature", "example": "Anggrek bulan langka."},
+        "kamboja": {"english": "frangipani", "pronunciation": "kam-bo-ja", "category": "nature", "example": "Kamboja kuning harum."},
+        "kenanga": {"english": "ylang-ylang", "pronunciation": "ke-na-nga", "category": "nature", "example": "Kenanga wangi mewangi."},
+        "cempaka": {"english": "magnolia", "pronunciation": "cem-pa-ka", "category": "nature", "example": "Cempaka putih suci."},
+        "teratai": {"english": "lotus", "pronunciation": "te-ra-tai", "category": "nature", "example": "Teratai di kolam."},
+        "bambu": {"english": "bamboo", "pronunciation": "bam-bu", "category": "nature", "example": "Bambu tumbuh cepat."},
+        "kelapa": {"english": "coconut", "pronunciation": "ke-la-pa", "category": "nature", "example": "Kelapa buah tropis."},
+        "pisang": {"english": "banana", "pronunciation": "pi-sang", "category": "nature", "example": "Pisang kuning manis."},
+        "mangga": {"english": "mango", "pronunciation": "mang-ga", "category": "nature", "example": "Mangga harum manis."},
+        "durian": {"english": "durian", "pronunciation": "du-ri-an", "category": "nature", "example": "Durian raja buah."},
+        "rambutan": {"english": "rambutan", "pronunciation": "ram-bu-tan", "category": "nature", "example": "Rambutan merah berbulu."},
+        "manggis": {"english": "mangosteen", "pronunciation": "mang-gis", "category": "nature", "example": "Manggis ratu buah."},
+        
+        # Extended Transportation & Vehicles
+        "ojek": {"english": "motorcycle taxi", "pronunciation": "o-jek", "category": "transportation", "example": "Ojek online praktis."},
+        "angkot": {"english": "public minivan", "pronunciation": "ang-kot", "category": "transportation", "example": "Angkot transportasi murah."},
+        "bajaj": {"english": "three-wheeler", "pronunciation": "ba-jaj", "category": "transportation", "example": "Bajaj kendaraan kecil."},
+        "delman": {"english": "horse cart", "pronunciation": "del-man", "category": "transportation", "example": "Delman tradisional Yogya."},
+        "dokar": {"english": "horse carriage", "pronunciation": "do-kar", "category": "transportation", "example": "Dokar wisata kota."},
+        "andong": {"english": "traditional carriage", "pronunciation": "an-dong", "category": "transportation", "example": "Andong keliling kota."},
+        "helikopter": {"english": "helicopter", "pronunciation": "he-li-kop-ter", "category": "transportation", "example": "Helikopter terbang rendah."},
+        "jet": {"english": "jet", "pronunciation": "jet", "category": "transportation", "example": "Jet tempur cepat."},
+        "kapal selam": {"english": "submarine", "pronunciation": "ka-pal se-lam", "category": "transportation", "example": "Kapal selam di laut."},
+        "feri": {"english": "ferry", "pronunciation": "fe-ri", "category": "transportation", "example": "Feri menyeberang selat."},
+        "speedboat": {"english": "speedboat", "pronunciation": "speed-boat", "category": "transportation", "example": "Speedboat cepat sekali."},
+        "yacht": {"english": "yacht", "pronunciation": "yacht", "category": "transportation", "example": "Yacht mewah berlayar."},
+        
+        # Extended Clothing & Fashion
+        "batik": {"english": "batik", "pronunciation": "ba-tik", "category": "clothing", "example": "Batik Indonesia terkenal."},
+        "kebaya": {"english": "traditional blouse", "pronunciation": "ke-ba-ya", "category": "clothing", "example": "Kebaya wanita elegan."},
+        "sarong": {"english": "sarong", "pronunciation": "sa-rong", "category": "clothing", "example": "Sarong kain tradisional."},
+        "kain": {"english": "cloth", "pronunciation": "ka-in", "category": "clothing", "example": "Kain sutra halus."},
+        "selendang": {"english": "shawl", "pronunciation": "se-len-dang", "category": "clothing", "example": "Selendang menutupi kepala."},
+        "ikat pinggang": {"english": "belt", "pronunciation": "i-kat ping-gang", "category": "clothing", "example": "Ikat pinggang kulit."},
+        "dasi": {"english": "tie", "pronunciation": "da-si", "category": "clothing", "example": "Dasi formal rapi."},
+        "jas": {"english": "suit jacket", "pronunciation": "jas", "category": "clothing", "example": "Jas hitam formal."},
+        "gaun": {"english": "dress", "pronunciation": "ga-un", "category": "clothing", "example": "Gaun pesta cantik."},
+        "celana": {"english": "pants", "pronunciation": "ce-la-na", "category": "clothing", "example": "Celana jeans biru."},
+        "baju": {"english": "shirt", "pronunciation": "ba-ju", "category": "clothing", "example": "Baju putih bersih."},
+        "sepatu": {"english": "shoes", "pronunciation": "se-pa-tu", "category": "clothing", "example": "Sepatu kulit mahal."},
+        "sandal": {"english": "sandals", "pronunciation": "san-dal", "category": "clothing", "example": "Sandal jepit murah."},
+        "kaos kaki": {"english": "socks", "pronunciation": "ka-os ka-ki", "category": "clothing", "example": "Kaos kaki putih."},
+        
+        # Extended House & Furniture
+        "lemari": {"english": "wardrobe", "pronunciation": "le-ma-ri", "category": "house", "example": "Lemari pakaian besar."},
+        "kasur": {"english": "mattress", "pronunciation": "ka-sur", "category": "house", "example": "Kasur empuk nyaman."},
+        "bantal": {"english": "pillow", "pronunciation": "ban-tal", "category": "house", "example": "Bantal lembut putih."},
+        "selimut": {"english": "blanket", "pronunciation": "se-li-mut", "category": "house", "example": "Selimut hangat tebal."},
+        "sprei": {"english": "bed sheet", "pronunciation": "spre-i", "category": "house", "example": "Sprei warna biru."},
+        "kursi": {"english": "chair", "pronunciation": "kur-si", "category": "house", "example": "Kursi kayu kokoh."},
+        "meja": {"english": "table", "pronunciation": "me-ja", "category": "house", "example": "Meja makan bulat."},
+        "sofa": {"english": "sofa", "pronunciation": "so-fa", "category": "house", "example": "Sofa kulit coklat."},
+        "televisi": {"english": "television", "pronunciation": "te-le-vi-si", "category": "house", "example": "Televisi layar besar."},
+        "kulkas": {"english": "refrigerator", "pronunciation": "kul-kas", "category": "house", "example": "Kulkas penuh makanan."},
+        "kompor": {"english": "stove", "pronunciation": "kom-por", "category": "house", "example": "Kompor gas biru."},
+        "rice cooker": {"english": "rice cooker", "pronunciation": "rice coo-ker", "category": "house", "example": "Rice cooker masak nasi."},
+        "blender": {"english": "blender", "pronunciation": "blen-der", "category": "house", "example": "Blender buat jus."},
+        "setrika": {"english": "iron", "pronunciation": "se-tri-ka", "category": "house", "example": "Setrika baju kusut."},
+        
+        # Extended Body Parts
+        "jantung": {"english": "heart", "pronunciation": "jan-tung", "category": "body", "example": "Jantung berdetak cepat."},
+        "paru-paru": {"english": "lungs", "pronunciation": "pa-ru pa-ru", "category": "body", "example": "Paru-paru butuh oksigen."},
+        "hati": {"english": "liver", "pronunciation": "ha-ti", "category": "body", "example": "Hati organ penting."},
+        "ginjal": {"english": "kidney", "pronunciation": "gin-jal", "category": "body", "example": "Ginjal saring darah."},
+        "lambung": {"english": "stomach", "pronunciation": "lam-bung", "category": "body", "example": "Lambung cerna makanan."},
+        "usus": {"english": "intestine", "pronunciation": "u-sus", "category": "body", "example": "Usus serap nutrisi."},
+        "otak": {"english": "brain", "pronunciation": "o-tak", "category": "body", "example": "Otak pusat pikiran."},
+        "tulang": {"english": "bone", "pronunciation": "tu-lang", "category": "body", "example": "Tulang kuat kokoh."},
+        "otot": {"english": "muscle", "pronunciation": "o-tot", "category": "body", "example": "Otot perlu latihan."},
+        "kulit": {"english": "skin", "pronunciation": "ku-lit", "category": "body", "example": "Kulit perlu perawatan."},
+        "darah": {"english": "blood", "pronunciation": "da-rah", "category": "body", "example": "Darah mengalir tubuh."},
+        "urat": {"english": "vein", "pronunciation": "u-rat", "category": "body", "example": "Urat nadi terasa."},
+        
+        # Extended Common Adjectives
         "besar": {"english": "big", "pronunciation": "be-sar", "category": "adjectives", "example": "Rumah ini besar."},
         "kecil": {"english": "small", "pronunciation": "ke-cil", "category": "adjectives", "example": "Anak itu kecil."},
         "tinggi": {"english": "tall/high", "pronunciation": "ting-gi", "category": "adjectives", "example": "Orang itu tinggi."},
+        "pendek": {"english": "short", "pronunciation": "pen-dek", "category": "adjectives", "example": "Rambut saya pendek."},
+        "panjang": {"english": "long", "pronunciation": "pan-jang", "category": "adjectives", "example": "Jalan ini panjang."},
+        "lebar": {"english": "wide", "pronunciation": "le-bar", "category": "adjectives", "example": "Sungai ini lebar."},
+        "sempit": {"english": "narrow", "pronunciation": "sem-pit", "category": "adjectives", "example": "Gang ini sempit."},
+        "tebal": {"english": "thick", "pronunciation": "te-bal", "category": "adjectives", "example": "Buku ini tebal."},
+        "tipis": {"english": "thin", "pronunciation": "ti-pis", "category": "adjectives", "example": "Kertas ini tipis."},
+        "berat": {"english": "heavy", "pronunciation": "be-rat", "category": "adjectives", "example": "Tas ini berat."},
+        "ringan": {"english": "light", "pronunciation": "ri-ngan", "category": "adjectives", "example": "Bulu ini ringan."},
+        "keras": {"english": "hard", "pronunciation": "ke-ras", "category": "adjectives", "example": "Batu ini keras."},
+        "lembut": {"english": "soft", "pronunciation": "lem-but", "category": "adjectives", "example": "Kain ini lembut."},
+        "kasar": {"english": "rough", "pronunciation": "ka-sar", "category": "adjectives", "example": "Permukaan ini kasar."},
+        "halus": {"english": "smooth", "pronunciation": "ha-lus", "category": "adjectives", "example": "Kulit bayi halus."},
+        "tajam": {"english": "sharp", "pronunciation": "ta-jam", "category": "adjectives", "example": "Pisau ini tajam."},
+        "tumpul": {"english": "blunt", "pronunciation": "tum-pul", "category": "adjectives", "example": "Pensil ini tumpul."},
+        "licin": {"english": "slippery", "pronunciation": "li-cin", "category": "adjectives", "example": "Lantai ini licin."},
+        "kering": {"english": "dry", "pronunciation": "ke-ring", "category": "adjectives", "example": "Pakaian sudah kering."},
+        "basah": {"english": "wet", "pronunciation": "ba-sah", "category": "adjectives", "example": "Rambut masih basah."},
+        "lembab": {"english": "humid", "pronunciation": "lem-bab", "category": "adjectives", "example": "Udara terasa lembab."},
+        "panas": {"english": "hot", "pronunciation": "pa-nas", "category": "adjectives", "example": "Air ini panas."},
+        "dingin": {"english": "cold", "pronunciation": "di-ngin", "category": "adjectives", "example": "Es ini dingin."},
+        "hangat": {"english": "warm", "pronunciation": "ha-ngat", "category": "adjectives", "example": "Sup ini hangat."},
+        "sejuk": {"english": "cool", "pronunciation": "se-juk", "category": "adjectives", "example": "Angin sore sejuk."},
+        
+        # More Extended Verbs
+        "berjalan": {"english": "to walk", "pronunciation": "ber-ja-lan", "category": "verbs", "example": "Saya berjalan ke sekolah."},
+        "berlari": {"english": "to run", "pronunciation": "ber-la-ri", "category": "verbs", "example": "Dia berlari cepat."},
+        "melompat": {"english": "to jump", "pronunciation": "me-lom-pat", "category": "verbs", "example": "Anak melompat tinggi."},
+        "berenang": {"english": "to swim", "pronunciation": "be-re-nang", "category": "verbs", "example": "Ikan berenang di laut."},
+        "terbang": {"english": "to fly", "pronunciation": "ter-bang", "category": "verbs", "example": "Burung terbang tinggi."},
+        "merangkak": {"english": "to crawl", "pronunciation": "me-rang-kak", "category": "verbs", "example": "Bayi merangkak di lantai."},
+        "memanjat": {"english": "to climb", "pronunciation": "me-man-jat", "category": "verbs", "example": "Monyet memanjat pohon."},
+        "menyelam": {"english": "to dive", "pronunciation": "me-nye-lam", "category": "verbs", "example": "Penyelam menyelam dalam."},
+        "mengendarai": {"english": "to ride", "pronunciation": "meng-en-da-rai", "category": "verbs", "example": "Dia mengendarai sepeda."},
+        "mengemudi": {"english": "to drive", "pronunciation": "meng-e-mu-di", "category": "verbs", "example": "Ayah mengemudi mobil."},
+        "menerbangkan": {"english": "to pilot", "pronunciation": "me-ner-bang-kan", "category": "verbs", "example": "Pilot menerbangkan pesawat."},
+        "berlayar": {"english": "to sail", "pronunciation": "ber-la-yar", "category": "verbs", "example": "Kapal berlayar ke pulau."},
+        "mendayung": {"english": "to paddle", "pronunciation": "men-da-yung", "category": "verbs", "example": "Nelayan mendayung perahu."},
+        "berselancar": {"english": "to surf", "pronunciation": "ber-se-lan-car", "category": "verbs", "example": "Dia berselancar di pantai."},
+        
+        # More Numbers & Mathematics
+        "nol": {"english": "zero", "pronunciation": "nol", "category": "numbers", "example": "Nol tambah satu sama dengan satu."},
+        "setengah": {"english": "half", "pronunciation": "se-te-ngah", "category": "numbers", "example": "Setengah dari sepuluh adalah lima."},
+        "seperempat": {"english": "quarter", "pronunciation": "se-pe-rem-pat", "category": "numbers", "example": "Seperempat jam lima belas menit."},
+        "sepertiga": {"english": "one third", "pronunciation": "se-per-ti-ga", "category": "numbers", "example": "Sepertiga dari sembilan adalah tiga."},
+        "sepersepuluh": {"english": "one tenth", "pronunciation": "se-per-se-pu-luh", "category": "numbers", "example": "Sepersepuluh dari seratus adalah sepuluh."},
+        "persen": {"english": "percent", "pronunciation": "per-sen", "category": "numbers", "example": "Lima puluh persen adalah setengah."},
+        "tambah": {"english": "plus", "pronunciation": "tam-bah", "category": "numbers", "example": "Dua tambah tiga sama dengan lima."},
+        "kurang": {"english": "minus", "pronunciation": "ku-rang", "category": "numbers", "example": "Lima kurang dua sama dengan tiga."},
+        "kali": {"english": "times", "pronunciation": "ka-li", "category": "numbers", "example": "Tiga kali empat sama dengan dua belas."},
+        "bagi": {"english": "divided by", "pronunciation": "ba-gi", "category": "numbers", "example": "Delapan bagi dua sama dengan empat."},
+        "sama dengan": {"english": "equals", "pronunciation": "sa-ma de-ngan", "category": "numbers", "example": "Dua tambah dua sama dengan empat."},
+        "lebih besar": {"english": "greater than", "pronunciation": "le-bih be-sar", "category": "numbers", "example": "Lima lebih besar dari tiga."},
+        "lebih kecil": {"english": "less than", "pronunciation": "le-bih ke-cil", "category": "numbers", "example": "Dua lebih kecil dari lima."},
+        
+        # Extended Colors
+        "ungu": {"english": "purple", "pronunciation": "u-ngu", "category": "colors", "example": "Bunga ungu cantik."},
+        "pink": {"english": "pink", "pronunciation": "pink", "category": "colors", "example": "Baju pink cerah."},
+        "coklat": {"english": "brown", "pronunciation": "cok-lat", "category": "colors", "example": "Tanah berwarna coklat."},
+        "abu-abu": {"english": "gray", "pronunciation": "a-bu a-bu", "category": "colors", "example": "Awan abu-abu gelap."},
+        "emas": {"english": "gold", "pronunciation": "e-mas", "category": "colors", "example": "Cincin emas berkilau."},
+        "perak": {"english": "silver", "pronunciation": "pe-rak", "category": "colors", "example": "Gelang perak indah."},
+        "perunggu": {"english": "bronze", "pronunciation": "pe-rung-gu", "category": "colors", "example": "Medali perunggu ketiga."},
+        "krem": {"english": "cream", "pronunciation": "krem", "category": "colors", "example": "Dinding krem lembut."},
+        "salmon": {"english": "salmon", "pronunciation": "sal-mon", "category": "colors", "example": "Warna salmon muda."},
+        "magenta": {"english": "magenta", "pronunciation": "ma-gen-ta", "category": "colors", "example": "Tinta magenta cerah."},
+        
+        # Extended Weather & Climate
+        "mendung": {"english": "cloudy", "pronunciation": "men-dung", "category": "weather", "example": "Langit mendung gelap."},
+        "cerah": {"english": "sunny", "pronunciation": "ce-rah", "category": "weather", "example": "Cuaca cerah hari ini."},
+        "berawan": {"english": "overcast", "pronunciation": "ber-a-wan", "category": "weather", "example": "Langit berawan tipis."},
+        "berkabut": {"english": "foggy", "pronunciation": "ber-ka-but", "category": "weather", "example": "Pagi berkabut tebal."},
+        "badai": {"english": "storm", "pronunciation": "ba-dai", "category": "weather", "example": "Badai kencang datang."},
+        "topan": {"english": "typhoon", "pronunciation": "to-pan", "category": "weather", "example": "Topan merusak rumah."},
+        "tornado": {"english": "tornado", "pronunciation": "tor-na-do", "category": "weather", "example": "Tornado berbentuk corong."},
+        "gempa": {"english": "earthquake", "pronunciation": "gem-pa", "category": "weather", "example": "Gempa bumi guncang kota."},
+        "tsunami": {"english": "tsunami", "pronunciation": "tsu-na-mi", "category": "weather", "example": "Tsunami gelombang besar."},
+        "banjir": {"english": "flood", "pronunciation": "ban-jir", "category": "weather", "example": "Banjir rendam jalan."},
+        "kekeringan": {"english": "drought", "pronunciation": "ke-ke-ring-an", "category": "weather", "example": "Kekeringan panjang terjadi."},
+        "longsor": {"english": "landslide", "pronunciation": "long-sor", "category": "weather", "example": "Longsor tutup jalan."},
+        
+        # Extended Family & Relationships
+        "suami": {"english": "husband", "pronunciation": "sua-mi", "category": "family", "example": "Suami saya baik."},
+        "istri": {"english": "wife", "pronunciation": "is-tri", "category": "family", "example": "Istri cantik sekali."},
+        "anak": {"english": "child", "pronunciation": "a-nak", "category": "family", "example": "Anak bermain di taman."},
+        "orang tua": {"english": "parents", "pronunciation": "o-rang tu-a", "category": "family", "example": "Orang tua saya sehat."},
+        "kakek": {"english": "grandfather", "pronunciation": "ka-kek", "category": "family", "example": "Kakek berumur delapan puluh."},
+        "nenek": {"english": "grandmother", "pronunciation": "ne-nek", "category": "family", "example": "Nenek masak enak."},
+        "cucu": {"english": "grandchild", "pronunciation": "cu-cu", "category": "family", "example": "Cucu pertama lahir."},
+        "paman": {"english": "uncle", "pronunciation": "pa-man", "category": "family", "example": "Paman datang berkunjung."},
+        "bibi": {"english": "aunt", "pronunciation": "bi-bi", "category": "family", "example": "Bibi membawa oleh-oleh."},
+        "sepupu": {"english": "cousin", "pronunciation": "se-pu-pu", "category": "family", "example": "Sepupu saya pintar."},
+        "keponakan": {"english": "nephew/niece", "pronunciation": "ke-po-na-kan", "category": "family", "example": "Keponakan lucu sekali."},
+        "mertua": {"english": "in-law", "pronunciation": "mer-tu-a", "category": "family", "example": "Mertua baik hati."},
+        "ipar": {"english": "sibling-in-law", "pronunciation": "i-par", "category": "family", "example": "Ipar saya dokter."},
+        "menantu": {"english": "son/daughter-in-law", "pronunciation": "me-nan-tu", "category": "family", "example": "Menantu perempuan cantik."},
+        
+        # Extended Education & School
+        "sekolah dasar": {"english": "elementary school", "pronunciation": "se-ko-lah da-sar", "category": "education", "example": "Sekolah dasar enam tahun."},
+        "sekolah menengah": {"english": "middle school", "pronunciation": "se-ko-lah me-ne-ngah", "category": "education", "example": "Sekolah menengah tiga tahun."},
+        "sekolah tinggi": {"english": "high school", "pronunciation": "se-ko-lah ting-gi", "category": "education", "example": "Sekolah tinggi persiapan kuliah."},
+        "kuliah": {"english": "university", "pronunciation": "ku-li-ah", "category": "education", "example": "Kuliah empat tahun."},
+        "fakultas": {"english": "faculty", "pronunciation": "fa-kul-tas", "category": "education", "example": "Fakultas kedokteran sulit."},
+        "jurusan": {"english": "major", "pronunciation": "ju-ru-san", "category": "education", "example": "Jurusan teknik populer."},
+        "mata kuliah": {"english": "course", "pronunciation": "ma-ta ku-li-ah", "category": "education", "example": "Mata kuliah matematika."},
+        "dosen": {"english": "lecturer", "pronunciation": "do-sen", "category": "education", "example": "Dosen mengajar baik."},
+        "rektor": {"english": "rector", "pronunciation": "rek-tor", "category": "education", "example": "Rektor pimpin universitas."},
+        "dekan": {"english": "dean", "pronunciation": "de-kan", "category": "education", "example": "Dekan fakultas baru."},
+        "tugas": {"english": "assignment", "pronunciation": "tu-gas", "category": "education", "example": "Tugas dikumpulkan besok."},
+        "skripsi": {"english": "thesis", "pronunciation": "skrip-si", "category": "education", "example": "Skripsi harus selesai."},
+        "wisuda": {"english": "graduation", "pronunciation": "wi-su-da", "category": "education", "example": "Wisuda bulan depan."},
+        "ijazah": {"english": "diploma", "pronunciation": "i-ja-zah", "category": "education", "example": "Ijazah dokumen penting."},
+        
+        # Extended Technology & Internet
+        "wifi": {"english": "wifi", "pronunciation": "wi-fi", "category": "technology", "example": "Wifi cepat di kafe."},
+        "bluetooth": {"english": "bluetooth", "pronunciation": "blue-tooth", "category": "technology", "example": "Bluetooth koneksi nirkabel."},
+        "USB": {"english": "USB", "pronunciation": "u-es-be", "category": "technology", "example": "USB simpan data."},
+        "CD": {"english": "CD", "pronunciation": "ce-de", "category": "technology", "example": "CD musik lama."},
+        "DVD": {"english": "DVD", "pronunciation": "de-ve-de", "category": "technology", "example": "DVD film bagus."},
+        "flashdisk": {"english": "flash drive", "pronunciation": "flash-disk", "category": "technology", "example": "Flashdisk kecil praktis."},
+        "harddisk": {"english": "hard drive", "pronunciation": "hard-disk", "category": "technology", "example": "Harddisk simpan banyak."},
+        "RAM": {"english": "RAM", "pronunciation": "ram", "category": "technology", "example": "RAM komputer cepat."},
+        "processor": {"english": "processor", "pronunciation": "pro-ces-sor", "category": "technology", "example": "Processor otak komputer."},
+        "motherboard": {"english": "motherboard", "pronunciation": "mother-board", "category": "technology", "example": "Motherboard papan utama."},
+        "keyboard": {"english": "keyboard", "pronunciation": "key-board", "category": "technology", "example": "Keyboard untuk mengetik."},
+        "mouse": {"english": "mouse", "pronunciation": "mouse", "category": "technology", "example": "Mouse klik dan drag."},
+        "monitor": {"english": "monitor", "pronunciation": "mo-ni-tor", "category": "technology", "example": "Monitor layar besar."},
+        "printer": {"english": "printer", "pronunciation": "prin-ter", "category": "technology", "example": "Printer cetak dokumen."},
+        "scanner": {"english": "scanner", "pronunciation": "scan-ner", "category": "technology", "example": "Scanner scan foto."},
+        
+        # Extended Sports & Games
+        "sepak bola": {"english": "soccer", "pronunciation": "se-pak bo-la", "category": "sports", "example": "Sepak bola olahraga populer."},
+        "bulu tangkis": {"english": "badminton", "pronunciation": "bu-lu tang-kis", "category": "sports", "example": "Bulu tangkis olahraga Indonesia."},
+        "tenis": {"english": "tennis", "pronunciation": "te-nis", "category": "sports", "example": "Tenis pakai raket."},
+        "tenis meja": {"english": "table tennis", "pronunciation": "te-nis me-ja", "category": "sports", "example": "Tenis meja ping pong."},
+        "voli": {"english": "volleyball", "pronunciation": "vo-li", "category": "sports", "example": "Voli main beregu."},
+        "basket": {"english": "basketball", "pronunciation": "bas-ket", "category": "sports", "example": "Basket masuk ring."},
+        "baseball": {"english": "baseball", "pronunciation": "base-ball", "category": "sports", "example": "Baseball pakai pemukul."},
+        "golf": {"english": "golf", "pronunciation": "golf", "category": "sports", "example": "Golf olahraga mahal."},
+        "tinju": {"english": "boxing", "pronunciation": "tin-ju", "category": "sports", "example": "Tinju olahraga keras."},
+        "karate": {"english": "karate", "pronunciation": "ka-ra-te", "category": "sports", "example": "Karate bela diri."},
+        "judo": {"english": "judo", "pronunciation": "ju-do", "category": "sports", "example": "Judo seni berkelahi."},
+        "taekwondo": {"english": "taekwondo", "pronunciation": "taek-won-do", "category": "sports", "example": "Taekwondo tendangan tinggi."},
+        "silat": {"english": "martial arts", "pronunciation": "si-lat", "category": "sports", "example": "Silat budaya Indonesia."},
         "pendek": {"english": "short", "pronunciation": "pen-dek", "category": "adjectives", "example": "Saya pendek."},
         "panjang": {"english": "long", "pronunciation": "pan-jang", "category": "adjectives", "example": "Rambut saya panjang."},
         "pendek": {"english": "short", "pronunciation": "pen-dek", "category": "adjectives", "example": "Jalan ini pendek."},
@@ -867,8 +1332,13 @@ class IndonesianLearningApp:
             )
             
         with col3:
+            # Get total vocabulary count across all levels
+            total_vocab = 0
+            for level_data in VOCABULARY_DATA.values():
+                total_vocab += len(level_data)
+            
             due_count = len(self.get_due_cards())
-            st.metric("Cards Due", due_count, delta=None)
+            st.metric("Total Cards", total_vocab, delta=f"{due_count} due")
             
         with col4:
             current_level = st.session_state.user_progress['current_level']
@@ -1224,13 +1694,13 @@ class IndonesianLearningApp:
         st.markdown("---")
         col1, col2, col3, col4 = st.columns(4)
         with col1:
-            st.info(f"📊 {selected_category.title()} Cards: {len(due_cards)}")
+            st.info(f"📊 {selected_category.title()}: {len(available_words)} total")
         with col2:
-            st.info(f"🔄 Review #{card_data.get('review_count', 0) + 1}")
+            st.info(f"📋 Due Now: {len(due_cards)} cards")
         with col3:
             category_learned = len([w for w in st.session_state.user_progress['words_learned'] 
                                   if w in available_words])
-            st.info(f"✅ Category Progress: {category_learned}/{len(available_words)}")
+            st.info(f"✅ Learned: {category_learned}/{len(available_words)}")
         with col4:
             st.info(f"🏷️ Categories: {len(categories)}")
     
@@ -2409,7 +2879,7 @@ class IndonesianLearningApp:
             
             col1, col2 = st.columns(2)
             with col1:
-                if st.button("📚\nLessons", help="Study Flashcards", use_container_width=True, key="lessons_btn"):
+                if st.button("🎴\nFlashcards", help="Study Flashcards", use_container_width=True, key="flashcards_btn"):
                     st.session_state.page = 'flashcards'
                     st.rerun()
                     
@@ -2464,9 +2934,16 @@ class IndonesianLearningApp:
                     st.session_state.page = 'login'
                     st.rerun()
             
+            # Get total vocabulary count
+            total_vocab = 0
+            for level_data in VOCABULARY_DATA.values():
+                total_vocab += len(level_data)
+            
             due_cards = len(self.get_due_cards())
             if due_cards > 0:
-                st.warning(f"⏰ {due_cards} cards due for review!")
+                st.info(f"🎴 {total_vocab} cards available • {due_cards} due for review!")
+            else:
+                st.success(f"🎴 {total_vocab} cards available • All caught up!")
         
         # Check if profile is selected
         if st.session_state.current_profile is None:
