@@ -1086,7 +1086,10 @@ class IndonesianLearningApp:
         for word in available_words:
             if word in level_words and word in st.session_state.flashcard_data:
                 card_data = st.session_state.flashcard_data[word]
-                if datetime.now() >= datetime.fromisoformat(card_data['next_review']):
+                next_review = card_data['next_review']
+                if isinstance(next_review, str):
+                    next_review = datetime.fromisoformat(next_review)
+                if datetime.now() >= next_review:
                     due_cards.append(word)
         
         # If no due cards, show all available words from category and level
@@ -1112,7 +1115,7 @@ class IndonesianLearningApp:
         word_data = all_words[current_word]
         card_data = st.session_state.flashcard_data.get(current_word, {
             'review_count': 0,
-            'next_review': datetime.now().isoformat(),
+            'next_review': datetime.now(),
             'interval': 1
         })
         
@@ -2410,7 +2413,7 @@ class IndonesianLearningApp:
                     st.session_state.page = 'flashcards'
                     st.rerun()
                     
-                if st.button("📝\nNotes", help="Learn Sentences", use_container_width=True, key="notes_btn"):
+                if st.button("💬\nSentences", help="Learn Sentences", use_container_width=True, key="sentences_btn"):
                     st.session_state.page = 'sentences'
                     st.rerun()
             
