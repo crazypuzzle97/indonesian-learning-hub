@@ -37,6 +37,210 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Mobile-optimized CSS
+st.markdown("""
+<style>
+/* Mobile-First Responsive Design */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    .main .block-container {
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        max-width: 100%;
+    }
+    
+    /* Dashboard header mobile */
+    div[data-testid="stMarkdownContainer"] h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Stats cards mobile optimization */
+    div[data-testid="column"] {
+        min-width: 0;
+        flex: 1;
+    }
+    
+    /* Button improvements for mobile */
+    .stButton > button {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        margin: 0.25rem 0;
+        border-radius: 10px;
+        min-height: 44px; /* iOS touch target */
+    }
+    
+    /* Form inputs mobile */
+    .stTextInput > div > div > input {
+        font-size: 16px; /* Prevent zoom on iOS */
+        padding: 0.75rem;
+        border-radius: 10px;
+    }
+    
+    /* Radio buttons mobile */
+    .stRadio > div {
+        gap: 1rem;
+    }
+    
+    .stRadio > div > label {
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 10px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 2px solid #e0e0e0;
+        font-size: 1rem;
+    }
+    
+    /* Flashcard mobile optimization */
+    .flashcard-word {
+        font-size: 2.5rem !important;
+        padding: 1.5rem !important;
+    }
+    
+    .flashcard-answer {
+        font-size: 1.8rem !important;
+        padding: 1rem !important;
+    }
+    
+    /* Navigation improvements */
+    .stSidebar {
+        width: 280px;
+    }
+    
+    /* Column spacing mobile */
+    div[data-testid="column"] {
+        padding: 0 0.25rem;
+    }
+    
+    /* Progress bars mobile */
+    .stProgress > div > div {
+        height: 8px;
+        border-radius: 4px;
+    }
+    
+    /* Metric cards mobile */
+    div[data-testid="metric-container"] {
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin: 0.5rem 0;
+    }
+}
+
+/* Tablet optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .main .block-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    /* Stats cards for tablet */
+    div[data-testid="column"] {
+        padding: 0 0.5rem;
+    }
+}
+
+/* General mobile improvements */
+@media (max-width: 1024px) {
+    /* Hide sidebar by default on mobile/tablet */
+    .stSidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .stSidebar[data-testid="stSidebar"][aria-expanded="true"] {
+        transform: translateX(0);
+    }
+    
+    /* Touch-friendly interactive elements */
+    .stSelectbox > div > div {
+        min-height: 44px;
+    }
+    
+    .stMultiSelect > div > div {
+        min-height: 44px;
+    }
+    
+    /* Better spacing for mobile */
+    .element-container {
+        margin-bottom: 1rem;
+    }
+    
+    /* Improved readability */
+    .stMarkdown {
+        line-height: 1.6;
+    }
+    
+    /* Better contrast for mobile */
+    .stAlert {
+        font-size: 1rem;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Sharper text rendering */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .stApp {
+        background-color: #1e1e1e;
+        color: white;
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+    /* Adjust header size in landscape */
+    div[data-testid="stMarkdownContainer"] h1 {
+        font-size: 2rem !important;
+    }
+    
+    /* Compact stats in landscape */
+    .stats-card {
+        padding: 1rem !important;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus improvements for keyboard navigation */
+button:focus,
+input:focus,
+select:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Loading states */
+.stSpinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+</style>
+""", unsafe_allow_html=True)
+
 # Indonesian vocabulary database - organized by difficulty level
 # Focus on most essential words for absolute beginners
 VOCABULARY_DATA = {
@@ -1552,41 +1756,45 @@ class IndonesianLearningApp:
         </div>
         """, unsafe_allow_html=True)
         
-        # Main stats cards
-        col1, col2, col3, col4 = st.columns(4)
+        # Main stats cards - mobile responsive layout
+        # Desktop: 4 columns, Mobile: 2x2 grid
         
+        # First row on mobile
+        col1, col2 = st.columns(2)
         with col1:
             st.markdown(f"""
-            <div style='background: linear-gradient(135deg, #4CAF50, #45a049); padding: 2rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1);'>
-                <h2 style='margin: 0; font-size: 3rem; font-weight: bold;'>{learned_words}</h2>
-                <p style='margin: 0.5rem 0 0 0; font-size: 1.1rem; font-weight: 500;'>Words Learned</p>
+            <div style='background: linear-gradient(135deg, #4CAF50, #45a049); padding: 1.5rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 1rem;'>
+                <h2 style='margin: 0; font-size: 2.5rem; font-weight: bold;'>{learned_words}</h2>
+                <p style='margin: 0.5rem 0 0 0; font-size: 1rem; font-weight: 500;'>Words Learned</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col2:
             st.markdown(f"""
-            <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 2rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1);'>
-                <h2 style='margin: 0; font-size: 3rem; font-weight: bold;'>{streak}</h2>
-                <p style='margin: 0.5rem 0 0 0; font-size: 1.1rem; font-weight: 500;'>Day Streak</p>
+            <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 1.5rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 1rem;'>
+                <h2 style='margin: 0; font-size: 2.5rem; font-weight: bold;'>{streak}</h2>
+                <p style='margin: 0.5rem 0 0 0; font-size: 1rem; font-weight: 500;'>Day Streak</p>
             </div>
             """, unsafe_allow_html=True)
         
+        # Second row on mobile
+        col3, col4 = st.columns(2)
         with col3:
             level = st.session_state.user_progress.get('current_level', 'Absolute Beginner')
             level_short = level.split()[0] if ' ' in level else level
             st.markdown(f"""
-            <div style='background: linear-gradient(135deg, #4ECDC4, #44a08d); padding: 2rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1);'>
-                <h2 style='margin: 0; font-size: 3rem; font-weight: bold;'>{level_short}</h2>
-                <p style='margin: 0.5rem 0 0 0; font-size: 1.1rem; font-weight: 500;'>Current Level</p>
+            <div style='background: linear-gradient(135deg, #4ECDC4, #44a08d); padding: 1.5rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 1rem;'>
+                <h2 style='margin: 0; font-size: 2.5rem; font-weight: bold;'>{level_short}</h2>
+                <p style='margin: 0.5rem 0 0 0; font-size: 1rem; font-weight: 500;'>Current Level</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col4:
             due_count = len(self.get_due_cards())
             st.markdown(f"""
-            <div style='background: linear-gradient(135deg, #FFA726, #FF9800); padding: 2rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1);'>
-                <h2 style='margin: 0; font-size: 3rem; font-weight: bold;'>{due_count}</h2>
-                <p style='margin: 0.5rem 0 0 0; font-size: 1.1rem; font-weight: 500;'>Cards Due</p>
+            <div style='background: linear-gradient(135deg, #FFA726, #FF9800); padding: 1.5rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 1rem;'>
+                <h2 style='margin: 0; font-size: 2.5rem; font-weight: bold;'>{due_count}</h2>
+                <p style='margin: 0.5rem 0 0 0; font-size: 1rem; font-weight: 500;'>Cards Due</p>
             </div>
             """, unsafe_allow_html=True)
         
