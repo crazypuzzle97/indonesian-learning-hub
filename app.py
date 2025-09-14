@@ -2059,25 +2059,31 @@ class IndonesianLearningApp:
                         else:
                             st.error("❌ Invalid username or PIN code. Please check and try again.")
                 
-                # Profile quick access
-                st.markdown("---")
-                st.markdown("### 📁 Quick Access")
-                st.markdown("Click on a profile to see its PIN code:")
-                
-                for i, profile in enumerate(existing_profiles):
-                    col_prof1, col_prof2 = st.columns([3, 1])
-                    with col_prof1:
-                        if st.button(f"👤 {profile['name']} • {profile['words_learned']} words learned", key=f"select_{profile['name']}", use_container_width=True):
-                            st.info(f"🔑 PIN Code for '{profile['name']}': **{profile['access_code']}**")
-                    with col_prof2:
-                        if st.button("🗑️", key=f"delete_{profile['name']}", help="Delete profile"):
-                            if self.delete_profile(profile['name']):
-                                st.success("Profile deleted successfully!")
-                                st.rerun()
-                            else:
-                                st.error("Failed to delete profile.")
-                
-                st.markdown("---")
+                # Current profile info (only if logged in)
+                if st.session_state.current_profile:
+                    st.markdown("---")
+                    st.markdown("### 👤 Your Profile")
+                    
+                    # Get current profile info
+                    current_profile_data = None
+                    for profile in existing_profiles:
+                        if profile['name'] == st.session_state.current_profile:
+                            current_profile_data = profile
+                            break
+                    
+                    if current_profile_data:
+                        col_info1, col_info2 = st.columns([2, 1])
+                        with col_info1:
+                            st.info(f"**{current_profile_data['name']}** • {current_profile_data['words_learned']} words learned")
+                        with col_info2:
+                            if st.button("🗑️ Delete My Profile", type="secondary", help="Delete your profile"):
+                                if self.delete_profile(current_profile_data['name']):
+                                    st.success("Profile deleted successfully!")
+                                    st.rerun()
+                                else:
+                                    st.error("Failed to delete profile.")
+                    
+                    st.markdown("---")
                 
                 # Create new profile section
                 st.markdown("""
@@ -2155,6 +2161,31 @@ class IndonesianLearningApp:
                             st.error("Failed to create profile. Please try again.")
     
     
+    def delete_profile(self, profile_name):
+        """Delete a profile with security validation"""
+        try:
+            # Security check: Only allow deleting the current profile
+            if st.session_state.current_profile != profile_name:
+                st.error("🔒 Security Error: You can only delete your own profile.")
+                return False
+            
+            profile_files = self.get_profile_files(profile_name)
+            
+            # Delete all profile files
+            for file_type, file_path in profile_files.items():
+                if os.path.exists(file_path):
+                    os.remove(file_path)
+            
+            # Clear session state
+            st.session_state.current_profile = None
+            st.session_state.user_progress = self.get_default_progress()
+            st.session_state.flashcard_data = {}
+            
+            return True
+        except Exception as e:
+            st.error(f"Error deleting profile: {e}")
+            return False
+
     def load_profile_data(self, profile_name):
         """Load data for a specific profile with security validation"""
         # Security check: Only allow loading the current profile
@@ -2226,7 +2257,7 @@ class IndonesianLearningApp:
         return False
     
     def get_existing_profiles(self):
-        """Get list of existing profiles with basic info"""
+        """Get list of existing profiles with complete privacy isolation"""
         profiles = []
         if os.path.exists(self.profiles_dir):
             for profile_name in os.listdir(self.profiles_dir):
@@ -2237,10 +2268,11 @@ class IndonesianLearningApp:
                         try:
                             with open(profile_files['progress'], 'r') as f:
                                 data = json.load(f)
+                                # Only show basic info, no sensitive data
                                 profiles.append({
                                     'name': profile_name,
-                                    'words_learned': len(data.get('learned_words_details', {})),
-                                    'access_code': data.get('access_code', 'N/A')  # PIN is stored in access_code field
+                                    'words_learned': len(data.get('words_learned', [])),
+                                    'access_code': data.get('access_code', 'N/A')
                                 })
                         except:
                             pass
