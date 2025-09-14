@@ -21,6 +21,8 @@ from bonus_vocabulary import BONUS_VOCABULARY
 from sentences import SENTENCE_DATABASE
 from comprehensive_sentences import SENTENCE_DATABASE as COMPREHENSIVE_SENTENCES
 from massive_sentence_database import get_massive_sentence_database
+from mega_sentence_database import get_mega_sentence_database
+from ultimate_sentence_database import get_ultimate_sentence_database
 from workbook_system import WorkbookSystem, WorkbookProgress, EXERCISE_TEMPLATES
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -818,8 +820,9 @@ class IndonesianLearningApp:
             st.info(f"🔄 Review #{card_data['review_count'] + 1} for this card")
     
     def render_quiz(self):
-        """Render quiz interface"""
-        st.title("📝 Vocabulary Quiz")
+        """Render enhanced quiz interface"""
+        st.title("📝 Enhanced Vocabulary Quiz")
+        st.markdown("**Test your Indonesian vocabulary with intelligent questions and detailed feedback**")
         
         if 'quiz_words' not in st.session_state:
             # Initialize quiz with 10 random words from learned vocabulary
@@ -976,8 +979,11 @@ class IndonesianLearningApp:
             if st.button("💡 Get Hint", width='stretch'):
                 st.info(f"💡 Hint: The word '{current_word}' is related to '{card_data.get('category', 'general')}' category")
         
-        # Submit button with better styling
+        # Submit button with better styling - only proceed if answer is selected
         if st.button("Submit Answer", width='stretch', type="primary"):
+            if not selected_answer:
+                st.warning("Please select an answer before submitting!")
+                return
             if selected_answer == correct_answer:
                 st.session_state.quiz_score += 1
                 st.markdown(
@@ -1028,12 +1034,14 @@ class IndonesianLearningApp:
                 'is_correct': selected_answer == correct_answer
             })
             
+            # Show result and wait for user to continue
             st.session_state.quiz_current += 1
             
-            # Auto-advance after showing result
+            # Add continue button instead of auto-advance
             if st.session_state.quiz_current < len(st.session_state.quiz_words):
-                st.info("⏳ Moving to next question...")
-                st.rerun()
+                st.info("⏳ Click 'Continue' to proceed to the next question...")
+                if st.button("➡️ Continue to Next Question", width='stretch', type="primary"):
+                    st.rerun()
             else:
                 st.rerun()
     
@@ -2002,10 +2010,34 @@ class IndonesianLearningApp:
     def render_sentence_learning(self):
         """Render comprehensive sentence learning interface with massive database"""
         st.title("📝 Comprehensive Indonesian Sentence Learning")
-        st.markdown("**Master Indonesian through thousands of carefully curated sentences with pronunciation guides and grammar focus**")
+        st.markdown("**Master Indonesian through 1000+ carefully curated sentences with pronunciation guides, grammar focus, and cultural context**")
         
-        # Get massive sentence database
+        # Get comprehensive sentence database (combining all databases)
         MASSIVE_SENTENCES = get_massive_sentence_database()
+        MEGA_SENTENCES = get_mega_sentence_database()
+        ULTIMATE_SENTENCES = get_ultimate_sentence_database()
+        
+        # Combine all sentence databases for maximum content
+        COMBINED_SENTENCES = {}
+        for level in ["Beginner", "Intermediate", "Advanced", "Conversational"]:
+            COMBINED_SENTENCES[level] = {}
+            for category in ["Greetings & Politeness", "Daily Life", "Family & Relationships", "Food & Dining", 
+                           "Travel & Transportation", "Shopping & Money", "Work & Education", "Business & Professional", 
+                           "Culture & Society", "Technology & Innovation", "Casual & Slang", "Emotions & Feelings"]:
+                COMBINED_SENTENCES[level][category] = []
+                
+                # Add sentences from all databases
+                for db in [MASSIVE_SENTENCES, MEGA_SENTENCES, ULTIMATE_SENTENCES]:
+                    if level in db and category in db[level]:
+                        COMBINED_SENTENCES[level][category].extend(db[level][category])
+        
+        MASSIVE_SENTENCES = COMBINED_SENTENCES
+        
+        # Enhanced statistics display
+        total_sentences = sum(len(category_sentences) for level_data in MASSIVE_SENTENCES.values() 
+                             for category_sentences in level_data.values())
+        
+        st.info(f"🎯 **Database Statistics:** {total_sentences}+ sentences across 4 difficulty levels and 12 categories")
         
         # Level selector with enhanced options
         col1, col2 = st.columns([2, 1])
