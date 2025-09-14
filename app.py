@@ -1039,7 +1039,7 @@ class IndonesianLearningApp:
         self.data_dir = "user_data"
         self.profiles_dir = os.path.join(self.data_dir, "profiles")
         
-        # Example sentence translations database
+        # Comprehensive example sentence translations database
         self.example_translations = {
             "Halo, apa kabar?": "Hello, how are you?",
             "Terima kasih banyak!": "Thank you very much!",
@@ -1137,6 +1137,142 @@ class IndonesianLearningApp:
             "Kami bermain dengan gembira.": "We play joyfully.",
             "Mereka bernyanyi dengan indah.": "They sing beautifully.",
             "Guru menjelaskan dengan sabar.": "The teacher explains patiently.",
+            # Additional comprehensive translations for better coverage
+            "Anak-anak bermain.": "The children are playing.",
+            "Kucing tidur.": "The cat is sleeping.",
+            "Anjing berlari.": "The dog is running.",
+            "Burung terbang.": "The bird is flying.",
+            "Ikan berenang.": "The fish is swimming.",
+            "Bunga mekar.": "The flower is blooming.",
+            "Pohon tinggi.": "The tree is tall.",
+            "Air mengalir.": "The water is flowing.",
+            "Matahari bersinar.": "The sun is shining.",
+            "Bulan terang.": "The moon is bright.",
+            "Bintang berkilau.": "The stars are sparkling.",
+            "Hujan turun.": "Rain is falling.",
+            "Salju putih.": "Snow is white.",
+            "Api panas.": "Fire is hot.",
+            "Es dingin.": "Ice is cold.",
+            "Pintu terbuka.": "The door is open.",
+            "Jendela tertutup.": "The window is closed.",
+            "Lampu menyala.": "The light is on.",
+            "Komputer mati.": "The computer is off.",
+            "Telepon berdering.": "The phone is ringing.",
+            "Musik keras.": "The music is loud.",
+            "Suara pelan.": "The voice is soft.",
+            "Warna cerah.": "Bright colors.",
+            "Gambar indah.": "Beautiful picture.",
+            "Cerita menarik.": "Interesting story.",
+            "Lagu sedih.": "Sad song.",
+            "Tarian bagus.": "Good dance.",
+            "Makanan lezat.": "Delicious food.",
+            "Minuman segar.": "Fresh drink.",
+            "Udara bersih.": "Clean air.",
+            "Jalan ramai.": "Busy road.",
+            "Kota besar.": "Big city.",
+            "Desa kecil.": "Small village.",
+            "Gunung tinggi.": "High mountain.",
+            "Laut dalam.": "Deep sea.",
+            "Pantai indah.": "Beautiful beach.",
+            "Hutan lebat.": "Dense forest.",
+            "Padang luas.": "Wide field.",
+            "Sungai panjang.": "Long river.",
+            "Danau tenang.": "Calm lake.",
+            "Jembatan kuat.": "Strong bridge.",
+            "Gedung modern.": "Modern building.",
+            "Rumah nyaman.": "Comfortable house.",
+            "Kamar bersih.": "Clean room.",
+            "Tempat tidur empuk.": "Soft bed.",
+            "Meja kayu.": "Wooden table.",
+            "Kursi plastik.": "Plastic chair.",
+            "Lemari besar.": "Big wardrobe.",
+            "Rak buku.": "Bookshelf.",
+            "Jam dinding.": "Wall clock.",
+            "Kaca bening.": "Clear glass.",
+            "Piring putih.": "White plate.",
+            "Gelas kosong.": "Empty glass.",
+            "Sendok kecil.": "Small spoon.",
+            "Garpu tajam.": "Sharp fork.",
+            "Pisau besar.": "Big knife.",
+            "Panci hitam.": "Black pot.",
+            "Wajan bulat.": "Round pan.",
+            "Kompor gas.": "Gas stove.",
+            "Kulkas dingin.": "Cold refrigerator.",
+            "Mesin cuci.": "Washing machine.",
+            "Setrika panas.": "Hot iron.",
+            "Sapu bersih.": "Clean broom.",
+            "Kain lap.": "Cleaning cloth.",
+            "Sabun wangi.": "Fragrant soap.",
+            "Shampo rambut.": "Hair shampoo.",
+            "Pasta gigi.": "Toothpaste.",
+            "Sikat gigi.": "Toothbrush.",
+            "Handuk kering.": "Dry towel.",
+            "Baju baru.": "New clothes.",
+            "Celana panjang.": "Long pants.",
+            "Kaos putih.": "White t-shirt.",
+            "Rok pendek.": "Short skirt.",
+            "Sepatu hitam.": "Black shoes.",
+            "Sandal jepit.": "Flip-flops.",
+            "Topi merah.": "Red hat.",
+            "Tas sekolah.": "School bag.",
+            "Buku tebal.": "Thick book.",
+            "Pensil tajam.": "Sharp pencil.",
+            "Penghapus kecil.": "Small eraser.",
+            "Penggaris panjang.": "Long ruler.",
+            "Kertas putih.": "White paper.",
+            "Pulpen biru.": "Blue pen.",
+            "Spidol hitam.": "Black marker.",
+            "Gunting tajam.": "Sharp scissors.",
+            "Lem kuat.": "Strong glue.",
+            "Stapler berat.": "Heavy stapler.",
+            "Kalkulator kecil.": "Small calculator.",
+            "Komputer baru.": "New computer.",
+            "Laptop ringan.": "Light laptop.",
+            "Tablet tipis.": "Thin tablet.",
+            "Handphone pintar.": "Smart phone.",
+            "Kamera bagus.": "Good camera.",
+            "Televisi besar.": "Big television.",
+            "Radio lama.": "Old radio.",
+            "Jam tangan.": "Wristwatch.",
+            "Kacamata bening.": "Clear glasses.",
+            "Cincin emas.": "Gold ring.",
+            "Kalung perak.": "Silver necklace.",
+            "Gelang cantik.": "Beautiful bracelet.",
+            "Anting kecil.": "Small earrings.",
+        }
+        
+        # Word-based translation patterns for intelligent fallback
+        self.translation_patterns = {
+            # Common sentence structures
+            "saya": "I",
+            "dia": "he/she",
+            "kami": "we", 
+            "mereka": "they",
+            "ini": "this",
+            "itu": "that",
+            "adalah": "is/are",
+            "makan": "eat/eating",
+            "minum": "drink/drinking",
+            "tidur": "sleep/sleeping",
+            "belajar": "learn/learning",
+            "bekerja": "work/working",
+            "bermain": "play/playing",
+            "besar": "big",
+            "kecil": "small",
+            "bagus": "good/nice",
+            "jelek": "bad/ugly",
+            "baru": "new",
+            "lama": "old",
+            "panas": "hot",
+            "dingin": "cold",
+            "tinggi": "tall/high",
+            "rendah": "short/low",
+            "cepat": "fast",
+            "lambat": "slow",
+            "senang": "happy",
+            "sedih": "sad",
+            "marah": "angry",
+            "takut": "afraid",
         }
         self.workbook_system = WorkbookSystem()
         self.workbook_progress = WorkbookProgress()
@@ -1144,29 +1280,55 @@ class IndonesianLearningApp:
         self.init_session_state()
     
     def get_example_translation(self, example_text, word):
-        """Get English translation for an example sentence"""
-        # Try exact match first
+        """Get accurate English translation for an example sentence"""
+        # Try exact match first - highest priority
         if example_text in self.example_translations:
             return self.example_translations[example_text]
         
-        # If no exact match, create a simple translation based on the word
-        word_data = None
-        for category_words in VOCABULARY_DATA.values():
-            if word in category_words:
-                word_data = category_words[word]
-                break
+        # Try case-insensitive match
+        for indonesian_text, english_translation in self.example_translations.items():
+            if example_text.lower() == indonesian_text.lower():
+                return english_translation
         
-        if word_data:
-            word_english = word_data['english']
-            # Simple pattern matching for common sentence structures
-            if example_text.startswith(f"{word} "):
-                return f"{word_english.title()} ..."
-            elif f" {word}" in example_text:
-                return f"... {word_english} ..."
+        # Try partial matching for variations (with punctuation differences)
+        example_clean = example_text.strip('.,!?').lower()
+        for indonesian_text, english_translation in self.example_translations.items():
+            indonesian_clean = indonesian_text.strip('.,!?').lower()
+            if example_clean == indonesian_clean:
+                return english_translation
+        
+        # Intelligent word-by-word translation as fallback
+        words = example_text.lower().split()
+        translated_words = []
+        
+        for indonesian_word in words:
+            # Clean word from punctuation
+            clean_word = indonesian_word.strip('.,!?')
+            
+            # Check translation patterns first
+            if clean_word in self.translation_patterns:
+                translated_words.append(self.translation_patterns[clean_word])
             else:
-                return f"Example with '{word_english}'"
+                # Check vocabulary database
+                found_translation = None
+                for category_words in VOCABULARY_DATA.values():
+                    if clean_word in category_words:
+                        found_translation = category_words[clean_word]['english']
+                        break
+                
+                if found_translation:
+                    translated_words.append(found_translation)
+                else:
+                    # Keep original word if no translation found
+                    translated_words.append(f"[{clean_word}]")
         
-        return "Translation not available"
+        if translated_words:
+            # Join translated words and capitalize first letter
+            result = " ".join(translated_words)
+            return result.capitalize() + "."
+        
+        # Last resort - return a helpful message
+        return f"Translation for '{example_text}' not available yet."
         
     def get_profile_files(self, profile_name):
         """Get file paths for a specific profile"""
@@ -3176,20 +3338,7 @@ class IndonesianLearningApp:
                 else:
                     st.error("❌ Invalid username or PIN code. Please check and try again.")
         
-        # Show existing profiles for reference
-        if existing_profiles:
-            st.markdown("### 📋 Your Profiles")
-            for profile in existing_profiles:
-                col_info1, col_info2 = st.columns([3, 1])
-                with col_info1:
-                    st.info(f"**{profile['name']}** • {profile['words_learned']} words learned")
-                with col_info2:
-                    if st.button("🗑️", key=f"delete_{profile['name']}", help="Delete profile"):
-                        if self.delete_profile(profile['name']):
-                            st.success("Profile deleted!")
-                            st.rerun()
-                        else:
-                            st.error("Failed to delete profile.")
+        # Privacy: Profile information is kept private
     
     def render_create_form(self, existing_profiles):
         """Render profile creation form"""
