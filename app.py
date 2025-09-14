@@ -1042,9 +1042,14 @@ class IndonesianLearningApp:
         </div>
         """, unsafe_allow_html=True)
         
-        # Get all available categories from VOCABULARY_DATA
+        # Flatten VOCABULARY_DATA to get all words across all levels
+        all_words = {}
+        for level_data in VOCABULARY_DATA.values():
+            all_words.update(level_data)
+        
+        # Get all available categories from flattened vocabulary
         categories = set()
-        for word_data in self.VOCABULARY_DATA.values():
+        for word_data in all_words.values():
             categories.add(word_data.get('category', 'general'))
         categories = sorted(list(categories))
         
@@ -1055,8 +1060,8 @@ class IndonesianLearningApp:
             selected_category = st.selectbox(
                 "🏷️ Choose Category to Practice:",
                 options=['all'] + categories,
-                format_func=lambda x: f"📚 All Categories ({len(self.VOCABULARY_DATA)} words)" if x == 'all' 
-                          else f"🎯 {x.title()} ({len([w for w, d in self.VOCABULARY_DATA.items() if d.get('category', 'general') == x])} words)",
+                format_func=lambda x: f"📚 All Categories ({len(all_words)} words)" if x == 'all' 
+                          else f"🎯 {x.title()} ({len([w for w, d in all_words.items() if d.get('category', 'general') == x])} words)",
                 key="flashcard_category"
             )
         
@@ -1069,13 +1074,13 @@ class IndonesianLearningApp:
         
         # Filter words by category and get due cards
         if selected_category == 'all':
-            available_words = list(self.VOCABULARY_DATA.keys())
+            available_words = list(all_words.keys())
         else:
-            available_words = [word for word, data in self.VOCABULARY_DATA.items() 
+            available_words = [word for word, data in all_words.items() 
                              if data.get('category', 'general') == selected_category]
         
         # Get due cards from the filtered words
-        level_words = VOCABULARY_DATA.get(selected_level, [])
+        level_words = VOCABULARY_DATA.get(selected_level, {})
         due_cards = []
         
         for word in available_words:
@@ -1084,7 +1089,7 @@ class IndonesianLearningApp:
                 if datetime.now() >= datetime.fromisoformat(card_data['next_review']):
                     due_cards.append(word)
         
-        # If no due cards, show all available words from category
+        # If no due cards, show all available words from category and level
         if not due_cards:
             due_cards = [word for word in available_words if word in level_words]
         
@@ -1104,7 +1109,7 @@ class IndonesianLearningApp:
             st.session_state.current_flashcard_category = selected_category
         
         current_word = st.session_state.current_card
-        word_data = self.VOCABULARY_DATA[current_word]
+        word_data = all_words[current_word]
         card_data = st.session_state.flashcard_data.get(current_word, {
             'review_count': 0,
             'next_review': datetime.now().isoformat(),
