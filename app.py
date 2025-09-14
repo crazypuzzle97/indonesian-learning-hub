@@ -1374,50 +1374,65 @@ class IndonesianLearningApp:
         st.session_state.user_progress['last_study_date'] = today
     
     def render_dashboard(self):
-        """Render the simplified, engaging dashboard"""
-        # Clean header
-        st.markdown("""
-        <div style='text-align: center; padding: 2rem 0;'>
-            <h1 style='color: #2E8B57; font-size: 3rem; margin: 0;'>🇮🇩 Indonesian Hub</h1>
-            <p style='color: #666; font-size: 1.2rem; margin: 0.5rem 0;'>Learn Indonesian the fun way!</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Simple progress overview
+        """Render the modern, engaging dashboard"""
+        # Modern header with user info
+        current_profile = st.session_state.current_profile or "Guest"
         learned_words = len(st.session_state.user_progress['words_learned'])
         streak = st.session_state.user_progress.get('study_streak', 0)
         
-        col1, col2, col3 = st.columns(3)
+        st.markdown(f"""
+        <div style='text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: -1rem -1rem 2rem -1rem; border-radius: 0 0 25px 25px;'>
+            <h1 style='color: white; font-size: 3.5rem; margin: 0; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>🇮🇩 Indonesian Hub</h1>
+            <p style='color: #f0f0f0; font-size: 1.3rem; margin: 0.5rem 0; font-weight: 300;'>Welcome back, {current_profile}!</p>
+            <div style='background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 15px; margin: 1rem auto; max-width: 500px;'>
+                <p style='color: white; margin: 0; font-size: 1.1rem;'>Ready to continue your learning journey?</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Main stats cards
+        col1, col2, col3, col4 = st.columns(4)
+        
         with col1:
             st.markdown(f"""
-            <div style='background: linear-gradient(135deg, #4CAF50, #45a049); padding: 1.5rem; border-radius: 15px; text-align: center; color: white;'>
-                <h2 style='margin: 0; font-size: 2.5rem;'>{learned_words}</h2>
-                <p style='margin: 0; font-size: 1.1rem;'>Words Learned</p>
+            <div style='background: linear-gradient(135deg, #4CAF50, #45a049); padding: 2rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1);'>
+                <h2 style='margin: 0; font-size: 3rem; font-weight: bold;'>{learned_words}</h2>
+                <p style='margin: 0.5rem 0 0 0; font-size: 1.1rem; font-weight: 500;'>Words Learned</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col2:
             st.markdown(f"""
-            <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 1.5rem; border-radius: 15px; text-align: center; color: white;'>
-                <h2 style='margin: 0; font-size: 2.5rem;'>{streak}</h2>
-                <p style='margin: 0; font-size: 1.1rem;'>Day Streak</p>
+            <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 2rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1);'>
+                <h2 style='margin: 0; font-size: 3rem; font-weight: bold;'>{streak}</h2>
+                <p style='margin: 0.5rem 0 0 0; font-size: 1.1rem; font-weight: 500;'>Day Streak</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col3:
             level = st.session_state.user_progress.get('current_level', 'Absolute Beginner')
+            level_short = level.split()[0] if ' ' in level else level
             st.markdown(f"""
-            <div style='background: linear-gradient(135deg, #4ECDC4, #44a08d); padding: 1.5rem; border-radius: 15px; text-align: center; color: white;'>
-                <h2 style='margin: 0; font-size: 2.5rem;'>{level.split()[0]}</h2>
-                <p style='margin: 0; font-size: 1.1rem;'>Current Level</p>
+            <div style='background: linear-gradient(135deg, #4ECDC4, #44a08d); padding: 2rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1);'>
+                <h2 style='margin: 0; font-size: 3rem; font-weight: bold;'>{level_short}</h2>
+                <p style='margin: 0.5rem 0 0 0; font-size: 1.1rem; font-weight: 500;'>Current Level</p>
             </div>
             """, unsafe_allow_html=True)
         
-        # Show total vocabulary count and security status
-        total_words = sum(len(level_words) for level_words in VOCABULARY_DATA.values())
-        col1, col2 = st.columns([3, 1])
+        with col4:
+            due_count = len(self.get_due_cards())
+            st.markdown(f"""
+            <div style='background: linear-gradient(135deg, #FFA726, #FF9800); padding: 2rem; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.1);'>
+                <h2 style='margin: 0; font-size: 3rem; font-weight: bold;'>{due_count}</h2>
+                <p style='margin: 0.5rem 0 0 0; font-size: 1.1rem; font-weight: 500;'>Cards Due</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # Status bar
+        st.markdown("---")
+        col1, col2 = st.columns([2, 1])
         with col1:
-            st.info(f"📚 **Comprehensive Indonesian vocabulary** ready for learning!")
+            st.info("📚 **Comprehensive Indonesian vocabulary** ready for learning!")
         with col2:
             # Security and save status
             if st.session_state.current_profile and st.session_state.current_profile != "Demo":
@@ -1428,38 +1443,6 @@ class IndonesianLearningApp:
                     st.warning("⚠️ No Saved Data")
             else:
                 st.info("🚀 Demo Mode")
-        st.markdown("---")
-        
-        # Quick stats row
-        col1, col2, col3, col4 = st.columns(4)
-        
-        with col1:
-            st.metric(
-                "Words Learned", 
-                len(st.session_state.user_progress['words_learned']),
-                delta=None
-            )
-            
-        with col2:
-            st.metric(
-                "Daily Streak", 
-                st.session_state.user_progress['daily_streak'],
-                delta=None
-            )
-            
-        with col3:
-            # Get total vocabulary count across all levels
-            total_vocab = 0
-            for level_data in VOCABULARY_DATA.values():
-                total_vocab += len(level_data)
-            
-            due_count = len(self.get_due_cards())
-            st.metric("Cards Due", due_count, delta="for review")
-            
-        with col4:
-            current_level = st.session_state.user_progress['current_level']
-            st.metric("Current Level", current_level, delta=None)
-        
         st.markdown("---")
         
         # Progress visualization
