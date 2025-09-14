@@ -3376,9 +3376,9 @@ Saya punya buku
         
         # Show the original text
         if exercise.get('direction') == 'indonesian_to_english':
-            st.markdown(f"**Indonesian:** {exercise['indonesian']}")
+            st.markdown(f"**Indonesian:** {exercise['source']}")
         else:
-            st.markdown(f"**English:** {exercise['english']}")
+            st.markdown(f"**English:** {exercise['source']}")
         
         # Show user's answer
         st.markdown(f"**Your answer:** {user_answer}")
