@@ -3093,170 +3093,179 @@ class IndonesianLearningApp:
             self.render_settings()
     
     def render_profile_selection(self):
-        """Render modern login and profile selection page"""
+        """Render simplified login and profile selection page with toggle"""
         # Modern header with gradient
         st.markdown("""
-        <div style='text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: -1rem -1rem 3rem -1rem;'>
-            <h1 style='color: white; font-size: 4rem; margin: 0; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>🇮🇩 Indonesian Hub</h1>
-            <p style='color: #f0f0f0; font-size: 1.4rem; margin: 1rem 0; font-weight: 300;'>Your Personal Learning Journey</p>
-            <div style='background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 15px; margin: 2rem auto; max-width: 600px;'>
-                <p style='color: white; margin: 0; font-size: 1.1rem;'>🔒 Secure • Private • Personal</p>
-            </div>
+        <div style='text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: -1rem -1rem 2rem -1rem;'>
+            <h1 style='color: white; font-size: 3.5rem; margin: 0; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>🇮🇩 Indonesian Hub</h1>
+            <p style='color: #f0f0f0; font-size: 1.2rem; margin: 1rem 0; font-weight: 300;'>Your Personal Learning Journey</p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Main content area
-        col1, col2, col3 = st.columns([1, 2, 1])
+        # Initialize session state for mode toggle
+        if 'login_mode' not in st.session_state:
+            st.session_state.login_mode = 'login'  # Default to login mode
+        
+        # Get existing profiles
+        existing_profiles = self.get_existing_profiles()
+        
+        # Main content area - centered
+        col1, col2, col3 = st.columns([1, 3, 1])
         
         with col2:
-            # Get existing profiles
-            existing_profiles = self.get_existing_profiles()
+            # Mode toggle buttons
+            st.markdown("""
+            <div style='text-align: center; margin-bottom: 2rem;'>
+                <div style='background: white; padding: 0.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-block;'>
+            """, unsafe_allow_html=True)
             
-            if existing_profiles:
-                # Modern login card
-                st.markdown("""
-                <div style='background: white; padding: 3rem; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin: 2rem 0; border: 1px solid #e0e0e0;'>
-                    <h2 style='text-align: center; color: #333; margin-bottom: 0.5rem; font-size: 2.2rem; font-weight: 600;'>Welcome Back</h2>
-                    <p style='text-align: center; color: #666; margin-bottom: 2.5rem; font-size: 1.1rem;'>Sign in to continue your learning journey</p>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                # Login form
-                with st.form("login_form", clear_on_submit=False):
-                    username = st.text_input(
-                        "👤 Username", 
-                        placeholder="Enter your username...",
-                        help="The name you used when creating your profile",
-                        key="login_username"
-                    )
-                    
-                    pin_code = st.text_input(
-                        "🔐 PIN Code", 
-                        placeholder="Enter your 4-digit PIN...",
-                        help="Your personal 4-digit PIN code",
-                        type="password",
-                        max_chars=4,
-                        key="login_pin"
-                    )
-                    
-                    col_btn1, col_btn2 = st.columns([1, 1])
-                    with col_btn1:
-                        login_submitted = st.form_submit_button("🚀 Login", type="primary", use_container_width=True)
-                    
-                    with col_btn2:
-                        if st.form_submit_button("🔄 Clear", use_container_width=True):
-                            st.rerun()
-                    
-                    if login_submitted and username and pin_code:
-                        if self.authenticate_profile(username, pin_code):
-                            st.session_state.current_profile = username
-                            self.load_profile_data(username)
-                            st.success(f"🎉 Welcome back, {username}! Redirecting to your dashboard...")
-                            st.session_state.page = 'dashboard'
-                            st.rerun()
-                        else:
-                            st.error("❌ Invalid username or PIN code. Please check and try again.")
-                
-                # Current profile info (only if logged in)
-                if st.session_state.current_profile:
-                    st.markdown("---")
-                    st.markdown("### 👤 Your Profile")
-                    
-                    # Get current profile info
-                    current_profile_data = None
-                    for profile in existing_profiles:
-                        if profile['name'] == st.session_state.current_profile:
-                            current_profile_data = profile
-                            break
-                    
-                    if current_profile_data:
-                        col_info1, col_info2 = st.columns([2, 1])
-                        with col_info1:
-                            st.info(f"**{current_profile_data['name']}** • {current_profile_data['words_learned']} words learned")
-                        with col_info2:
-                            if st.button("🗑️ Delete My Profile", type="secondary", help="Delete your profile"):
-                                if self.delete_profile(current_profile_data['name']):
-                                    st.success("Profile deleted successfully!")
-                                    st.rerun()
-                                else:
-                                    st.error("Failed to delete profile.")
-                    
-                    st.markdown("---")
-                
-                # Create new profile section
-                st.markdown("""
-                <div style='background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 2.5rem; border-radius: 20px; margin: 2rem 0; border-left: 5px solid #667eea;'>
-                    <h3 style='color: #333; margin-top: 0; font-size: 1.5rem;'>New to Indonesian Hub?</h3>
-                    <p style='color: #666; margin-bottom: 1.5rem; font-size: 1.1rem;'>Create your personal learning profile to start your Indonesian journey!</p>
-                </div>
-                """, unsafe_allow_html=True)
+            col_toggle1, col_toggle2 = st.columns(2)
+            with col_toggle1:
+                if st.button("🔑 Login", use_container_width=True, type="primary" if st.session_state.login_mode == 'login' else "secondary"):
+                    st.session_state.login_mode = 'login'
+                    st.rerun()
             
+            with col_toggle2:
+                if st.button("✨ Create", use_container_width=True, type="primary" if st.session_state.login_mode == 'create' else "secondary"):
+                    st.session_state.login_mode = 'create'
+                    st.rerun()
+            
+            st.markdown("</div></div>", unsafe_allow_html=True)
+            
+            # Content based on selected mode
+            if st.session_state.login_mode == 'login':
+                self.render_login_form(existing_profiles)
             else:
-                # First time user - welcome message
-                st.markdown("""
-                <div style='background: white; padding: 3rem; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin: 2rem 0; text-align: center; border: 1px solid #e0e0e0;'>
-                    <h2 style='color: #333; margin-bottom: 1rem; font-size: 2.2rem; font-weight: 600;'>Welcome to Indonesian Hub!</h2>
-                    <p style='color: #666; font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6;'>Create your profile to start learning Indonesian with personalized progress tracking, flashcards, and social battles.</p>
-                    <div style='background: #e3f2fd; padding: 1.5rem; border-radius: 15px; margin: 2rem 0; border-left: 5px solid #2196f3;'>
-                        <p style='margin: 0; color: #1565c0; font-size: 1rem; font-weight: 500;'>
-                            🔒 <strong>Your Privacy Matters:</strong> All data is stored locally and securely. No information is shared with others.
-                        </p>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
+                self.render_create_form(existing_profiles)
+    
+    def render_login_form(self, existing_profiles):
+        """Render login form"""
+        if not existing_profiles:
+            st.markdown("""
+            <div style='background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; margin: 2rem 0;'>
+                <h3 style='color: #333; margin-bottom: 1rem;'>No Profiles Found</h3>
+                <p style='color: #666; margin-bottom: 1.5rem;'>You need to create a profile first!</p>
+                <p style='color: #888; font-size: 0.9rem;'>Switch to "Create" mode to get started.</p>
+            </div>
+            """, unsafe_allow_html=True)
+            return
+        
+        # Login form
+        st.markdown("""
+        <div style='background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin: 1rem 0;'>
+            <h2 style='text-align: center; color: #333; margin-bottom: 0.5rem; font-size: 2rem;'>Welcome Back</h2>
+            <p style='text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;'>Sign in to continue your learning</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        with st.form("login_form", clear_on_submit=False):
+            username = st.text_input(
+                "👤 Username", 
+                placeholder="Enter your username...",
+                help="The name you used when creating your profile",
+                key="login_username"
+            )
             
-            # Create new profile form
-            with st.form("create_profile", clear_on_submit=True):
-                st.markdown("### ✨ Create Your Profile")
-                
-                new_name = st.text_input(
-                    "👤 Your Name", 
-                    max_chars=20,
-                    placeholder="Enter your name",
-                    help="This will be displayed on your dashboard",
-                    key="create_name"
-                )
-                
-                new_pin = st.text_input(
-                    "🔐 Create a 4-digit PIN", 
-                    type="password", 
-                    max_chars=4,
-                    placeholder="1234",
-                    help="Use this PIN to access your profile",
-                    key="create_pin"
-                )
-                
-                # Terms and privacy notice
-                st.markdown("""
-                <div style='background: #e8f5e8; padding: 1.5rem; border-radius: 15px; margin: 1.5rem 0; border-left: 5px solid #4caf50;'>
-                    <p style='margin: 0; color: #2e7d32; font-size: 0.95rem; line-height: 1.5;'>
-                        🔒 <strong>Privacy & Security:</strong> Your learning data is stored locally on your device. No information is shared with others or stored on external servers. Your PIN protects your personal progress.
-                    </p>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                col_create1, col_create2 = st.columns([1, 1])
-                with col_create1:
-                    create_submitted = st.form_submit_button("🚀 Create My Profile", type="primary", use_container_width=True)
-                with col_create2:
-                    if st.form_submit_button("🔄 Clear Form", use_container_width=True):
-                        st.rerun()
-                
-                if create_submitted and new_name and new_pin:
-                    if len(new_name) < 2:
-                        st.error("Name must be at least 2 characters long.")
-                    elif len(new_pin) != 4 or not new_pin.isdigit():
-                        st.error("PIN must be exactly 4 digits.")
-                    elif new_name in [p['name'] for p in existing_profiles]:
-                        st.error("Profile name already exists. Please choose a different name.")
-                    else:
-                        if self.init_new_profile(new_name, new_pin):
-                            st.session_state.current_profile = new_name
-                            st.session_state.page = 'dashboard'
-                            st.success(f"🎉 Profile '{new_name}' created successfully! Welcome to your learning journey!")
+            pin_code = st.text_input(
+                "🔐 PIN Code", 
+                placeholder="Enter your 4-digit PIN...",
+                help="Your personal 4-digit PIN code",
+                type="password",
+                max_chars=4,
+                key="login_pin"
+            )
+            
+            col_btn1, col_btn2 = st.columns([1, 1])
+            with col_btn1:
+                login_submitted = st.form_submit_button("🚀 Login", type="primary", use_container_width=True)
+            
+            with col_btn2:
+                if st.form_submit_button("🔄 Clear", use_container_width=True):
+                    st.rerun()
+            
+            if login_submitted and username and pin_code:
+                if self.authenticate_profile(username, pin_code):
+                    st.session_state.current_profile = username
+                    self.load_profile_data(username)
+                    st.success(f"🎉 Welcome back, {username}! Redirecting to your dashboard...")
+                    st.session_state.page = 'dashboard'
+                    st.rerun()
+                else:
+                    st.error("❌ Invalid username or PIN code. Please check and try again.")
+        
+        # Show existing profiles for reference
+        if existing_profiles:
+            st.markdown("### 📋 Your Profiles")
+            for profile in existing_profiles:
+                col_info1, col_info2 = st.columns([3, 1])
+                with col_info1:
+                    st.info(f"**{profile['name']}** • {profile['words_learned']} words learned")
+                with col_info2:
+                    if st.button("🗑️", key=f"delete_{profile['name']}", help="Delete profile"):
+                        if self.delete_profile(profile['name']):
+                            st.success("Profile deleted!")
                             st.rerun()
                         else:
-                            st.error("Failed to create profile. Please try again.")
+                            st.error("Failed to delete profile.")
+    
+    def render_create_form(self, existing_profiles):
+        """Render profile creation form"""
+        st.markdown("""
+        <div style='background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin: 1rem 0;'>
+            <h2 style='text-align: center; color: #333; margin-bottom: 0.5rem; font-size: 2rem;'>Create Profile</h2>
+            <p style='text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;'>Start your Indonesian learning journey</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        with st.form("create_profile", clear_on_submit=True):
+            new_name = st.text_input(
+                "👤 Your Name", 
+                max_chars=20,
+                placeholder="Enter your name",
+                help="This will be displayed on your dashboard",
+                key="create_name"
+            )
+            
+            new_pin = st.text_input(
+                "🔐 Create a 4-digit PIN", 
+                type="password", 
+                max_chars=4,
+                placeholder="1234",
+                help="Use this PIN to access your profile",
+                key="create_pin"
+            )
+            
+            # Privacy notice
+            st.markdown("""
+            <div style='background: #e8f5e8; padding: 1rem; border-radius: 10px; margin: 1rem 0; border-left: 4px solid #4caf50;'>
+                <p style='margin: 0; color: #2e7d32; font-size: 0.9rem;'>
+                    🔒 <strong>Privacy:</strong> Your data is stored locally and securely on your device.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            col_create1, col_create2 = st.columns([1, 1])
+            with col_create1:
+                create_submitted = st.form_submit_button("🚀 Create Profile", type="primary", use_container_width=True)
+            with col_create2:
+                if st.form_submit_button("🔄 Clear", use_container_width=True):
+                    st.rerun()
+            
+            if create_submitted and new_name and new_pin:
+                if len(new_name) < 2:
+                    st.error("Name must be at least 2 characters long.")
+                elif len(new_pin) != 4 or not new_pin.isdigit():
+                    st.error("PIN must be exactly 4 digits.")
+                elif new_name in [p['name'] for p in existing_profiles]:
+                    st.error("Profile name already exists. Please choose a different name.")
+                else:
+                    if self.init_new_profile(new_name, new_pin):
+                        st.session_state.current_profile = new_name
+                        st.session_state.page = 'dashboard'
+                        st.success(f"🎉 Profile '{new_name}' created successfully! Welcome to your learning journey!")
+                        st.rerun()
+                    else:
+                        st.error("Failed to create profile. Please try again.")
     
     
     def delete_profile(self, profile_name):
