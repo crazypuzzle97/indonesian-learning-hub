@@ -1,4 +1,4 @@
-# PREMIUM UI COMPONENTS
+# PREMIUM UI COMPONENTS - SIMPLIFIED VERSION
 # Advanced UI components for Indonesian Learning Hub
 
 import streamlit as st
@@ -11,29 +11,14 @@ class PremiumUI:
         """Inject premium CSS for enhanced UI"""
         st.markdown("""
         <style>
-        /* Premium Color Scheme */
-        :root {
-            --primary-color: #FF6B35;
-            --secondary-color: #004E89;
-            --accent-color: #FFD23F;
-            --success-color: #06D6A0;
-            --warning-color: #F18F01;
-            --error-color: #C73E1D;
-            --text-primary: #2C3E50;
-            --text-secondary: #7F8C8D;
-            --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            --border-radius: 12px;
-        }
-        
-        /* Premium App Header */
+        /* Premium Design System */
         .premium-header {
-            background: var(--background-gradient);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 2rem;
-            border-radius: var(--border-radius);
+            border-radius: 15px;
             margin-bottom: 2rem;
             text-align: center;
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             animation: slideInDown 0.6s ease-out;
         }
         
@@ -51,33 +36,15 @@ class PremiumUI:
             margin: 0.5rem 0 0 0;
         }
         
-        /* Premium Cards */
-        .premium-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin: 1rem 0;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        .premium-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        /* Premium Statistics */
         .premium-stats {
             display: flex;
             justify-content: space-around;
-            background: linear-gradient(45deg, var(--success-color), var(--accent-color));
+            background: linear-gradient(45deg, #06D6A0, #FFD23F);
             padding: 1.5rem;
-            border-radius: var(--border-radius);
+            border-radius: 15px;
             margin: 1rem 0;
             color: white;
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
         .premium-stat-item {
@@ -99,51 +66,28 @@ class PremiumUI:
             letter-spacing: 1px;
         }
         
-        /* Premium Buttons */
-        .premium-button {
-            background: linear-gradient(45deg, var(--primary-color), var(--warning-color));
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255,107,53,0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .premium-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
-        }
-        
-        /* Premium Progress Bar */
-        .premium-progress {
-            background: #f0f0f0;
-            border-radius: 25px;
-            height: 8px;
-            overflow: hidden;
+        .premium-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
             margin: 1rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
         
-        .premium-progress-fill {
-            background: linear-gradient(90deg, var(--success-color), var(--accent-color));
-            height: 100%;
-            border-radius: 25px;
-            transition: width 0.6s ease;
-            animation: shimmer 2s infinite;
+        .premium-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         
-        /* Premium Sentence Card */
         .premium-sentence-card {
             background: white;
-            border-radius: var(--border-radius);
+            border-radius: 15px;
             padding: 2rem;
             margin: 1.5rem 0;
-            box-shadow: var(--card-shadow);
-            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #FF6B35;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -156,26 +100,26 @@ class PremiumUI:
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(90deg, #FF6B35, #FFD23F);
         }
         
         .premium-sentence-indonesian {
             font-size: 1.8rem;
             font-weight: 600;
-            color: var(--text-primary);
+            color: #2C3E50;
             margin-bottom: 0.5rem;
             line-height: 1.4;
         }
         
         .premium-sentence-english {
             font-size: 1.2rem;
-            color: var(--text-secondary);
+            color: #7F8C8D;
             margin-bottom: 1rem;
             font-style: italic;
         }
         
         .premium-sentence-pronunciation {
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            background: linear-gradient(45deg, #004E89, #FF6B35);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -184,22 +128,18 @@ class PremiumUI:
             margin-bottom: 1rem;
         }
         
-        .premium-sentence-meta {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        
         .premium-tag {
             background: rgba(255,107,53,0.1);
-            color: var(--primary-color);
+            color: #FF6B35;
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 500;
+            margin-right: 0.5rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
         
-        /* Animations */
         @keyframes slideInDown {
             from {
                 transform: translateY(-50px);
@@ -211,90 +151,6 @@ class PremiumUI:
             }
         }
         
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200px 0; }
-            100% { background-position: 200px 0; }
-        }
-        
-        /* Premium Quiz Interface */
-        .premium-quiz-container {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--card-shadow);
-            margin: 1rem 0;
-        }
-        
-        .premium-quiz-question {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .premium-quiz-option {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: var(--border-radius);
-            padding: 1rem 1.5rem;
-            margin: 0.5rem 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
-        
-        .premium-quiz-option:hover {
-            background: rgba(255,107,53,0.1);
-            border-color: var(--primary-color);
-            transform: translateX(5px);
-        }
-        
-        .premium-quiz-option.selected {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-        
-        .premium-quiz-option.correct {
-            background: var(--success-color);
-            color: white;
-            border-color: var(--success-color);
-        }
-        
-        .premium-quiz-option.incorrect {
-            background: var(--error-color);
-            color: white;
-            border-color: var(--error-color);
-        }
-        
-        /* Premium Loading Animation */
-        .premium-loader {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Responsive Design */
         @media (max-width: 768px) {
             .premium-header h1 {
                 font-size: 2rem;
@@ -307,14 +163,6 @@ class PremiumUI:
             .premium-stats {
                 flex-direction: column;
                 gap: 1rem;
-            }
-        }
-        
-        /* Dark Mode Support */
-        @media (prefers-color-scheme: dark) {
-            .premium-card {
-                background: #2c3e50;
-                color: white;
             }
         }
         </style>
@@ -355,7 +203,7 @@ class PremiumUI:
             <div class="premium-sentence-indonesian">{sentence_data['indonesian']}</div>
             <div class="premium-sentence-english">{sentence_data['english']}</div>
             <div class="premium-sentence-pronunciation">🔊 {sentence_data['pronunciation']}</div>
-            <div class="premium-sentence-meta">
+            <div style="margin-top: 1rem;">
                 <div class="premium-tag">📚 {sentence_data['category']}</div>
                 <div class="premium-tag">⚡ Level {sentence_data['difficulty']}</div>
                 <div class="premium-tag">🎯 {sentence_data['grammar_focus']}</div>
@@ -372,8 +220,8 @@ class PremiumUI:
         st.markdown(f"""
         <div class="premium-card">
             <h4>{label}: {progress}/{total} ({percentage:.1f}%)</h4>
-            <div class="premium-progress">
-                <div class="premium-progress-fill" style="width: {percentage}%"></div>
+            <div style="background: #f0f0f0; border-radius: 25px; height: 8px; overflow: hidden; margin: 1rem 0;">
+                <div style="background: linear-gradient(90deg, #06D6A0, #FFD23F); height: 100%; border-radius: 25px; width: {percentage}%; transition: width 0.6s ease;"></div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -386,10 +234,10 @@ class PremiumUI:
             with cols[i]:
                 st.markdown(f"""
                 <div class="premium-card" style="text-align: center;">
-                    <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">
+                    <div style="font-size: 2rem; font-weight: 700; color: #FF6B35;">
                         {metric['value']}
                     </div>
-                    <div style="color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase;">
+                    <div style="color: #7F8C8D; font-size: 0.9rem; text-transform: uppercase; margin-top: 0.5rem;">
                         {metric['label']}
                     </div>
                 </div>
