@@ -3258,7 +3258,7 @@ class IndonesianLearningApp:
                             pass
         return profiles
     
-    def init_new_profile(self, profile_name):
+    def init_new_profile(self, profile_name, pin_code):
         """Initialize a new profile with default data"""
         # Reset to default state
         st.session_state.user_progress = {
@@ -3275,13 +3275,15 @@ class IndonesianLearningApp:
             'study_sessions': [],
             'total_words_learned': 0,
             'profile_name': profile_name,
-            'created_date': datetime.now().isoformat()
+            'created_date': datetime.now().isoformat(),
+            'pin_code': pin_code
         }
         
         st.session_state.flashcard_data = self.init_flashcard_data()
         
         # Save initial data
         self.save_profile_data(profile_name)
+        return True
     
     def save_profile_data(self, profile_name):
         """Save current session data to profile"""
