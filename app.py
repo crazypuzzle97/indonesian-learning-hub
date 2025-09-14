@@ -2057,90 +2057,197 @@ class IndonesianLearningApp:
         
         # Sidebar navigation with profile info
         with st.sidebar:
-            # Modern header
+            # Streamlined header with smaller flag and cleaner design
             st.markdown("""
-            <div style='text-align: center; padding: 1rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; margin-bottom: 1rem;'>
-                <h2 style='color: white; margin: 0; font-size: 1.5rem;'>🇮🇩 Indonesian Hub</h2>
-                <p style='color: #f0f0f0; margin: 0.5rem 0 0 0; font-size: 0.9rem;'>Learn Indonesian the fun way!</p>
+            <style>
+            .sidebar-header {
+                text-align: center; 
+                padding: 0.8rem 0; 
+                background: linear-gradient(135deg, #8B7CF6 0%, #A855F7 100%); 
+                border-radius: 12px; 
+                margin-bottom: 1rem;
+                box-shadow: 0 2px 10px rgba(139, 124, 246, 0.3);
+            }
+            .sidebar-header h3 {
+                color: white; 
+                margin: 0; 
+                font-size: 1.3rem; 
+                font-weight: 600;
+            }
+            .sidebar-header p {
+                color: rgba(255,255,255,0.9); 
+                margin: 0.3rem 0 0 0; 
+                font-size: 0.8rem;
+            }
+            .user-info {
+                background: #f8fafc; 
+                padding: 0.8rem; 
+                border-radius: 8px; 
+                margin-bottom: 1rem; 
+                border: 1px solid #e2e8f0;
+            }
+            .user-name {
+                margin: 0; 
+                color: #1e293b; 
+                font-size: 1rem; 
+                font-weight: 500;
+            }
+            .user-stats {
+                margin: 0.4rem 0 0 0; 
+                color: #64748b; 
+                font-size: 0.85rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .quick-access-btn {
+                background: white;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                padding: 0.8rem;
+                text-align: center;
+                margin: 0.3rem;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            }
+            .quick-access-btn:hover {
+                border-color: #8B7CF6;
+                box-shadow: 0 2px 8px rgba(139, 124, 246, 0.2);
+                transform: translateY(-1px);
+            }
+            .btn-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+            .btn-text {
+                font-size: 0.8rem;
+                font-weight: 500;
+                color: #374151;
+            }
+            .section-header {
+                color: #6b7280;
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin: 1rem 0 0.5rem 0;
+            }
+            .nav-btn {
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-radius: 6px;
+                padding: 0.6rem 0.8rem;
+                margin: 0.2rem 0;
+                text-align: left;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .nav-btn:hover {
+                background: #f9fafb;
+                border-color: #8B7CF6;
+            }
+            .progress-bar {
+                width: 100%;
+                height: 4px;
+                background: #e5e7eb;
+                border-radius: 2px;
+                overflow: hidden;
+                margin-top: 0.3rem;
+            }
+            .progress-fill {
+                height: 100%;
+                background: linear-gradient(90deg, #10b981, #059669);
+                transition: width 0.3s ease;
+            }
+            </style>
+            
+            <div class="sidebar-header">
+                <h3>🇮🇩 Indonesian Hub</h3>
+                <p>Fun Indonesian Learning</p>
             </div>
             """, unsafe_allow_html=True)
             
-            # User info
+            # Simplified user info in one line with icons
             learned_words = len(st.session_state.user_progress['words_learned'])
             streak = st.session_state.user_progress.get('study_streak', 0)
+            progress_percent = min((streak / 30) * 100, 100)  # Progress toward 30-day streak
+            
             st.markdown(f"""
-            <div style='background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; text-align: center;'>
-                <h4 style='margin: 0; color: #333;'>👤 {st.session_state.current_profile}</h4>
-                <p style='margin: 0.5rem 0 0 0; color: #666; font-size: 0.9rem;'>{learned_words} words learned</p>
-                <p style='margin: 0.3rem 0 0 0; color: #666; font-size: 0.8rem;'>{streak} day streak</p>
+            <div class="user-info">
+                <h4 class="user-name">👤 {st.session_state.current_profile}</h4>
+                <div class="user-stats">
+                    <span>📚 {learned_words} words</span>
+                    <span>🔥 {streak} days</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {progress_percent}%"></div>
+                </div>
             </div>
             """, unsafe_allow_html=True)
             
-            # Main navigation
-            st.markdown("### 🎯 Quick Access")
+            # Quick Access with 2x2 grid and clear labels
+            st.markdown('<div class="section-header">Quick Access</div>', unsafe_allow_html=True)
             
-            # Primary learning tools
             col1, col2 = st.columns(2)
             with col1:
-                if st.button("📚", help="Study Flashcards", use_container_width=True):
+                if st.button("📚\nLessons", help="Study Flashcards", use_container_width=True, key="lessons_btn"):
                     st.session_state.page = 'flashcards'
                     st.rerun()
-            with col2:
-                if st.button("⚔️", help="Battle Friends", use_container_width=True):
-                    st.session_state.page = 'battle'
-                    st.rerun()
-            
-            # Secondary tools
-            col1, col2 = st.columns(2)
-            with col1:
-                if st.button("📝", help="Learn Sentences", use_container_width=True):
+                    
+                if st.button("📝\nNotes", help="Learn Sentences", use_container_width=True, key="notes_btn"):
                     st.session_state.page = 'sentences'
                     st.rerun()
+            
             with col2:
-                if st.button("🧠", help="Take Quiz", use_container_width=True):
+                if st.button("⚔️\nDuels", help="Battle Friends", use_container_width=True, key="duels_btn"):
+                    st.session_state.page = 'battle'
+                    st.rerun()
+                    
+                if st.button("🧠\nQuizzes", help="Take Quiz", use_container_width=True, key="quizzes_btn"):
                     st.session_state.page = 'quiz'
                     st.rerun()
             
-            # Additional features
-            if st.button("🏠 Dashboard", use_container_width=True):
-                st.session_state.page = 'dashboard'
-                st.rerun()
+            # Learn section with collapsible menu
+            st.markdown('<div class="section-header">Learn</div>', unsafe_allow_html=True)
             
-            if st.button("📊 My Progress", use_container_width=True):
-                st.session_state.page = 'word_database'
-                st.rerun()
+            with st.expander("📖 Study Materials", expanded=False):
+                if st.button("🏠 Dashboard", use_container_width=True, key="dashboard_btn"):
+                    st.session_state.page = 'dashboard'
+                    st.rerun()
+                
+                if st.button("📊 My Progress", use_container_width=True, key="progress_btn"):
+                    st.session_state.page = 'word_database'
+                    st.rerun()
+                
+                if st.button("📖 Grammar", use_container_width=True, key="grammar_btn"):
+                    st.session_state.page = 'study'
+                    st.rerun()
+                
+                if st.button("📚 Workbook", use_container_width=True, key="workbook_btn"):
+                    st.session_state.page = 'workbook'
+                    st.rerun()
             
-            if st.button("📖 Grammar", use_container_width=True):
-                st.session_state.page = 'study'
-                st.rerun()
+            # Account section with dropdown
+            st.markdown('<div class="section-header">Account</div>', unsafe_allow_html=True)
             
-            if st.button("📚 Workbook", use_container_width=True):
-                st.session_state.page = 'workbook'
-                st.rerun()
-            
-            # Profile and settings
-            st.markdown("---")
-            st.markdown("### ⚙️ Account")
-            
-            if st.button("👤 Profile", use_container_width=True):
-                st.session_state.page = 'profile'
-                st.rerun()
-            
-            if st.button("⚙️ Settings", use_container_width=True):
-                st.session_state.page = 'settings'
-                st.rerun()
-            
-            # Logout
-            st.markdown("---")
-            if st.button("🚪 Logout", use_container_width=True, type="secondary"):
-                st.session_state.current_profile = None
-                st.session_state.page = 'login'
-                st.rerun()
-            
-            st.markdown("---")
-            st.subheader("📊 Quick Stats")
-            st.metric("Words Learned", len(st.session_state.user_progress['words_learned']))
-            st.metric("Current Streak", st.session_state.user_progress['daily_streak'])
+            with st.expander("⚙️ Account Settings", expanded=False):
+                if st.button("👤 Profile", use_container_width=True, key="profile_btn"):
+                    st.session_state.page = 'profile'
+                    st.rerun()
+                
+                if st.button("⚙️ Settings", use_container_width=True, key="settings_btn"):
+                    st.session_state.page = 'settings'
+                    st.rerun()
+                
+                st.markdown("---")
+                if st.button("🚪 Logout", use_container_width=True, type="secondary", key="logout_btn"):
+                    st.session_state.current_profile = None
+                    st.session_state.page = 'login'
+                    st.rerun()
             
             due_cards = len(self.get_due_cards())
             if due_cards > 0:
