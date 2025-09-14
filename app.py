@@ -256,10 +256,143 @@ VOCABULARY_DATA = {
         "murah": {"english": "cheap", "pronunciation": "mu-rah", "category": "adjectives", "example": "Buku ini murah."},
         "bersih": {"english": "clean", "pronunciation": "ber-sih", "category": "adjectives", "example": "Rumah ini bersih."},
         "kotor": {"english": "dirty", "pronunciation": "ko-tor", "category": "adjectives", "example": "Pakaian ini kotor."},
-        "di mana": {"english": "where", "pronunciation": "di ma-na", "category": "questions", "example": "Di mana toilet?"},
-        "kapan": {"english": "when", "pronunciation": "ka-pan", "category": "questions", "example": "Kapan Anda datang?"},
         "berapa": {"english": "how much/many", "pronunciation": "be-ra-pa", "category": "questions", "example": "Berapa harganya?"},
         "bagaimana": {"english": "how", "pronunciation": "ba-gai-ma-na", "category": "questions", "example": "Bagaimana kabarnya?"},
+        
+        # Weather & Nature
+        "hujan": {"english": "rain", "pronunciation": "hu-jan", "category": "weather", "example": "Hari ini hujan."},
+        "panas": {"english": "sunny/hot", "pronunciation": "pa-nas", "category": "weather", "example": "Cuaca panas hari ini."},
+        "angin": {"english": "wind", "pronunciation": "a-ngin", "category": "weather", "example": "Angin kencang sekali."},
+        "awan": {"english": "cloud", "pronunciation": "a-wan", "category": "weather", "example": "Awan hitam di langit."},
+        "petir": {"english": "lightning", "pronunciation": "pe-tir", "category": "weather", "example": "Petir menyambar pohon."},
+        "salju": {"english": "snow", "pronunciation": "sal-ju", "category": "weather", "example": "Salju turun di gunung."},
+        "pohon": {"english": "tree", "pronunciation": "po-hon", "category": "nature", "example": "Pohon mangga besar."},
+        "bunga": {"english": "flower", "pronunciation": "bu-nga", "category": "nature", "example": "Bunga mawar merah."},
+        "daun": {"english": "leaf", "pronunciation": "da-un", "category": "nature", "example": "Daun gugur di musim kering."},
+        "rumput": {"english": "grass", "pronunciation": "rum-put", "category": "nature", "example": "Rumput hijau di taman."},
+        "batu": {"english": "stone", "pronunciation": "ba-tu", "category": "nature", "example": "Batu besar di sungai."},
+        "pasir": {"english": "sand", "pronunciation": "pa-sir", "category": "nature", "example": "Pasir putih di pantai."},
+        "laut": {"english": "sea", "pronunciation": "la-ut", "category": "nature", "example": "Laut biru jernih."},
+        "sungai": {"english": "river", "pronunciation": "su-ngai", "category": "nature", "example": "Sungai mengalir deras."},
+        "gunung": {"english": "mountain", "pronunciation": "gu-nung", "category": "nature", "example": "Gunung tinggi sekali."},
+        "hutan": {"english": "forest", "pronunciation": "hu-tan", "category": "nature", "example": "Hutan lebat dan gelap."},
+        
+        # Animals
+        "kucing": {"english": "cat", "pronunciation": "ku-cing", "category": "animals", "example": "Kucing hitam tidur."},
+        "anjing": {"english": "dog", "pronunciation": "an-jing", "category": "animals", "example": "Anjing menggonggong keras."},
+        "burung": {"english": "bird", "pronunciation": "bu-rung", "category": "animals", "example": "Burung terbang tinggi."},
+        "ayam": {"english": "chicken", "pronunciation": "a-yam", "category": "animals", "example": "Ayam berkokok pagi."},
+        "sapi": {"english": "cow", "pronunciation": "sa-pi", "category": "animals", "example": "Sapi makan rumput."},
+        "kambing": {"english": "goat", "pronunciation": "kam-bing", "category": "animals", "example": "Kambing putih lucu."},
+        "kuda": {"english": "horse", "pronunciation": "ku-da", "category": "animals", "example": "Kuda berlari cepat."},
+        "gajah": {"english": "elephant", "pronunciation": "ga-jah", "category": "animals", "example": "Gajah besar dan kuat."},
+        "harimau": {"english": "tiger", "pronunciation": "ha-ri-mau", "category": "animals", "example": "Harimau berburu malam."},
+        "monyet": {"english": "monkey", "pronunciation": "mo-nyet", "category": "animals", "example": "Monyet melompat di pohon."},
+        "ular": {"english": "snake", "pronunciation": "u-lar", "category": "animals", "example": "Ular merayap di tanah."},
+        "katak": {"english": "frog", "pronunciation": "ka-tak", "category": "animals", "example": "Katak hijau di kolam."},
+        
+        # Transportation
+        "pesawat": {"english": "airplane", "pronunciation": "pe-sa-wat", "category": "transportation", "example": "Pesawat terbang tinggi."},
+        "kereta": {"english": "train", "pronunciation": "ke-re-ta", "category": "transportation", "example": "Kereta api cepat."},
+        "bus": {"english": "bus", "pronunciation": "bus", "category": "transportation", "example": "Bus kota penuh penumpang."},
+        "taksi": {"english": "taxi", "pronunciation": "tak-si", "category": "transportation", "example": "Taksi kuning berhenti."},
+        "motor": {"english": "motorcycle", "pronunciation": "mo-tor", "category": "transportation", "example": "Motor merah kencang."},
+        "becak": {"english": "rickshaw", "pronunciation": "be-cak", "category": "transportation", "example": "Becak tradisional Indonesia."},
+        "perahu": {"english": "boat", "pronunciation": "pe-ra-hu", "category": "transportation", "example": "Perahu nelayan kecil."},
+        "kapal": {"english": "ship", "pronunciation": "ka-pal", "category": "transportation", "example": "Kapal besar di pelabuhan."},
+        
+        # Emotions & Feelings
+        "senang": {"english": "happy", "pronunciation": "se-nang", "category": "emotions", "example": "Saya senang hari ini."},
+        "sedih": {"english": "sad", "pronunciation": "se-dih", "category": "emotions", "example": "Dia sedih mendengar berita."},
+        "marah": {"english": "angry", "pronunciation": "ma-rah", "category": "emotions", "example": "Ayah marah pada adik."},
+        "takut": {"english": "afraid", "pronunciation": "ta-kut", "category": "emotions", "example": "Anak takut gelap."},
+        "kaget": {"english": "surprised", "pronunciation": "ka-get", "category": "emotions", "example": "Saya kaget melihatnya."},
+        "bosan": {"english": "bored", "pronunciation": "bo-san", "category": "emotions", "example": "Dia bosan di rumah."},
+        "lelah": {"english": "tired", "pronunciation": "le-lah", "category": "emotions", "example": "Saya lelah bekerja."},
+        "lapar": {"english": "hungry", "pronunciation": "la-par", "category": "emotions", "example": "Perut saya lapar."},
+        "haus": {"english": "thirsty", "pronunciation": "ha-us", "category": "emotions", "example": "Mulut saya haus."},
+        "sakit": {"english": "sick/hurt", "pronunciation": "sa-kit", "category": "emotions", "example": "Kepala saya sakit."},
+        
+        # Technology & Modern Life
+        "internet": {"english": "internet", "pronunciation": "in-ter-net", "category": "technology", "example": "Internet cepat sekali."},
+        "email": {"english": "email", "pronunciation": "e-mail", "category": "technology", "example": "Kirim email penting."},
+        "website": {"english": "website", "pronunciation": "web-site", "category": "technology", "example": "Website bagus sekali."},
+        "aplikasi": {"english": "application", "pronunciation": "ap-li-ka-si", "category": "technology", "example": "Aplikasi baru di ponsel."},
+        "foto": {"english": "photo", "pronunciation": "fo-to", "category": "technology", "example": "Foto keluarga indah."},
+        "video": {"english": "video", "pronunciation": "vi-de-o", "category": "technology", "example": "Video lucu di YouTube."},
+        "musik": {"english": "music", "pronunciation": "mu-sik", "category": "technology", "example": "Musik jazz enak didengar."},
+        "film": {"english": "movie", "pronunciation": "film", "category": "technology", "example": "Film Indonesia bagus."},
+        
+        # Clothing & Fashion
+        "kemeja": {"english": "shirt", "pronunciation": "ke-me-ja", "category": "clothing", "example": "Kemeja putih rapi."},
+        "kaos": {"english": "t-shirt", "pronunciation": "ka-os", "category": "clothing", "example": "Kaos merah favorit saya."},
+        "rok": {"english": "skirt", "pronunciation": "rok", "category": "clothing", "example": "Rok panjang warna biru."},
+        "jaket": {"english": "jacket", "pronunciation": "ja-ket", "category": "clothing", "example": "Jaket tebal untuk dingin."},
+        "topi": {"english": "hat", "pronunciation": "to-pi", "category": "clothing", "example": "Topi hitam keren."},
+        "kacamata": {"english": "glasses", "pronunciation": "ka-ca-ma-ta", "category": "clothing", "example": "Kacamata minus tinggi."},
+        "jam": {"english": "watch", "pronunciation": "jam", "category": "clothing", "example": "Jam tangan mahal."},
+        "cincin": {"english": "ring", "pronunciation": "cin-cin", "category": "clothing", "example": "Cincin emas berkilau."},
+        "kalung": {"english": "necklace", "pronunciation": "ka-lung", "category": "clothing", "example": "Kalung mutiara cantik."},
+        
+        # Sports & Activities
+        "olahraga": {"english": "sports", "pronunciation": "o-lah-ra-ga", "category": "sports", "example": "Olahraga setiap pagi."},
+        "sepak bola": {"english": "football/soccer", "pronunciation": "se-pak bo-la", "category": "sports", "example": "Main sepak bola sore."},
+        "basket": {"english": "basketball", "pronunciation": "bas-ket", "category": "sports", "example": "Tim basket sekolah menang."},
+        "renang": {"english": "swimming", "pronunciation": "re-nang", "category": "sports", "example": "Renang di kolam bersih."},
+        "lari": {"english": "running", "pronunciation": "la-ri", "category": "sports", "example": "Lari pagi menyehatkan."},
+        "bersepeda": {"english": "cycling", "pronunciation": "ber-se-pe-da", "category": "sports", "example": "Bersepeda ke kantor."},
+        "yoga": {"english": "yoga", "pronunciation": "yo-ga", "category": "sports", "example": "Yoga relaksasi tubuh."},
+        "gym": {"english": "gym", "pronunciation": "gym", "category": "sports", "example": "Gym setiap hari."},
+        
+        # Education & Learning
+        "universitas": {"english": "university", "pronunciation": "u-ni-ver-si-tas", "category": "education", "example": "Universitas terbaik di kota."},
+        "mahasiswa": {"english": "student", "pronunciation": "ma-ha-sis-wa", "category": "education", "example": "Mahasiswa rajin belajar."},
+        "guru": {"english": "teacher", "pronunciation": "gu-ru", "category": "education", "example": "Guru matematika baik."},
+        "pelajaran": {"english": "lesson", "pronunciation": "pe-la-ja-ran", "category": "education", "example": "Pelajaran hari ini sulit."},
+        "ujian": {"english": "exam", "pronunciation": "u-ji-an", "category": "education", "example": "Ujian besok pagi."},
+        "nilai": {"english": "grade", "pronunciation": "ni-lai", "category": "education", "example": "Nilai bagus sekali."},
+        "diploma": {"english": "diploma", "pronunciation": "dip-lo-ma", "category": "education", "example": "Diploma sarjana baru."},
+        "perpustakaan": {"english": "library", "pronunciation": "per-pus-ta-ka-an", "category": "education", "example": "Perpustakaan buku lengkap."},
+        
+        # Business & Work
+        "kerja": {"english": "work", "pronunciation": "ker-ja", "category": "business", "example": "Saya kerja di kantor."},
+        "kantor": {"english": "office", "pronunciation": "kan-tor", "category": "business", "example": "Kantor baru sangat besar."},
+        "bisnis": {"english": "business", "pronunciation": "bis-nis", "category": "business", "example": "Bisnis online berkembang."},
+        "uang": {"english": "money", "pronunciation": "u-ang", "category": "business", "example": "Uang di dompet habis."},
+        "gaji": {"english": "salary", "pronunciation": "ga-ji", "category": "business", "example": "Gaji bulan ini naik."},
+        "bank": {"english": "bank", "pronunciation": "bank", "category": "business", "example": "Bank tutup hari Minggu."},
+        "investasi": {"english": "investment", "pronunciation": "in-ves-ta-si", "category": "business", "example": "Investasi saham menguntungkan."},
+        "perusahaan": {"english": "company", "pronunciation": "pe-ru-sa-ha-an", "category": "business", "example": "Perusahaan besar di Jakarta."},
+        
+        # Health & Medical
+        "dokter": {"english": "doctor", "pronunciation": "dok-ter", "category": "health", "example": "Dokter memeriksa pasien."},
+        "rumah sakit": {"english": "hospital", "pronunciation": "ru-mah sa-kit", "category": "health", "example": "Rumah sakit baru dibuka."},
+        "obat": {"english": "medicine", "pronunciation": "o-bat", "category": "health", "example": "Obat diminum tiga kali."},
+        "sehat": {"english": "healthy", "pronunciation": "se-hat", "category": "health", "example": "Badan sehat jiwa kuat."},
+        "demam": {"english": "fever", "pronunciation": "de-mam", "category": "health", "example": "Anak demam tinggi."},
+        "batuk": {"english": "cough", "pronunciation": "ba-tuk", "category": "health", "example": "Batuk sudah seminggu."},
+        "pilek": {"english": "cold", "pronunciation": "pi-lek", "category": "health", "example": "Pilek karena hujan."},
+        "alergi": {"english": "allergy", "pronunciation": "a-ler-gi", "category": "health", "example": "Alergi makanan laut."},
+        
+        # Travel & Places
+        "hotel": {"english": "hotel", "pronunciation": "ho-tel", "category": "travel", "example": "Hotel mewah di pantai."},
+        "restoran": {"english": "restaurant", "pronunciation": "res-to-ran", "category": "travel", "example": "Restoran Indonesia enak."},
+        "museum": {"english": "museum", "pronunciation": "mu-se-um", "category": "travel", "example": "Museum sejarah menarik."},
+        "taman": {"english": "park", "pronunciation": "ta-man", "category": "travel", "example": "Taman kota sangat indah."},
+        "pantai": {"english": "beach", "pronunciation": "pan-tai", "category": "travel", "example": "Pantai Bali terkenal."},
+        "jalan": {"english": "road/street", "pronunciation": "ja-lan", "category": "travel", "example": "Jalan raya macet."},
+        "jembatan": {"english": "bridge", "pronunciation": "jem-ba-tan", "category": "travel", "example": "Jembatan panjang sekali."},
+        "bandara": {"english": "airport", "pronunciation": "ban-da-ra", "category": "travel", "example": "Bandara internasional besar."},
+        
+        # Shopping & Commerce
+        "toko": {"english": "shop", "pronunciation": "to-ko", "category": "shopping", "example": "Toko buku di pojok."},
+        "pasar": {"english": "market", "pronunciation": "pa-sar", "category": "shopping", "example": "Pasar tradisional ramai."},
+        "mall": {"english": "mall", "pronunciation": "mall", "category": "shopping", "example": "Mall baru sangat besar."},
+        "kasir": {"english": "cashier", "pronunciation": "ka-sir", "category": "shopping", "example": "Kasir ramah sekali."},
+        "diskon": {"english": "discount", "pronunciation": "dis-kon", "category": "shopping", "example": "Diskon besar-besaran."},
+        "kartu kredit": {"english": "credit card", "pronunciation": "kar-tu kre-dit", "category": "shopping", "example": "Bayar pakai kartu kredit."},
+        "belanja": {"english": "shopping", "pronunciation": "be-lan-ja", "category": "shopping", "example": "Belanja bulanan di supermarket."},
+        "harga": {"english": "price", "pronunciation": "har-ga", "category": "shopping", "example": "Harga naik terus."},
         
         # More Essential Words
         "ini": {"english": "this", "pronunciation": "i-ni", "category": "pronouns", "example": "Ini buku saya."},
@@ -901,56 +1034,124 @@ class IndonesianLearningApp:
                     st.rerun()
     
     def render_flashcards(self):
-        """Render simplified flashcard study interface"""
+        """Render category-based flashcard study interface"""
         st.markdown("""
         <div style='text-align: center; padding: 1rem 0;'>
             <h1 style='color: #2E8B57; font-size: 2.5rem; margin: 0;'>📚 Study Flashcards</h1>
-            <p style='color: #666; font-size: 1.1rem; margin: 0.5rem 0;'>Learn Indonesian words with spaced repetition</p>
+            <p style='color: #666; font-size: 1.1rem; margin: 0.5rem 0;'>Learn Indonesian words by category with spaced repetition</p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Simple level selector
-        selected_level = st.selectbox(
-            "Choose your level:",
-            options=list(VOCABULARY_DATA.keys()),
-            index=list(VOCABULARY_DATA.keys()).index(st.session_state.user_progress['current_level'])
-        )
+        # Get all available categories from VOCABULARY_DATA
+        categories = set()
+        for word_data in self.VOCABULARY_DATA.values():
+            categories.add(word_data.get('category', 'general'))
+        categories = sorted(list(categories))
         
-        due_cards = self.get_due_cards(selected_level)
+        # Category and level selection
+        col1, col2 = st.columns([2, 1])
+        
+        with col1:
+            selected_category = st.selectbox(
+                "🏷️ Choose Category to Practice:",
+                options=['all'] + categories,
+                format_func=lambda x: f"📚 All Categories ({len(self.VOCABULARY_DATA)} words)" if x == 'all' 
+                          else f"🎯 {x.title()} ({len([w for w, d in self.VOCABULARY_DATA.items() if d.get('category', 'general') == x])} words)",
+                key="flashcard_category"
+            )
+        
+        with col2:
+            selected_level = st.selectbox(
+                "📚 Level:",
+                options=list(VOCABULARY_DATA.keys()),
+                index=list(VOCABULARY_DATA.keys()).index(st.session_state.user_progress['current_level'])
+            )
+        
+        # Filter words by category and get due cards
+        if selected_category == 'all':
+            available_words = list(self.VOCABULARY_DATA.keys())
+        else:
+            available_words = [word for word, data in self.VOCABULARY_DATA.items() 
+                             if data.get('category', 'general') == selected_category]
+        
+        # Get due cards from the filtered words
+        level_words = VOCABULARY_DATA.get(selected_level, [])
+        due_cards = []
+        
+        for word in available_words:
+            if word in level_words and word in st.session_state.flashcard_data:
+                card_data = st.session_state.flashcard_data[word]
+                if datetime.now() >= datetime.fromisoformat(card_data['next_review']):
+                    due_cards.append(word)
+        
+        # If no due cards, show all available words from category
+        if not due_cards:
+            due_cards = [word for word in available_words if word in level_words]
         
         if not due_cards:
-            st.success("🎉 All cards in this level are up to date! Come back later or try another level.")
+            st.warning(f"No flashcards available for '{selected_category}' category in '{selected_level}' level!")
             if st.button("← Back to Dashboard"):
                 st.session_state.page = 'dashboard'
                 st.rerun()
             return
         
         # Get current card
-        if st.session_state.current_card is None or st.session_state.current_card not in due_cards:
+        if (st.session_state.current_card is None or 
+            st.session_state.current_card not in due_cards or
+            st.session_state.get('current_flashcard_category') != selected_category):
             st.session_state.current_card = random.choice(due_cards)
             st.session_state.show_answer = False
+            st.session_state.current_flashcard_category = selected_category
         
         current_word = st.session_state.current_card
-        card_data = st.session_state.flashcard_data[current_word]
+        word_data = self.VOCABULARY_DATA[current_word]
+        card_data = st.session_state.flashcard_data.get(current_word, {
+            'review_count': 0,
+            'next_review': datetime.now().isoformat(),
+            'interval': 1
+        })
+        
+        # Category indicator
+        st.markdown(f"""
+        <div style="background: rgba(76, 175, 80, 0.1); padding: 0.5rem 1rem; 
+                    border-radius: 25px; display: inline-block; margin-bottom: 1rem;">
+            <span style="color: #2E7D32; font-weight: bold;">
+                🏷️ {word_data.get('category', 'general').title()}
+            </span>
+        </div>
+        """, unsafe_allow_html=True)
         
         # Simple card display
         st.markdown("---")
         
-        # Clean, simple card
+        # Clean, simple card with category color coding
+        category_colors = {
+            'basic': '#4CAF50', 'food': '#FF9800', 'family': '#E91E63', 'numbers': '#9C27B0',
+            'time': '#3F51B5', 'colors': '#00BCD4', 'body': '#795548', 'clothing': '#607D8B',
+            'adjectives': '#FFC107', 'verbs': '#8BC34A', 'questions': '#F44336', 'weather': '#2196F3',
+            'nature': '#4CAF50', 'animals': '#FF5722', 'transportation': '#9E9E9E', 'emotions': '#E91E63',
+            'technology': '#673AB7', 'sports': '#FF9800', 'education': '#3F51B5', 'business': '#795548',
+            'health': '#F44336', 'travel': '#00BCD4', 'shopping': '#4CAF50', 'pronouns': '#9C27B0',
+            'prepositions': '#607D8B', 'conjunctions': '#FF5722'
+        }
+        
+        category = word_data.get('category', 'general')
+        card_color = category_colors.get(category, '#4CAF50')
+        
         st.markdown(f"""
-        <div style='background: linear-gradient(135deg, #4CAF50, #45a049); padding: 3rem; border-radius: 20px; text-align: center; color: white; margin: 2rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.15);'>
+        <div style='background: linear-gradient(135deg, {card_color}, {card_color}dd); padding: 3rem; border-radius: 20px; text-align: center; color: white; margin: 2rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.15);'>
             <h1 style='font-size: 4rem; margin: 0; font-weight: bold;'>{current_word}</h1>
         </div>
         """, unsafe_allow_html=True)
                 
         # Answer display
         if st.session_state.show_answer:
-            example_text = card_data.get('example', 'No example available')
+            example_text = word_data.get('example', 'No example available')
             st.markdown(f"""
             <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 2rem; border-radius: 20px; text-align: center; color: white; margin: 1rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.15);'>
-                <h2 style='font-size: 2.5rem; margin: 0; font-weight: bold;'>{card_data['english']}</h2>
-                <p style='font-size: 1.3rem; margin: 0.5rem 0; opacity: 0.9;'>{card_data['pronunciation']}</p>
-                <p style='font-size: 1.1rem; margin: 0.5rem 0; opacity: 0.8;'>Category: {card_data['category'].title()}</p>
+                <h2 style='font-size: 2.5rem; margin: 0; font-weight: bold;'>{word_data['english']}</h2>
+                <p style='font-size: 1.3rem; margin: 0.5rem 0; opacity: 0.9;'>{word_data['pronunciation']}</p>
+                <p style='font-size: 1.1rem; margin: 0.5rem 0; opacity: 0.8;'>Category: {category.title()}</p>
                 <div style='background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin: 1rem 0;'>
                     <p style='margin: 0; font-weight: bold;'>Example:</p>
                     <p style='margin: 0.5rem 0 0 0; font-style: italic;'>"{example_text}"</p>
@@ -977,7 +1178,7 @@ class IndonesianLearningApp:
                 st.markdown("**Rate difficulty:**")
         
         with col3:
-            if st.button("➡️ Next", use_container_width=True, type="secondary"):
+            if st.button("➡️ Next Word", use_container_width=True, type="secondary"):
                 st.session_state.current_card = None
                 st.session_state.show_answer = False
                 st.rerun()
@@ -986,7 +1187,7 @@ class IndonesianLearningApp:
             col1, col2, col3 = st.columns(3)
             
             with col1:
-                if st.button("😊 Easy", width='stretch', type="primary"):
+                if st.button("😊 Easy", use_container_width=True, type="primary"):
                     self.update_flashcard_schedule(current_word, 'easy')
                     st.session_state.user_progress['words_learned'].add(current_word)
                     self.update_daily_streak()
@@ -995,7 +1196,7 @@ class IndonesianLearningApp:
                     st.rerun()
                     
             with col2:
-                if st.button("🤔 Medium", width='stretch'):
+                if st.button("🤔 Medium", use_container_width=True):
                     self.update_flashcard_schedule(current_word, 'medium')
                     st.session_state.user_progress['words_learned'].add(current_word)
                     self.update_daily_streak()
@@ -1004,20 +1205,26 @@ class IndonesianLearningApp:
                     st.rerun()
                     
             with col3:
-                if st.button("😰 Hard", width='stretch'):
+                if st.button("😰 Hard", use_container_width=True):
                     self.update_flashcard_schedule(current_word, 'hard')
                     self.update_daily_streak()
                     st.session_state.current_card = None
                     st.session_state.show_answer = False
                     st.rerun()
         
-        # Progress info
+        # Enhanced progress info with category stats
         st.markdown("---")
-        col1, col2 = st.columns(2)
+        col1, col2, col3, col4 = st.columns(4)
         with col1:
-            st.info(f"📊 Cards remaining in {selected_level}: {len(due_cards)}")
+            st.info(f"📊 {selected_category.title()} Cards: {len(due_cards)}")
         with col2:
-            st.info(f"🔄 Review #{card_data['review_count'] + 1} for this card")
+            st.info(f"🔄 Review #{card_data.get('review_count', 0) + 1}")
+        with col3:
+            category_learned = len([w for w in st.session_state.user_progress['words_learned'] 
+                                  if w in available_words])
+            st.info(f"✅ Category Progress: {category_learned}/{len(available_words)}")
+        with col4:
+            st.info(f"🏷️ Categories: {len(categories)}")
     
     def render_battle_mode(self):
         """Render social battle mode for competitive learning"""
