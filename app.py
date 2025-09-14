@@ -507,22 +507,22 @@ class IndonesianLearningApp:
     
     def render_dashboard(self):
         """Render the premium main dashboard"""
-        # Premium dashboard header
+        st.title("🇮🇩 Indonesian Learning Hub")
+        st.markdown("**Your comprehensive platform for mastering Indonesian language**")
+        
+        # Show statistics with standard Streamlit metrics
         total_words = sum(len(level_words) for level_words in VOCABULARY_DATA.values())
         learned_words = len(st.session_state.user_progress['words_learned'])
         
-        stats = [
-            {"number": f"{total_words:,}", "label": "Total Vocabulary"},
-            {"number": f"{learned_words:,}", "label": "Words Learned"},
-            {"number": f"{len(st.session_state.user_progress.get('quiz_scores', [])):,}", "label": "Quizzes Taken"},
-            {"number": f"{st.session_state.user_progress.get('study_streak', 0):,}", "label": "Study Streak"}
-        ]
-        
-        PremiumUI.premium_header(
-            "🇮🇩 Indonesian Learning Hub",
-            "Your comprehensive platform for mastering Indonesian language",
-            stats
-        )
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Total Vocabulary", f"{total_words:,}")
+        with col2:
+            st.metric("Words Learned", f"{learned_words:,}")
+        with col3:
+            st.metric("Quizzes Taken", len(st.session_state.user_progress.get('quiz_scores', [])))
+        with col4:
+            st.metric("Study Streak", st.session_state.user_progress.get('study_streak', 0))
         
         # Show total vocabulary count and security status
         total_words = sum(len(level_words) for level_words in VOCABULARY_DATA.values())
@@ -796,8 +796,18 @@ class IndonesianLearningApp:
                 if st.button("Show Answer", width='stretch'):
                     st.session_state.show_answer = True
                     st.rerun()
+                # Add Next button even before showing answer
+                if st.button("➡️ Next Word", width='stretch', type="secondary"):
+                    st.session_state.current_card = None
+                    st.session_state.show_answer = False
+                    st.rerun()
             else:
                 st.write("Rate difficulty:")
+                # Add Next button after showing answer too
+                if st.button("⏭️ Skip to Next", width='stretch', type="secondary"):
+                    st.session_state.current_card = None
+                    st.session_state.show_answer = False
+                    st.rerun()
         
         if st.session_state.show_answer:
             col1, col2, col3 = st.columns(3)
@@ -838,23 +848,23 @@ class IndonesianLearningApp:
     
     def render_quiz(self):
         """Render premium quiz interface"""
-        # Premium quiz header
+        st.title("🧠 Enhanced Vocabulary Quiz")
+        st.markdown("**Test your Indonesian vocabulary with intelligent questions and detailed feedback**")
+        
+        # Quiz statistics
         learned_words = len(st.session_state.user_progress['words_learned'])
         quiz_scores = st.session_state.user_progress.get('quiz_scores', [])
         avg_score = sum(quiz_scores) / len(quiz_scores) if quiz_scores else 0
         
-        stats = [
-            {"number": f"{learned_words:,}", "label": "Words Available"},
-            {"number": f"{len(quiz_scores):,}", "label": "Quizzes Completed"},
-            {"number": f"{avg_score:.1f}%", "label": "Average Score"},
-            {"number": "AI-Powered", "label": "Question System"}
-        ]
-        
-        PremiumUI.premium_header(
-            "🧠 Premium Vocabulary Quiz",
-            "Test your Indonesian vocabulary with intelligent questions and detailed feedback",
-            stats
-        )
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Words Available", f"{learned_words:,}")
+        with col2:
+            st.metric("Quizzes Completed", len(quiz_scores))
+        with col3:
+            st.metric("Average Score", f"{avg_score:.1f}%")
+        with col4:
+            st.metric("Question System", "AI-Powered")
         
         if 'quiz_words' not in st.session_state:
             # Initialize quiz with 10 random words from learned vocabulary
@@ -2076,19 +2086,19 @@ class IndonesianLearningApp:
         total_sentences = sum(len(category_sentences) for level_data in MASSIVE_SENTENCES.values() 
                              for category_sentences in level_data.values())
         
-        # Premium UI Header
-        stats = [
-            {"number": f"{total_sentences:,}", "label": "Total Sentences"},
-            {"number": "4", "label": "Difficulty Levels"},
-            {"number": f"{len(all_categories)}", "label": "Categories"},
-            {"number": "100%", "label": "Premium Quality"}
-        ]
+        st.title("🇮🇩 Indonesian Sentence Learning")
+        st.markdown("**Master Indonesian through 2000+ carefully curated sentences with pronunciation guides, grammar focus, and cultural context**")
         
-        PremiumUI.premium_header(
-            "🇮🇩 Premium Indonesian Sentence Learning",
-            "Master Indonesian through 2000+ carefully curated sentences with pronunciation guides, grammar focus, and cultural context",
-            stats
-        )
+        # Sentence statistics
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Total Sentences", f"{total_sentences:,}")
+        with col2:
+            st.metric("Difficulty Levels", "4")
+        with col3:
+            st.metric("Categories", f"{len(all_categories)}")
+        with col4:
+            st.metric("Quality", "Premium")
         
         # Level selector with enhanced options
         col1, col2 = st.columns([2, 1])
@@ -2149,16 +2159,18 @@ class IndonesianLearningApp:
             return
         
         # Display sentence statistics
-        # Display sentence statistics with premium UI
+        # Display sentence statistics
         if all_sentences:
             difficulty_level = sentence_data.get('difficulty', 1) if 'sentence_data' in locals() else 1
-            metrics = [
-                {"value": f"{len(all_sentences):,}", "label": "Available Sentences"},
-                {"value": selected_level, "label": "Current Level"},
-                {"value": selected_category, "label": "Category"},
-                {"value": f"Level {difficulty_level}/3", "label": "Difficulty"}
-            ]
-            PremiumUI.premium_metric_cards(metrics)
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("Available Sentences", f"{len(all_sentences):,}")
+            with col2:
+                st.metric("Current Level", selected_level)
+            with col3:
+                st.metric("Category", selected_category)
+            with col4:
+                st.metric("Difficulty", f"Level {difficulty_level}/3")
         
         st.markdown("---")
         
@@ -2167,8 +2179,33 @@ class IndonesianLearningApp:
         col1, col2, col3 = st.columns([1, 3, 1])
         
         with col2:
-            # Premium sentence display
-            PremiumUI.premium_sentence_card(sentence_data)
+            # Enhanced sentence display
+            st.markdown(f"""
+            <div style='
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding: 2rem;
+                border-radius: 15px;
+                text-align: center;
+                margin: 1rem 0;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            '>
+                <h2 style='color: white; margin: 0; font-size: 2.5rem; font-weight: bold;'>{sentence_data['indonesian']}</h2>
+                <p style='color: #f0f0f0; margin: 0.5rem 0 0 0; font-size: 1.2rem;'>{sentence_data['pronunciation']}</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # English translation
+            st.markdown(f"**English:** {sentence_data['english']}")
+            
+            # Additional information
+            col_info1, col_info2 = st.columns(2)
+            with col_info1:
+                st.info(f"**Category:** {sentence_data.get('category', 'N/A')}")
+                st.info(f"**Grammar Focus:** {sentence_data.get('grammar_focus', 'N/A')}")
+            with col_info2:
+                st.info(f"**Difficulty:** Level {sentence_data.get('difficulty', 1)}/3")
+                if sentence_data.get('cultural_note'):
+                    st.info(f"**Cultural Note:** {sentence_data['cultural_note']}")
             
             # Sentence information panel
             col_info1, col_info2 = st.columns(2)
@@ -2229,11 +2266,23 @@ class IndonesianLearningApp:
                 if st.button("Show Translation", width='stretch'):
                     st.session_state.show_sentence_answer = True
                     st.rerun()
+                # Add Next button even before showing translation
+                if st.button("➡️ Next Sentence", width='stretch', type="secondary"):
+                    next_index = (st.session_state.current_sentence + 1) % len(all_sentences)
+                    st.session_state.current_sentence = next_index
+                    st.session_state.show_sentence_answer = False
+                    st.rerun()
             else:
-                if st.button("Next Sentence", width='stretch'):
+                if st.button("➡️ Next Sentence", width='stretch', type="primary"):
                     # Get next sentence
                     next_index = (st.session_state.current_sentence + 1) % len(all_sentences)
                     st.session_state.current_sentence = next_index
+                    st.session_state.show_sentence_answer = False
+                    st.rerun()
+                # Add Previous button
+                if st.button("⬅️ Previous", width='stretch', type="secondary"):
+                    prev_index = (st.session_state.current_sentence - 1) % len(all_sentences)
+                    st.session_state.current_sentence = prev_index
                     st.session_state.show_sentence_answer = False
                     st.rerun()
         
