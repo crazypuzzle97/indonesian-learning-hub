@@ -13,18 +13,14 @@ from datetime import datetime, timedelta
 import plotly.express as px
 import plotly.graph_objects as go
 from reportlab.lib.pagesizes import letter, A4
-from extended_vocabulary import EXTENDED_VOCABULARY
-from mega_vocabulary import MEGA_VOCABULARY
-from ultimate_vocabulary import ULTIMATE_VOCABULARY
-from master_vocabulary import MASTER_VOCABULARY
-from bonus_vocabulary import BONUS_VOCABULARY
+# Vocabulary imports removed - using integrated vocabulary in VOCABULARY_DATA
 from sentences import SENTENCE_DATABASE
 from comprehensive_sentences import SENTENCE_DATABASE as COMPREHENSIVE_SENTENCES
 from massive_sentence_database import get_massive_sentence_database
 from mega_sentence_database import get_mega_sentence_database
 from ultimate_sentence_database import get_ultimate_sentence_database
 from premium_sentence_database import get_premium_sentence_database, get_extended_premium_sentences
-from premium_ui_components import PremiumUI
+# Premium UI components removed - using simplified inline CSS
 from workbook_system import WorkbookSystem, WorkbookProgress, EXERCISE_TEMPLATES
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -1036,12 +1032,7 @@ VOCABULARY_DATA = {
     }
 }
 
-# Merge extended vocabulary
-VOCABULARY_DATA.update(EXTENDED_VOCABULARY)
-VOCABULARY_DATA.update(MEGA_VOCABULARY)
-VOCABULARY_DATA.update(ULTIMATE_VOCABULARY)
-VOCABULARY_DATA.update(MASTER_VOCABULARY)
-VOCABULARY_DATA.update(BONUS_VOCABULARY)
+# All vocabulary is now integrated directly in VOCABULARY_DATA above
 
 class IndonesianLearningApp:
     def __init__(self):
