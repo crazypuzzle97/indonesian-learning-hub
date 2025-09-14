@@ -1038,10 +1038,135 @@ class IndonesianLearningApp:
     def __init__(self):
         self.data_dir = "user_data"
         self.profiles_dir = os.path.join(self.data_dir, "profiles")
+        
+        # Example sentence translations database
+        self.example_translations = {
+            "Halo, apa kabar?": "Hello, how are you?",
+            "Terima kasih banyak!": "Thank you very much!",
+            "Sama-sama!": "You're welcome!",
+            "Maaf, saya terlambat.": "Sorry, I'm late.",
+            "Permisi, boleh lewat?": "Excuse me, may I pass?",
+            "Ya, saya mengerti.": "Yes, I understand.",
+            "Tidak, terima kasih.": "No, thank you.",
+            "Saya baik-baik saja.": "I'm fine.",
+            "Satu orang": "One person",
+            "Dua buku": "Two books",
+            "Tiga apel": "Three apples",
+            "Empat kursi": "Four chairs",
+            "Lima menit": "Five minutes",
+            "Enam jam": "Six hours",
+            "Tujuh hari": "Seven days",
+            "Delapan bulan": "Eight months",
+            "Sembilan tahun": "Nine years",
+            "Sepuluh rupiah": "Ten rupiah",
+            "Saya suka kopi.": "I like coffee.",
+            "Dia makan nasi.": "He/she eats rice.",
+            "Kami belajar bahasa Indonesia.": "We learn Indonesian.",
+            "Mereka bermain sepak bola.": "They play soccer.",
+            "Ibu memasak di dapur.": "Mother cooks in the kitchen.",
+            "Ayah bekerja di kantor.": "Father works in the office.",
+            "Adik menonton TV.": "Little sibling watches TV.",
+            "Kakak membaca buku.": "Older sibling reads a book.",
+            "Nenek istirahat.": "Grandmother rests.",
+            "Kakek berjalan-jalan.": "Grandfather takes a walk.",
+            "Mata saya sakit.": "My eyes hurt.",
+            "Kepala saya pusing.": "My head is dizzy.",
+            "Tangan saya dingin.": "My hands are cold.",
+            "Kaki saya lelah.": "My feet are tired.",
+            "Perut saya lapar.": "My stomach is hungry.",
+            "Punggung saya sakit.": "My back hurts.",
+            "Saya makan nasi.": "I eat rice.",
+            "Dia minum air.": "He/she drinks water.",
+            "Kami makan bersama.": "We eat together.",
+            "Saya lapar sekali.": "I'm very hungry.",
+            "Makanan ini enak.": "This food is delicious.",
+            "Saya suka buah.": "I like fruit.",
+            "Rumah saya besar.": "My house is big.",
+            "Kamar tidur saya kecil.": "My bedroom is small.",
+            "Dapur ini bersih.": "This kitchen is clean.",
+            "Kamar mandi kotor.": "The bathroom is dirty.",
+            "Ruang tamu nyaman.": "The living room is comfortable.",
+            "Saya pergi ke sekolah.": "I go to school.",
+            "Mobil ini cepat.": "This car is fast.",
+            "Bus itu lambat.": "That bus is slow.",
+            "Pesawat terbang tinggi.": "The plane flies high.",
+            "Kereta api panjang.": "The train is long.",
+            "Sepeda motor kecil.": "The motorcycle is small.",
+            "Cuaca hari ini panas.": "Today's weather is hot.",
+            "Kemarin hujan deras.": "Yesterday it rained heavily.",
+            "Besok akan cerah.": "Tomorrow will be sunny.",
+            "Angin bertiup kencang.": "The wind blows strongly.",
+            "Langit biru cerah.": "The sky is bright blue.",
+            "Saya bekerja di kantor.": "I work at the office.",
+            "Dia seorang dokter.": "He/she is a doctor.",
+            "Guru mengajar di kelas.": "The teacher teaches in class.",
+            "Petani menanam padi.": "The farmer plants rice.",
+            "Polisi menjaga keamanan.": "The police maintain security.",
+            "Baju ini bagus.": "This shirt is nice.",
+            "Celana itu mahal.": "Those pants are expensive.",
+            "Sepatu saya baru.": "My shoes are new.",
+            "Topi ini kecil.": "This hat is small.",
+            "Tas itu berat.": "That bag is heavy.",
+            "Merah, biru, hijau": "Red, blue, green",
+            "Hitam dan putih": "Black and white",
+            "Kuning seperti matahari": "Yellow like the sun",
+            "Ungu adalah warna favorit saya": "Purple is my favorite color",
+            "Coklat seperti tanah": "Brown like soil",
+            "Saya suka musik.": "I like music.",
+            "Film ini menarik.": "This movie is interesting.",
+            "Buku itu tebal.": "That book is thick.",
+            "Permainan ini seru.": "This game is exciting.",
+            "Olahraga itu sehat.": "Sports are healthy.",
+            "Hari ini saya senang.": "Today I am happy.",
+            "Kemarin saya sedih.": "Yesterday I was sad.",
+            "Dia terlihat marah.": "He/she looks angry.",
+            "Kami merasa takut.": "We feel scared.",
+            "Mereka sangat gembira.": "They are very joyful.",
+            "Saya bangun pagi.": "I wake up early.",
+            "Dia tidur malam.": "He/she sleeps at night.",
+            "Kami makan siang.": "We have lunch.",
+            "Mereka bekerja sore.": "They work in the afternoon.",
+            "Keluarga berkumpul malam.": "The family gathers at night.",
+            "Jakarta adalah ibu kota.": "Jakarta is the capital city.",
+            "Bali pulau yang indah.": "Bali is a beautiful island.",
+            "Surabaya kota besar.": "Surabaya is a big city.",
+            "Bandung sejuk dan nyaman.": "Bandung is cool and comfortable.",
+            "Yogyakarta kota budaya.": "Yogyakarta is a cultural city.",
+            "Saya belajar dengan rajin.": "I study diligently.",
+            "Dia bekerja dengan keras.": "He/she works hard.",
+            "Kami bermain dengan gembira.": "We play joyfully.",
+            "Mereka bernyanyi dengan indah.": "They sing beautifully.",
+            "Guru menjelaskan dengan sabar.": "The teacher explains patiently.",
+        }
         self.workbook_system = WorkbookSystem()
         self.workbook_progress = WorkbookProgress()
         self.ensure_data_directory()
         self.init_session_state()
+    
+    def get_example_translation(self, example_text, word):
+        """Get English translation for an example sentence"""
+        # Try exact match first
+        if example_text in self.example_translations:
+            return self.example_translations[example_text]
+        
+        # If no exact match, create a simple translation based on the word
+        word_data = None
+        for category_words in VOCABULARY_DATA.values():
+            if word in category_words:
+                word_data = category_words[word]
+                break
+        
+        if word_data:
+            word_english = word_data['english']
+            # Simple pattern matching for common sentence structures
+            if example_text.startswith(f"{word} "):
+                return f"{word_english.title()} ..."
+            elif f" {word}" in example_text:
+                return f"... {word_english} ..."
+            else:
+                return f"Example with '{word_english}'"
+        
+        return "Translation not available"
         
     def get_profile_files(self, profile_name):
         """Get file paths for a specific profile"""
@@ -1616,6 +1741,7 @@ class IndonesianLearningApp:
         # Answer display
         if st.session_state.show_answer:
             example_text = word_data.get('example', 'No example available')
+            example_translation = self.get_example_translation(example_text, current_word)
             st.markdown(f"""
             <div style='background: linear-gradient(135deg, #FF6B6B, #ee5a52); padding: 2rem; border-radius: 20px; text-align: center; color: white; margin: 1rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.15);'>
                 <h2 style='font-size: 2.5rem; margin: 0; font-weight: bold;'>{word_data['english']}</h2>
@@ -1623,7 +1749,8 @@ class IndonesianLearningApp:
                 <p style='font-size: 1.1rem; margin: 0.5rem 0; opacity: 0.8;'>Category: {category.title()}</p>
                 <div style='background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin: 1rem 0;'>
                     <p style='margin: 0; font-weight: bold;'>Example:</p>
-                    <p style='margin: 0.5rem 0 0 0; font-style: italic;'>"{example_text}"</p>
+                    <p style='margin: 0.5rem 0; font-style: italic; font-size: 1.1rem;'>"{example_text}"</p>
+                    <p style='margin: 0.5rem 0 0 0; font-style: italic; font-size: 1rem; opacity: 0.8;'>"{example_translation}"</p>
                 </div>
             </div>
             """, unsafe_allow_html=True)
