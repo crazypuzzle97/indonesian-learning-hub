@@ -1301,7 +1301,7 @@ class IndonesianLearningApp:
         total_words = sum(len(level_words) for level_words in VOCABULARY_DATA.values())
         col1, col2 = st.columns([3, 1])
         with col1:
-            st.info(f"📚 **{total_words} Indonesian words** available for learning!")
+            st.info(f"📚 **Comprehensive Indonesian vocabulary** ready for learning!")
         with col2:
             # Security and save status
             if st.session_state.current_profile and st.session_state.current_profile != "Demo":
@@ -1338,7 +1338,7 @@ class IndonesianLearningApp:
                 total_vocab += len(level_data)
             
             due_count = len(self.get_due_cards())
-            st.metric("Total Cards", total_vocab, delta=f"{due_count} due")
+            st.metric("Cards Due", due_count, delta="for review")
             
         with col4:
             current_level = st.session_state.user_progress['current_level']
@@ -1530,8 +1530,8 @@ class IndonesianLearningApp:
             selected_category = st.selectbox(
                 "🏷️ Choose Category to Practice:",
                 options=['all'] + categories,
-                format_func=lambda x: f"📚 All Categories ({len(all_words)} words)" if x == 'all' 
-                          else f"🎯 {x.title()} ({len([w for w, d in all_words.items() if d.get('category', 'general') == x])} words)",
+                format_func=lambda x: f"📚 All Categories" if x == 'all' 
+                          else f"🎯 {x.title()}",
                 key="flashcard_category"
             )
         
@@ -1694,13 +1694,13 @@ class IndonesianLearningApp:
         st.markdown("---")
         col1, col2, col3, col4 = st.columns(4)
         with col1:
-            st.info(f"📊 {selected_category.title()}: {len(available_words)} total")
+            st.info(f"📊 Category: {selected_category.title()}")
         with col2:
             st.info(f"📋 Due Now: {len(due_cards)} cards")
         with col3:
             category_learned = len([w for w in st.session_state.user_progress['words_learned'] 
                                   if w in available_words])
-            st.info(f"✅ Learned: {category_learned}/{len(available_words)}")
+            st.info(f"✅ Learned: {category_learned} words")
         with col4:
             st.info(f"🏷️ Categories: {len(categories)}")
     
@@ -2087,17 +2087,17 @@ class IndonesianLearningApp:
         
         # Answer selection with better styling
         st.markdown("### Choose the correct answer:")
-        selected_answer = st.radio("", options, key=f"quiz_{current_idx}")
+        selected_answer = st.radio("", options, key=f"quiz_{current_idx}", index=None)
         
         # Add hint button
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            if st.button("💡 Get Hint", width='stretch'):
+            if st.button("💡 Get Hint", use_container_width=True):
                 st.info(f"💡 Hint: The word '{current_word}' is related to '{card_data.get('category', 'general')}' category")
         
         # Submit button with better styling - only proceed if answer is selected
-        if st.button("Submit Answer", width='stretch', type="primary"):
-            if not selected_answer:
+        if st.button("Submit Answer", use_container_width=True, type="primary"):
+            if selected_answer is None:
                 st.warning("Please select an answer before submitting!")
                 return
             if selected_answer == correct_answer:
@@ -2941,9 +2941,9 @@ class IndonesianLearningApp:
             
             due_cards = len(self.get_due_cards())
             if due_cards > 0:
-                st.info(f"🎴 {total_vocab} cards available • {due_cards} due for review!")
+                st.info(f"🎴 {due_cards} cards due for review!")
             else:
-                st.success(f"🎴 {total_vocab} cards available • All caught up!")
+                st.success(f"🎴 All caught up! Great job!")
         
         # Check if profile is selected
         if st.session_state.current_profile is None:
