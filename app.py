@@ -97,11 +97,165 @@ VOCABULARY_DATA = {
         "rumah": {"english": "house", "pronunciation": "ru-mah", "category": "objects", "example": "Rumah saya kecil."},
         "buku": {"english": "book", "pronunciation": "bu-ku", "category": "objects", "example": "Buku ini bagus."},
         "uang": {"english": "money", "pronunciation": "u-ang", "category": "objects", "example": "Saya tidak punya uang."},
-        "waktu": {"english": "time", "pronunciation": "wak-tu", "category": "objects", "example": "Waktu sudah malam."},
+        "mobil": {"english": "car", "pronunciation": "mo-bil", "category": "objects", "example": "Mobil saya biru."},
+        "sepeda": {"english": "bicycle", "pronunciation": "se-pe-da", "category": "objects", "example": "Saya naik sepeda."},
+        "telepon": {"english": "phone", "pronunciation": "te-le-pon", "category": "objects", "example": "Telepon saya rusak."},
+        "komputer": {"english": "computer", "pronunciation": "kom-pu-ter", "category": "objects", "example": "Saya pakai komputer."},
+        "meja": {"english": "table", "pronunciation": "me-ja", "category": "objects", "example": "Meja ini besar."},
+        "kursi": {"english": "chair", "pronunciation": "kur-si", "category": "objects", "example": "Kursi ini nyaman."},
+        "pintu": {"english": "door", "pronunciation": "pin-tu", "category": "objects", "example": "Pintu ini tertutup."},
+        "jendela": {"english": "window", "pronunciation": "jen-de-la", "category": "objects", "example": "Jendela ini besar."},
+        "lampu": {"english": "lamp", "pronunciation": "lam-pu", "category": "objects", "example": "Lampu ini terang."},
         
-        # Essential Questions
-        "apa": {"english": "what", "pronunciation": "a-pa", "category": "questions", "example": "Apa kabar?"},
+        # Colors
+        "merah": {"english": "red", "pronunciation": "me-rah", "category": "colors", "example": "Bunga ini merah."},
+        "biru": {"english": "blue", "pronunciation": "bi-ru", "category": "colors", "example": "Langit ini biru."},
+        "kuning": {"english": "yellow", "pronunciation": "ku-ning", "category": "colors", "example": "Matahari kuning."},
+        "hijau": {"english": "green", "pronunciation": "hi-jau", "category": "colors", "example": "Daun ini hijau."},
+        "hitam": {"english": "black", "pronunciation": "hi-tam", "category": "colors", "example": "Malam ini hitam."},
+        "putih": {"english": "white", "pronunciation": "pu-tih", "category": "colors", "example": "Salju ini putih."},
+        
+        # Time & Days
+        "hari": {"english": "day", "pronunciation": "ha-ri", "category": "time", "example": "Hari ini cerah."},
+        "malam": {"english": "night", "pronunciation": "ma-lam", "category": "time", "example": "Malam ini dingin."},
+        "pagi": {"english": "morning", "pronunciation": "pa-gi", "category": "time", "example": "Pagi ini indah."},
+        "siang": {"english": "afternoon", "pronunciation": "si-ang", "category": "time", "example": "Siang ini panas."},
+        "senin": {"english": "Monday", "pronunciation": "se-nin", "category": "time", "example": "Senin saya kerja."},
+        "selasa": {"english": "Tuesday", "pronunciation": "se-la-sa", "category": "time", "example": "Selasa saya libur."},
+        "rabu": {"english": "Wednesday", "pronunciation": "ra-bu", "category": "time", "example": "Rabu saya belajar."},
+        "kamis": {"english": "Thursday", "pronunciation": "ka-mis", "category": "time", "example": "Kamis saya olahraga."},
+        "jumat": {"english": "Friday", "pronunciation": "ju-mat", "category": "time", "example": "Jumat saya pulang."},
+        "sabtu": {"english": "Saturday", "pronunciation": "sab-tu", "category": "time", "example": "Sabtu saya santai."},
+        "minggu": {"english": "Sunday", "pronunciation": "ming-gu", "category": "time", "example": "Minggu saya istirahat."},
+        
+        # Food & Drinks
+        "nasi": {"english": "rice", "pronunciation": "na-si", "category": "food", "example": "Nasi ini enak."},
+        "roti": {"english": "bread", "pronunciation": "ro-ti", "category": "food", "example": "Roti ini lembut."},
+        "daging": {"english": "meat", "pronunciation": "da-ging", "category": "food", "example": "Daging ini empuk."},
+        "ikan": {"english": "fish", "pronunciation": "i-kan", "category": "food", "example": "Ikan ini segar."},
+        "sayur": {"english": "vegetable", "pronunciation": "sa-yur", "category": "food", "example": "Sayur ini sehat."},
+        "buah": {"english": "fruit", "pronunciation": "bu-ah", "category": "food", "example": "Buah ini manis."},
+        "susu": {"english": "milk", "pronunciation": "su-su", "category": "food", "example": "Susu ini segar."},
+        "kopi": {"english": "coffee", "pronunciation": "ko-pi", "category": "food", "example": "Kopi ini panas."},
+        "teh": {"english": "tea", "pronunciation": "teh", "category": "food", "example": "Teh ini dingin."},
+        "jus": {"english": "juice", "pronunciation": "jus", "category": "food", "example": "Jus ini segar."},
+        
+        # Body Parts
+        "kepala": {"english": "head", "pronunciation": "ke-pa-la", "category": "body", "example": "Kepala saya sakit."},
+        "mata": {"english": "eye", "pronunciation": "ma-ta", "category": "body", "example": "Mata saya biru."},
+        "hidung": {"english": "nose", "pronunciation": "hi-dung", "category": "body", "example": "Hidung saya kecil."},
+        "mulut": {"english": "mouth", "pronunciation": "mu-lut", "category": "body", "example": "Mulut saya kering."},
+        "tangan": {"english": "hand", "pronunciation": "tan-gan", "category": "body", "example": "Tangan saya bersih."},
+        "kaki": {"english": "foot", "pronunciation": "ka-ki", "category": "body", "example": "Kaki saya sakit."},
+        
+        # Common Adjectives
+        "besar": {"english": "big", "pronunciation": "be-sar", "category": "adjectives", "example": "Rumah ini besar."},
+        "kecil": {"english": "small", "pronunciation": "ke-cil", "category": "adjectives", "example": "Anak ini kecil."},
+        "tinggi": {"english": "tall", "pronunciation": "ting-gi", "category": "adjectives", "example": "Orang ini tinggi."},
+        "pendek": {"english": "short", "pronunciation": "pen-dek", "category": "adjectives", "example": "Meja ini pendek."},
+        "panas": {"english": "hot", "pronunciation": "pa-nas", "category": "adjectives", "example": "Cuaca ini panas."},
+        "dingin": {"english": "cold", "pronunciation": "din-gin", "category": "adjectives", "example": "Air ini dingin."},
+        "enak": {"english": "delicious", "pronunciation": "e-nak", "category": "adjectives", "example": "Makanan ini enak."},
+        "buruk": {"english": "bad", "pronunciation": "bu-ruk", "category": "adjectives", "example": "Cuaca ini buruk."},
+        "bagus": {"english": "good", "pronunciation": "ba-gus", "category": "adjectives", "example": "Film ini bagus."},
+        "cantik": {"english": "beautiful", "pronunciation": "can-tik", "category": "adjectives", "example": "Bunga ini cantik."},
+        
+        # Places
+        "sekolah": {"english": "school", "pronunciation": "se-ko-lah", "category": "places", "example": "Saya pergi ke sekolah."},
+        "rumah sakit": {"english": "hospital", "pronunciation": "ru-mah sa-kit", "category": "places", "example": "Saya pergi ke rumah sakit."},
+        "toko": {"english": "shop", "pronunciation": "to-ko", "category": "places", "example": "Saya beli di toko."},
+        "restoran": {"english": "restaurant", "pronunciation": "res-to-ran", "category": "places", "example": "Saya makan di restoran."},
+        "bank": {"english": "bank", "pronunciation": "bank", "category": "places", "example": "Saya pergi ke bank."},
+        "kantor": {"english": "office", "pronunciation": "kan-tor", "category": "places", "example": "Saya kerja di kantor."},
+        "pasar": {"english": "market", "pronunciation": "pa-sar", "category": "places", "example": "Saya beli di pasar."},
+        "taman": {"english": "park", "pronunciation": "ta-man", "category": "places", "example": "Saya jalan di taman."},
+        
+        # Common Questions
+        "apa": {"english": "what", "pronunciation": "a-pa", "category": "questions", "example": "Apa nama Anda?"},
         "siapa": {"english": "who", "pronunciation": "si-a-pa", "category": "questions", "example": "Siapa nama Anda?"},
+        "dimana": {"english": "where", "pronunciation": "di-ma-na", "category": "questions", "example": "Dimana rumah Anda?"},
+        "kapan": {"english": "when", "pronunciation": "ka-pan", "category": "questions", "example": "Kapan Anda datang?"},
+        "mengapa": {"english": "why", "pronunciation": "men-ga-pa", "category": "questions", "example": "Mengapa Anda menangis?"},
+        "bagaimana": {"english": "how", "pronunciation": "ba-gai-ma-na", "category": "questions", "example": "Bagaimana kabar Anda?"},
+        
+        # Common Verbs (More)
+        "melihat": {"english": "to see", "pronunciation": "me-li-hat", "category": "verbs", "example": "Saya melihat burung."},
+        "mendengar": {"english": "to hear", "pronunciation": "men-den-gar", "category": "verbs", "example": "Saya mendengar musik."},
+        "berbicara": {"english": "to speak", "pronunciation": "ber-bi-ca-ra", "category": "verbs", "example": "Saya berbicara bahasa Indonesia."},
+        "membaca": {"english": "to read", "pronunciation": "mem-ba-ca", "category": "verbs", "example": "Saya membaca buku."},
+        "menulis": {"english": "to write", "pronunciation": "me-nu-lis", "category": "verbs", "example": "Saya menulis surat."},
+        "membeli": {"english": "to buy", "pronunciation": "mem-be-li", "category": "verbs", "example": "Saya membeli baju."},
+        "menjual": {"english": "to sell", "pronunciation": "men-ju-al", "category": "verbs", "example": "Saya menjual mobil."},
+        "mencari": {"english": "to search", "pronunciation": "men-ca-ri", "category": "verbs", "example": "Saya mencari kunci."},
+        "menemukan": {"english": "to find", "pronunciation": "me-ne-mu-kan", "category": "verbs", "example": "Saya menemukan dompet."},
+        "membuka": {"english": "to open", "pronunciation": "mem-bu-ka", "category": "verbs", "example": "Saya membuka pintu."},
+        "menutup": {"english": "to close", "pronunciation": "me-nu-tup", "category": "verbs", "example": "Saya menutup jendela."},
+        "duduk": {"english": "to sit", "pronunciation": "du-duk", "category": "verbs", "example": "Saya duduk di kursi."},
+        "berdiri": {"english": "to stand", "pronunciation": "ber-di-ri", "category": "verbs", "example": "Saya berdiri di depan."},
+        "berjalan": {"english": "to walk", "pronunciation": "ber-ja-lan", "category": "verbs", "example": "Saya berjalan di taman."},
+        "berlari": {"english": "to run", "pronunciation": "ber-la-ri", "category": "verbs", "example": "Saya berlari di lapangan."},
+        "waktu": {"english": "time", "pronunciation": "wak-tu", "category": "objects", "example": "Waktu sudah malam."},
+        "jam": {"english": "hour/clock", "pronunciation": "jam", "category": "objects", "example": "Jam berapa sekarang?"},
+        "menit": {"english": "minute", "pronunciation": "me-nit", "category": "objects", "example": "Lima menit lagi."},
+        "detik": {"english": "second", "pronunciation": "de-tik", "category": "objects", "example": "Tiga detik."},
+        
+        # More Essential Words
+        "nama": {"english": "name", "pronunciation": "na-ma", "category": "objects", "example": "Nama saya John."},
+        "alamat": {"english": "address", "pronunciation": "a-la-mat", "category": "objects", "example": "Alamat saya di Jakarta."},
+        "umur": {"english": "age", "pronunciation": "u-mur", "category": "objects", "example": "Umur saya 25 tahun."},
+        "tahun": {"english": "year", "pronunciation": "ta-hun", "category": "objects", "example": "Saya lahir tahun 1995."},
+        "bulan": {"english": "month", "pronunciation": "bu-lan", "category": "objects", "example": "Bulan ini Januari."},
+        "minggu": {"english": "week", "pronunciation": "ming-gu", "category": "objects", "example": "Minggu ini sibuk."},
+        
+        # More Colors
+        "coklat": {"english": "brown", "pronunciation": "cok-lat", "category": "colors", "example": "Rambut saya coklat."},
+        "abu-abu": {"english": "gray", "pronunciation": "a-bu a-bu", "category": "colors", "example": "Langit abu-abu."},
+        "ungu": {"english": "purple", "pronunciation": "un-gu", "category": "colors", "example": "Bunga ini ungu."},
+        "jingga": {"english": "orange", "pronunciation": "jing-ga", "category": "colors", "example": "Jeruk ini jingga."},
+        
+        # More Family
+        "kakak": {"english": "older sibling", "pronunciation": "ka-kak", "category": "family", "example": "Kakak saya mahasiswa."},
+        "adik": {"english": "younger sibling", "pronunciation": "a-dik", "category": "family", "example": "Adik saya masih kecil."},
+        "nenek": {"english": "grandmother", "pronunciation": "ne-nek", "category": "family", "example": "Nenek saya baik."},
+        "kakek": {"english": "grandfather", "pronunciation": "ka-kek", "category": "family", "example": "Kakek saya pintar."},
+        "paman": {"english": "uncle", "pronunciation": "pa-man", "category": "family", "example": "Paman saya dokter."},
+        "bibi": {"english": "aunt", "pronunciation": "bi-bi", "category": "family", "example": "Bibi saya guru."},
+        
+        # More Body Parts
+        "rambut": {"english": "hair", "pronunciation": "ram-but", "category": "body", "example": "Rambut saya panjang."},
+        "telinga": {"english": "ear", "pronunciation": "te-lin-ga", "category": "body", "example": "Telinga saya sakit."},
+        "gigi": {"english": "tooth", "pronunciation": "gi-gi", "category": "body", "example": "Gigi saya putih."},
+        "leher": {"english": "neck", "pronunciation": "le-her", "category": "body", "example": "Leher saya sakit."},
+        "punggung": {"english": "back", "pronunciation": "pung-gung", "category": "body", "example": "Punggung saya sakit."},
+        "perut": {"english": "stomach", "pronunciation": "pe-rut", "category": "body", "example": "Perut saya lapar."},
+        
+        # More Food
+        "garam": {"english": "salt", "pronunciation": "ga-ram", "category": "food", "example": "Garam ini asin."},
+        "gula": {"english": "sugar", "pronunciation": "gu-la", "category": "food", "example": "Gula ini manis."},
+        "minyak": {"english": "oil", "pronunciation": "mi-nyak", "category": "food", "example": "Minyak ini panas."},
+        "lada": {"english": "pepper", "pronunciation": "la-da", "category": "food", "example": "Lada ini pedas."},
+        "bawang": {"english": "onion", "pronunciation": "ba-wang", "category": "food", "example": "Bawang ini besar."},
+        "tomat": {"english": "tomato", "pronunciation": "to-mat", "category": "food", "example": "Tomat ini merah."},
+        
+        # More Objects
+        "kunci": {"english": "key", "pronunciation": "kun-ci", "category": "objects", "example": "Kunci ini kecil."},
+        "dompet": {"english": "wallet", "pronunciation": "dom-pet", "category": "objects", "example": "Dompet saya hilang."},
+        "tas": {"english": "bag", "pronunciation": "tas", "category": "objects", "example": "Tas ini berat."},
+        "sepatu": {"english": "shoe", "pronunciation": "se-pa-tu", "category": "objects", "example": "Sepatu saya baru."},
+        "baju": {"english": "clothes", "pronunciation": "ba-ju", "category": "objects", "example": "Baju ini bagus."},
+        "celana": {"english": "pants", "pronunciation": "ce-la-na", "category": "objects", "example": "Celana ini panjang."},
+        
+        # More Adjectives
+        "baru": {"english": "new", "pronunciation": "ba-ru", "category": "adjectives", "example": "Mobil ini baru."},
+        "lama": {"english": "old", "pronunciation": "la-ma", "category": "adjectives", "example": "Rumah ini lama."},
+        "mudah": {"english": "easy", "pronunciation": "mu-dah", "category": "adjectives", "example": "Pekerjaan ini mudah."},
+        "sulit": {"english": "difficult", "pronunciation": "su-lit", "category": "adjectives", "category": "adjectives", "example": "Pertanyaan ini sulit."},
+        "cepat": {"english": "fast", "pronunciation": "ce-pat", "category": "adjectives", "example": "Mobil ini cepat."},
+        "lambat": {"english": "slow", "pronunciation": "lam-bat", "category": "adjectives", "example": "Kereta ini lambat."},
+        "mahal": {"english": "expensive", "pronunciation": "ma-hal", "category": "adjectives", "example": "Mobil ini mahal."},
+        "murah": {"english": "cheap", "pronunciation": "mu-rah", "category": "adjectives", "example": "Buku ini murah."},
+        "bersih": {"english": "clean", "pronunciation": "ber-sih", "category": "adjectives", "example": "Rumah ini bersih."},
+        "kotor": {"english": "dirty", "pronunciation": "ko-tor", "category": "adjectives", "example": "Pakaian ini kotor."},
         "di mana": {"english": "where", "pronunciation": "di ma-na", "category": "questions", "example": "Di mana toilet?"},
         "kapan": {"english": "when", "pronunciation": "ka-pan", "category": "questions", "example": "Kapan Anda datang?"},
         "berapa": {"english": "how much/many", "pronunciation": "be-ra-pa", "category": "questions", "example": "Berapa harganya?"},
@@ -1903,58 +2057,85 @@ class IndonesianLearningApp:
         
         # Sidebar navigation with profile info
         with st.sidebar:
-            # Profile info and logout
-            pin_code = st.session_state.user_progress.get('access_code', 'N/A')
-            st.markdown(
-                f"""
-                <div style='
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    padding: 1rem;
-                    border-radius: 10px;
-                    text-align: center;
-                    margin-bottom: 1rem;
-                '>
-                    <h3 style='color: white; margin: 0;'>👤 {st.session_state.current_profile}</h3>
-                    <p style='color: rgba(255,255,255,0.9); margin: 0.5rem 0 0 0; font-size: 0.9rem;'>
-                        Your Learning Profile
-                    </p>
-                    <p style='color: rgba(255,255,255,0.8); margin: 0.3rem 0 0 0; font-size: 0.8rem;'>
-                        PIN: {pin_code}
-                    </p>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+            # Modern header
+            st.markdown("""
+            <div style='text-align: center; padding: 1rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; margin-bottom: 1rem;'>
+                <h2 style='color: white; margin: 0; font-size: 1.5rem;'>🇮🇩 Indonesian Hub</h2>
+                <p style='color: #f0f0f0; margin: 0.5rem 0 0 0; font-size: 0.9rem;'>Learn Indonesian the fun way!</p>
+            </div>
+            """, unsafe_allow_html=True)
             
-            # Logout button
-            if st.button("🚪 Logout", width='stretch', type="secondary"):
-                # Clear session state
-                for key in list(st.session_state.keys()):
-                    del st.session_state[key]
+            # User info
+            learned_words = len(st.session_state.user_progress['words_learned'])
+            streak = st.session_state.user_progress.get('study_streak', 0)
+            st.markdown(f"""
+            <div style='background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; text-align: center;'>
+                <h4 style='margin: 0; color: #333;'>👤 {st.session_state.current_profile}</h4>
+                <p style='margin: 0.5rem 0 0 0; color: #666; font-size: 0.9rem;'>{learned_words} words learned</p>
+                <p style='margin: 0.3rem 0 0 0; color: #666; font-size: 0.8rem;'>{streak} day streak</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Main navigation
+            st.markdown("### 🎯 Quick Access")
+            
+            # Primary learning tools
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("📚", help="Study Flashcards", use_container_width=True):
+                    st.session_state.page = 'flashcards'
+                    st.rerun()
+            with col2:
+                if st.button("⚔️", help="Battle Friends", use_container_width=True):
+                    st.session_state.page = 'battle'
+                    st.rerun()
+            
+            # Secondary tools
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("📝", help="Learn Sentences", use_container_width=True):
+                    st.session_state.page = 'sentences'
+                    st.rerun()
+            with col2:
+                if st.button("🧠", help="Take Quiz", use_container_width=True):
+                    st.session_state.page = 'quiz'
+                    st.rerun()
+            
+            # Additional features
+            if st.button("🏠 Dashboard", use_container_width=True):
+                st.session_state.page = 'dashboard'
                 st.rerun()
             
+            if st.button("📊 My Progress", use_container_width=True):
+                st.session_state.page = 'word_database'
+                st.rerun()
+            
+            if st.button("📖 Grammar", use_container_width=True):
+                st.session_state.page = 'study'
+                st.rerun()
+            
+            if st.button("📚 Workbook", use_container_width=True):
+                st.session_state.page = 'workbook'
+                st.rerun()
+            
+            # Profile and settings
             st.markdown("---")
+            st.markdown("### ⚙️ Account")
             
-            # Navigation
-            st.subheader("Navigation")
+            if st.button("👤 Profile", use_container_width=True):
+                st.session_state.page = 'profile'
+                st.rerun()
             
-            pages = {
-                'dashboard': '🏠 Dashboard',
-                'flashcards': '📚 Flashcards',
-                'sentences': '📝 Learn Sentences',
-                'workbook': '📖 Workbook',
-                'study': '📚 Study Grammar',
-                'quiz': '🧠 Quiz',
-                'word_database': '📊 Word Database',
-                'review_weak': '🔄 Review Weak Words',
-                'profile': '👤 Profile',
-                'settings': '⚙️ Settings'
-            }
+            if st.button("⚙️ Settings", use_container_width=True):
+                st.session_state.page = 'settings'
+                st.rerun()
             
-            for page_key, page_name in pages.items():
-                if st.button(page_name, width='stretch'):
-                    st.session_state.page = page_key
-                    st.rerun()
+            # Logout
+            st.markdown("---")
+            if st.button("🚪 Logout", use_container_width=True, type="secondary"):
+                st.session_state.current_profile = None
+                st.session_state.page = 'login'
+                st.rerun()
             
             st.markdown("---")
             st.subheader("📊 Quick Stats")
