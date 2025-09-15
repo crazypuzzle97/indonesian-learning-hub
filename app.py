@@ -2237,6 +2237,12 @@ class IndonesianLearningApp:
             st.session_state.quiz_current = 0
             st.session_state.quiz_score = 0
             st.session_state.quiz_answers = []
+            # Persist per-question options to avoid reshuffle on interaction
+            st.session_state.quiz_options = {}
+            st.session_state.quiz_generated = True
+        # Ensure containers exist even if quiz already initialized
+        if 'quiz_options' not in st.session_state:
+            st.session_state.quiz_options = {}
         
         current_idx = st.session_state.quiz_current
         
@@ -2319,34 +2325,38 @@ class IndonesianLearningApp:
             unsafe_allow_html=True
         )
         
-        # Generate multiple choice options
+        # Generate multiple choice options (persisted to avoid reshuffle)
         correct_answer = card_data['english']
-        
-        # Get wrong answers from same level or any level
-        wrong_answers = []
-        
-        # Try to get words from same level first
-        same_level_words = []
-        for w, data in st.session_state.flashcard_data.items():
-            if data.get('level') == card_data.get('level') and w != current_word:
-                same_level_words.append(data['english'])
-        
-        # If not enough words from same level, get from any level
-        if len(same_level_words) < 3:
-            all_other_words = []
-            for level, words in VOCABULARY_DATA.items():
-                for w, data in words.items():
-                    if w != current_word and data['english'] != correct_answer:
-                        all_other_words.append(data['english'])
-            
-            # Remove duplicates and add to same_level_words
-            same_level_words.extend([w for w in all_other_words if w not in same_level_words])
-        
-        # Select wrong answers
-        wrong_answers = random.sample(same_level_words, min(3, len(same_level_words)))
-        
-        options = [correct_answer] + wrong_answers
-        random.shuffle(options)
+
+        if current_idx not in st.session_state.quiz_options:
+            # Get wrong answers from same level or any level
+            wrong_answers = []
+
+            # Try to get words from same level first
+            same_level_words = []
+            for w, data in st.session_state.flashcard_data.items():
+                if data.get('level') == card_data.get('level') and w != current_word:
+                    same_level_words.append(data['english'])
+
+            # If not enough words from same level, get from any level
+            if len(same_level_words) < 3:
+                all_other_words = []
+                for level, words in VOCABULARY_DATA.items():
+                    for w, data in words.items():
+                        if w != current_word and data['english'] != correct_answer:
+                            all_other_words.append(data['english'])
+
+                # Remove duplicates and add to same_level_words
+                same_level_words.extend([w for w in all_other_words if w not in same_level_words])
+
+            # Select wrong answers
+            wrong_answers = random.sample(same_level_words, min(3, len(same_level_words)))
+
+            options = [correct_answer] + wrong_answers
+            random.shuffle(options)
+            st.session_state.quiz_options[current_idx] = options
+        else:
+            options = st.session_state.quiz_options[current_idx]
         
         # Answer selection with better styling
         st.markdown("### Choose the correct answer:")
