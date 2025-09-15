@@ -2183,10 +2183,100 @@ class IndonesianLearningApp:
             with col4:
                 st.markdown(f"{player['battles_won']} wins")
 
+    def generate_intelligent_quiz_words(self, learned_words, num_questions=8):
+        """Generate intelligent word selection for quiz avoiding recent repetitions"""
+        # Get quiz history to avoid repetition
+        recent_quizzes = st.session_state.user_progress.get('recent_quiz_words', [])
+        
+        # Categorize words by difficulty and frequency
+        word_stats = {}
+        for word in learned_words:
+            # Get word data
+            word_data = None
+            for level, words in VOCABULARY_DATA.items():
+                if word in words:
+                    word_data = words[word]
+                    word_data['level'] = level
+                    break
+            
+            if word_data:
+                # Calculate word priority (lower = higher priority)
+                recent_count = sum(1 for quiz_words in recent_quizzes if word in quiz_words)
+                level_difficulty = {
+                    'Absolute Beginner': 1, 'Beginner': 2, 'Intermediate': 3, 
+                    'Advanced': 4, 'Expert': 5
+                }.get(level, 3)
+                
+                word_stats[word] = {
+                    'recent_count': recent_count,
+                    'difficulty': level_difficulty,
+                    'category': word_data.get('category', 'general'),
+                    'priority': recent_count * 2 + (5 - level_difficulty)  # Lower = better
+                }
+        
+        # Sort by priority (less recent + appropriate difficulty)
+        sorted_words = sorted(word_stats.keys(), key=lambda w: word_stats[w]['priority'])
+        
+        # Select words with variety
+        selected = []
+        used_categories = set()
+        
+        # First pass: get diverse categories
+        for word in sorted_words:
+            if len(selected) >= num_questions:
+                break
+            category = word_stats[word]['category']
+            if category not in used_categories or len(used_categories) >= 4:
+                selected.append(word)
+                used_categories.add(category)
+        
+        # Second pass: fill remaining slots
+        for word in sorted_words:
+            if len(selected) >= num_questions:
+                break
+            if word not in selected:
+                selected.append(word)
+        
+        return selected[:num_questions]
+    
+    def generate_sentence_question(self, word, word_data):
+        """Generate a sentence completion question"""
+        # Get example sentence or create one
+        example = word_data.get('example', f"Saya suka {word}.")
+        
+        # Try to get translation
+        example_translation = self.get_example_translation(example, word)
+        
+        # Create blanked version
+        if word in example:
+            question_sentence = example.replace(word, "____")
+            return {
+                'type': 'sentence_completion',
+                'question': f'Complete the sentence: "{question_sentence}"',
+                'translation': f'Translation: "{example_translation}"',
+                'answer': word
+            }
+        else:
+            # Fallback: create a simple sentence
+            sentences = [
+                f"Saya melihat ____ di sana.",
+                f"Ini adalah ____ yang bagus.",
+                f"Mereka membutuhkan ____.",
+                f"Dia membeli ____ kemarin."
+            ]
+            question_sentence = random.choice(sentences)
+            translation = self.get_example_translation(question_sentence.replace("____", word), word)
+            return {
+                'type': 'sentence_completion',
+                'question': f'Complete the sentence: "{question_sentence}"',
+                'translation': f'Translation: "{translation}"',
+                'answer': word
+            }
+    
     def render_quiz(self):
-        """Render premium quiz interface"""
-        st.title("🧠 Enhanced Vocabulary Quiz")
-        st.markdown("**Test your Indonesian vocabulary with intelligent questions and detailed feedback**")
+        """Render advanced vocabulary quiz system"""
+        st.title("🎯 Advanced Indonesian Quiz")
+        st.markdown("**Intelligent quiz system with varied question types and smart word selection**")
         
         # Quiz statistics
         learned_words = len(st.session_state.user_progress['words_learned'])
@@ -2201,13 +2291,13 @@ class IndonesianLearningApp:
         with col3:
             st.metric("Average Score", f"{avg_score:.1f}%")
         with col4:
-            st.metric("Question System", "AI-Powered")
+            st.metric("Questions", "8 Varied Types")
         
         if 'quiz_words' not in st.session_state:
-            # Initialize quiz with 10 random words from learned vocabulary
-            learned_words = list(st.session_state.user_progress['words_learned'])
-            if len(learned_words) < 3:
-                st.warning("Learn at least 3 words before taking a quiz!")
+            # Initialize advanced quiz system
+            learned_words_list = list(st.session_state.user_progress['words_learned'])
+            if len(learned_words_list) < 5:
+                st.warning("Learn at least 5 words before taking the advanced quiz!")
                 if st.button("← Back to Dashboard"):
                     st.session_state.page = 'dashboard'
                     st.rerun()
@@ -2215,7 +2305,7 @@ class IndonesianLearningApp:
             
             # Ensure we have valid words for the quiz
             valid_words = []
-            for word in learned_words:
+            for word in learned_words_list:
                 # Check if word exists in vocabulary data
                 word_found = False
                 for level, words in VOCABULARY_DATA.items():
@@ -2226,53 +2316,91 @@ class IndonesianLearningApp:
                 if not word_found:
                     st.warning(f"Word '{word}' not found in vocabulary data, skipping...")
             
-            if len(valid_words) < 3:
-                st.error("Not enough valid words for a quiz. Please learn more words first!")
+            if len(valid_words) < 5:
+                st.error("Not enough valid words for the advanced quiz. Please learn more words first!")
                 if st.button("← Back to Dashboard"):
                     st.session_state.page = 'dashboard'
                     st.rerun()
                 return
-                
-            st.session_state.quiz_words = random.sample(valid_words, min(10, len(valid_words)))
+            
+            # Generate intelligent word selection
+            selected_words = self.generate_intelligent_quiz_words(valid_words, 8)
+            
+            st.session_state.quiz_words = selected_words
             st.session_state.quiz_current = 0
             st.session_state.quiz_score = 0
             st.session_state.quiz_answers = []
-            # Persist per-question options to avoid reshuffle on interaction
             st.session_state.quiz_options = {}
-            st.session_state.quiz_generated = True
+            st.session_state.quiz_questions = {}  # Store generated questions
+            
+            # Track this quiz for future repetition avoidance
+            if 'recent_quiz_words' not in st.session_state.user_progress:
+                st.session_state.user_progress['recent_quiz_words'] = []
+            st.session_state.user_progress['recent_quiz_words'].append(selected_words)
+            # Keep only last 5 quizzes
+            if len(st.session_state.user_progress['recent_quiz_words']) > 5:
+                st.session_state.user_progress['recent_quiz_words'].pop(0)
+        
         # Ensure containers exist even if quiz already initialized
         if 'quiz_options' not in st.session_state:
             st.session_state.quiz_options = {}
+        if 'quiz_questions' not in st.session_state:
+            st.session_state.quiz_questions = {}
         
         current_idx = st.session_state.quiz_current
         
         if current_idx >= len(st.session_state.quiz_words):
-            # Quiz complete
+            # Quiz complete - Enhanced results
             score_percentage = (st.session_state.quiz_score / len(st.session_state.quiz_words)) * 100
             st.session_state.user_progress['quiz_scores'].append(score_percentage)
             
-            st.success(f"🎉 Quiz Complete!")
-            st.metric("Final Score", f"{st.session_state.quiz_score}/{len(st.session_state.quiz_words)}", 
-                     f"{score_percentage:.1f}%")
+            # Save progress
+            self.save_progress()
             
-            if score_percentage >= 80:
+            st.success(f"🎉 Advanced Quiz Complete!")
+            
+            # Detailed results
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.metric("Final Score", f"{st.session_state.quiz_score}/8", f"{score_percentage:.1f}%")
+            with col2:
+                question_types = [ans.get('question_type', 'translation') for ans in st.session_state.quiz_answers]
+                sentence_questions = sum(1 for qt in question_types if qt == 'sentence_completion')
+                st.metric("Sentence Questions", f"{sentence_questions}/8")
+            with col3:
+                avg_all_scores = sum(st.session_state.user_progress.get('quiz_scores', [])) / len(st.session_state.user_progress.get('quiz_scores', [1]))
+                improvement = score_percentage - avg_all_scores
+                st.metric("vs Average", f"{improvement:+.1f}%")
+            
+            # Performance feedback
+            if score_percentage >= 90:
                 st.balloons()
-                st.success("Excellent work! 🌟")
+                st.success("🌟 Outstanding! You've mastered these words!")
+            elif score_percentage >= 75:
+                st.success("🎯 Excellent work! Strong vocabulary knowledge!")
             elif score_percentage >= 60:
-                st.success("Good job! 👍")
+                st.success("👍 Good job! Keep practicing to improve!")
             else:
-                st.info("Keep practicing! 💪")
+                st.info("💪 Keep studying! Review the words you missed.")
+            
+            # Show detailed results
+            with st.expander("📊 Detailed Results", expanded=False):
+                for i, answer in enumerate(st.session_state.quiz_answers):
+                    status = "✅" if answer['is_correct'] else "❌"
+                    question_type = "🔤" if answer.get('question_type') == 'sentence_completion' else "📝"
+                    result_text = "✓" if answer['is_correct'] else f"→ {answer['correct']}"
+                    st.write(f"{status} {question_type} **{answer['word']}**: {answer['selected']} {result_text}")
             
             col1, col2 = st.columns(2)
             with col1:
-                if st.button("Take Another Quiz"):
-                    for key in ['quiz_words', 'quiz_current', 'quiz_score', 'quiz_answers']:
+                if st.button("🔄 Take Another Quiz", use_container_width=True):
+                    for key in ['quiz_words', 'quiz_current', 'quiz_score', 'quiz_answers', 'quiz_options', 'quiz_questions']:
                         if key in st.session_state:
                             del st.session_state[key]
                     st.rerun()
             with col2:
-                if st.button("← Back to Dashboard"):
-                    for key in ['quiz_words', 'quiz_current', 'quiz_score', 'quiz_answers']:
+                if st.button("← Back to Dashboard", use_container_width=True):
+                    for key in ['quiz_words', 'quiz_current', 'quiz_score', 'quiz_answers', 'quiz_options', 'quiz_questions']:
                         if key in st.session_state:
                             del st.session_state[key]
                     st.session_state.page = 'dashboard'
@@ -2301,25 +2429,51 @@ class IndonesianLearningApp:
                 return
         
         st.progress((current_idx + 1) / len(st.session_state.quiz_words))
-        st.subheader(f"Question {current_idx + 1} of {len(st.session_state.quiz_words)}")
+        st.subheader(f"Question {current_idx + 1} of 8")
         
-        # Question display with better contrast and styling
+        # Generate question type (mix of translation and sentence completion)
+        if current_idx not in st.session_state.quiz_questions:
+            # Decide question type: 50% sentence completion, 50% translation
+            if current_idx % 2 == 0 and current_idx < 6:  # More sentence questions in first 6
+                question_data = self.generate_sentence_question(current_word, card_data)
+                st.session_state.quiz_questions[current_idx] = question_data
+            else:
+                # Traditional translation question
+                st.session_state.quiz_questions[current_idx] = {
+                    'type': 'translation',
+                    'question': f'What does "{current_word}" mean in English?',
+                    'answer': card_data['english']
+                }
+        
+        question_data = st.session_state.quiz_questions[current_idx]
+        
+        # Question display with dynamic styling based on type
+        if question_data['type'] == 'sentence_completion':
+            gradient = "linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)"
+            icon = "🔤"
+            subtitle = "Fill in the blank"
+        else:
+            gradient = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+            icon = "📝"
+            subtitle = "Choose the correct translation"
+        
         st.markdown(
             f"""
             <div style='
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: {gradient};
                 padding: 2rem;
                 border-radius: 15px;
                 text-align: center;
                 margin: 1rem 0;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             '>
-                <h2 style='color: white; margin: 0; font-size: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>
-                    What does "{current_word}" mean in English?
+                <h2 style='color: white; margin: 0; font-size: 1.8rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>
+                    {icon} {question_data['question']}
                 </h2>
                 <p style='color: rgba(255,255,255,0.9); margin: 0.5rem 0 0 0; font-size: 1.1rem;'>
-                    Choose the correct translation
+                    {subtitle}
                 </p>
+                {f"<p style='color: rgba(255,255,255,0.8); margin: 0.5rem 0 0 0; font-size: 1rem; font-style: italic;'>{question_data.get('translation', '')}</p>" if 'translation' in question_data else ''}
             </div>
             """, 
             unsafe_allow_html=True
@@ -2360,7 +2514,7 @@ class IndonesianLearningApp:
         
         # Answer selection with better styling
         st.markdown("### Choose the correct answer:")
-        selected_answer = st.radio("", options, key=f"quiz_{current_idx}", index=None)
+        selected_answer = st.radio("Select your answer:", options, key=f"quiz_{current_idx}", index=None, label_visibility="collapsed")
         
         # Add hint button
         col1, col2, col3 = st.columns([1, 2, 1])
